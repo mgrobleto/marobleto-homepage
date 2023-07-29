@@ -18,6 +18,7 @@ interface LinkProps {
 interface WorkDetails {
     title: string
     children: React.ReactNode
+    color: string
 }
 
 export const WorkContainer : React.FC<WorkContent> = ({ children }) => {
@@ -71,31 +72,40 @@ export const WorkRight : React.FC<WorkProps> = ( { children, progress }) => {
 }
 
 export const WorkLink : React.FC<LinkProps> = ({ href, children }) => {
-    return <Link href={href} target="_blank" className="underline underline-offset-auto"> {children} </Link>
+    return <Link href={href} target="_blank" className="underline underline-offset-auto my-1"> {children} </Link>
+}
+
+export const RepoLink : React.FC<LinkProps> = ({ href, children}) => {
+    return <Link href={href} target="_blank" className="underline underline-offset-auto my-1"> {children} </Link>
 }
 
 export const WorkDescription : React.FC<WorkContent> = ({ children }) => {
     return (
-        <div className="text-sm lg:text-lg font-light max-w-sm my-5 tracking-tight text-justify leading-relaxed">
+        <div className="text-sm lg:text-lg font-light max-w-md my-5 tracking-tight text-justify leading-relaxed">
             {children}
         </div>
     )
 }
 
-export const WorkDetail : React.FC<WorkDetails> = ({ title, children }) => {
+export const WorkDetail : React.FC<WorkDetails> = ({ title, children , color}) => {
     return (
-        <div className="flex flex-col text-sm lg:text-lg mb-[10px]">
-            <h3 className='font-bold tracking-tight underline-offset-auto text-[#54c5df]'>{title}</h3>
-            {children}
+        <div className="flex flex-col justify-between max-w-auto mb-[10px]">
+            <h3 className='tracking-tight text-sm lg:text-lg underline underline-offset-8 decoration-dotted my-2' style={{
+                color: color,
+            }}>{title}</h3>
+            
+            <div className="text-sm lg:text-1xl flex flex-col"> {children} </div>
         </div>
     )
 }
 
-export const WorkStack : React.FC<WorkContent> = ({ children }) => {
+export const WorkStack : React.FC<WorkDetails> = ({ title, children, color }) => {
     return (
         <div className="flex flex-col text-sm lg:text-lg">
-            <h3 className='font-bold tracking-tight underline-offset-auto text-[#92DEEF]'>Stack</h3>
-            <div className="font-light">{children}</div>
+            <h3 className='font-bold tracking-tight underline-offset-auto' style={{
+                color: color
+            }}>{title}</h3>
+            <div className="font-light flex flex-col">{children}</div>
         </div>
     )
 }
