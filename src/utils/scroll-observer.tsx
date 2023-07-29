@@ -7,7 +7,7 @@ interface ScrollValue {
 }
 
 interface Props {
-    children: React.ReactNode;
+    children: React.ReactNode
 }
 
 export const ScrollContext = React.createContext<ScrollValue>({

@@ -40,12 +40,15 @@ const Intro : React.FC = () => {
             />
             <div className="flex min-h-screen flex-col items-center justify-center p-24 backdrop-blur-lg">
                 <div className='p-12 font-bold z-10 drop-shadow-[0_5px_3px_rgba(0,0,0,0.4)] text-center flex-1 flex flex-col items-center justify-center'>
-                    <h1 className="mb-6 text-5xl xl:text-6xl">¡Hey!</h1>
-                    <h2 className="mb-2 text-3xl xl:text-4xl tracking-tight">
-                        <span>It's Gabriela Robleto</span>
+                    <h1 className="mb-6 text-5xl xl:text-6xl">¡hi, <span className='text-[#1E336C]'>gabriela</span> here!</h1>
+                    <h2 className="font-light mb-2 text-2xl xl:text-2xl tracking-tight">
+                        <p>(artist / developer / designer)</p>
                     </h2>
+                    <h3 className='font-light mb-2 text-1xl xl:text-2xl tracking-tight'>
+                        <p>based in Nicaragua</p>
+                    </h3>
                 </div> 
-                <div className={`flex-grow-0 pb-20 md:pb-0 transition-all duration-1000 ${
+                <div className={`flex-grow-0 mx-auto pb-20 md:pb-0 transition-all duration-1000 ${
                     imageLoaded ? 'opacity-100' : 'opacity-0 -translate-y-10'
                 }`}>
                     <Image

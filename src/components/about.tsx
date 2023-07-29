@@ -2,8 +2,12 @@
 
 import React, { useRef, useContext } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import s from '../styles/about.module.css'
 import { ScrollContext } from '@/utils/scroll-observer';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import TwitterIcon from '@mui/icons-material/Twitter';
 
 const opacityForBlock = (sectionProgress: number, blockNo: number) => {
     const progress = sectionProgress - blockNo
@@ -15,7 +19,7 @@ const About : React.FC = () => {
     const { scrollY } = useContext(ScrollContext)
     const refContainer = useRef<HTMLDivElement>(null)
 
-    const numOfPages = 2
+    const numOfPages = 3
     let progress = 0
 
     const { current : elContainer } = refContainer
@@ -29,41 +33,68 @@ const About : React.FC = () => {
 
     return (
         <section ref={refContainer} className={`min-h-screen bg-gradient-to-b from-[#0A1227] to-black flex flex-col py-20`}>
-            <div className='container flex flex-row mx-auto p-28 justify-between'>
+            <div className='flex flex-col xl:flex-row mx-20 py-28 px-36 justify-between'>
                 <div className='about-info-container flex flex-col max-w-2xl text-justify'>
-                    <div className={`${s.aboutText} about-introduction`} style={{
-                        opacity: opacityForBlock(progress, 0)
+                    <div className={`${s.aboutText} about-introduction mb-5`} style={{
+                        opacity: opacityForBlock(progress, 1)
                     }}>
-                        <hr className="mb-12 h-0.5 border-t-0 bg-neutral-100 opacity-100 dark:opacity-50" />
-                        <div className='about-introduction'>
-                            <strong className='text-3xl md:text-4xl'>/ about me</strong>
-                            <p className='text-sm md:text-xl mt-5'>
-                                I am currently studying a degree in <b>Computer Engineer </b>
+                        <div className='about-introduction leading-tight'>
+                            <strong className='text-2xl md:text-3xl underline underline-offset-8 decoration-dotted'>/ about me</strong>
+                            <p className='text-sm font-light md:text-xl my-5'>
+                                I am currently studying a degree in <b className='font-bold'>Computer Engineer </b>
                                 at the National University of Engineering in Managua, Nicaragua.
-                                I have full interest in visual arts and full stack development.
+                                I have full interest in visual arts and full-stack development.
+                                In my free time, i like to learn new things involved in the world
+                                of web development in a self-taught way. Also, i love taking
+                                pictures and watching movies. 
                             </p>
                         </div>
                     </div>
-                    <div className={`${s.aboutText} about-hobbies my-14 inline-block after:content-['_']`} style={{
+                    <div className={`${s.aboutText} about-hobbies mb-5 inline-block after:content-['_']`} style={{
                         opacity: opacityForBlock(progress, 1)
                     }}>
                         <div className='about-introduction'>
-                            <strong className='text-3xl md:text-4xl'>/ I ♥</strong>
-                            <p className='text-sm md:text-xl mt-5'>
-                                I am currently studying a degree in <b>Computer Engineer </b>
-                                at the National University of Engineering in Managua, Nicaragua.
-                                I have full interest in visual arts and full stack development.
+                            <strong className='text-2xl md:text-3xl underline underline-offset-8 decoration-dotted'>/ i ♥</strong>
+                            <p className='text-sm md:text-xl my-5'>
+                                Photography, Art, Music, Movies.
                             </p>
                         </div>
                     </div>
+                    <div className={`${s.aboutText} about-hobbies mb-5 inline-block`} style={{
+                        opacity: opacityForBlock(progress, 1)
+                    }}>
+                        <div className='about-introduction'>
+                            <strong className='text-2xl md:text-3xl underline underline-offset-8 decoration-dotted'>/ find me on the web</strong>
+                            <div className='social-links flex flex-col text-[#92DEEF] text-sm md:text-md my-5'>
+                                <Link href="https://github.com/mgrobleto" className='my-2'>
+                                    <GitHubIcon />
+                                    <span className='mx-2'>@mgrobleto</span>
+                                </Link>
+                                <Link href="https://www.instagram.com/marobleto/" className='my-2'>
+                                    <InstagramIcon />
+                                    <span className='mx-2'>@marobleto</span>
+                                </Link>
+                                <Link href="https://twitter.com/marobleto_" className='my-2'>
+                                    <TwitterIcon  />
+                                    <span className='mx-2'>@marobleto_</span>
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <Image
-                    src="/assets/me.jpg"
-                    alt="about me photo"
-                    style={{borderRadius: '25px', boxShadow: '6px 13px 23px -5px rgba(0,0,0,.46)'}}
-                    width={500}
-                    height={150}
-                />
+                <div className='about-image max-w-md transition-all duration-100 ease-in-out' style={{
+                    transform: `translateX(-${progress}rem)`,
+                    opacity: opacityForBlock(progress, 1),
+                }}>
+                    <Image
+                        src="/assets/me.jpg"
+                        layout='responsive'
+                        alt="about me photo"
+                        style={{borderRadius: '25px', boxShadow: '6px 13px 23px -5px rgba(0,0,0,.46)'}}
+                        width={300}
+                        height={150}
+                    />
+                </div>
             </div>
         </section>
     )
