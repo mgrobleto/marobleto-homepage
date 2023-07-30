@@ -1,8 +1,12 @@
 import React from "react";
 import GitHubIcon from '@mui/icons-material/GitHub';
-import Image from 'next/image';
 import { WorkDescription, WorkDetail, WorkLink } from '../../components/work';
 import { SocialLink } from '@/utils/links-icons';
+import imageByIndex from "@/utils/imageByIndex";
+import Image from "next/image";
+
+const SLIDE_COUNT = 5
+const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
 
 export const CodeLandInfo : React.FC = () => {
  return (
@@ -33,8 +37,18 @@ export const CodeLandInfo : React.FC = () => {
 
 export const CodeLandImages: React.FC = () => {
     return (
-        <div>
-            
+        <div className="grid grid-cols-2 lg:grid-cols-2 top-0 sticky">
+            {SLIDES.map((index) => (
+                <div className="m-5 xl:mx-5" key={index}>
+                    <Image 
+                        className="embla__slide__img"
+                        src={imageByIndex(index)}
+                        alt="Your alt text"
+                        width={400}
+                        height={200}
+                    />
+                </div>
+            ))}
         </div>
     )
 }

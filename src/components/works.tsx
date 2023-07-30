@@ -3,7 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import GitHubIcon from '@mui/icons-material/GitHub';
-import { CodeLandInfo } from '@/pages/works/codeland';
+import { CodeLandImages, CodeLandInfo } from '@/pages/works/codeland';
 import { TileBackground, TileContent, TileWrapper, Tile } from './tile';
 import { WorkBackground, WorkContainer, WorkDescription, WorkDetail, WorkHeader, WorkLeft, WorkLink, WorkRight } from './work';
 import { SocialLink } from '@/utils/links-icons';
@@ -43,14 +43,7 @@ const Works : React.FC = () => {
                                 <CodeLandInfo />
                             </WorkLeft>
                             <WorkRight progress={progress}>
-                                <Image 
-                                    src="/assets/works/codeland/homepage.png"
-                                    layout='responsive'
-                                    alt="codeland"
-                                    style={{borderRadius: '25px'}}
-                                    width={300}
-                                    height={150}
-                                />
+                                <CodeLandImages />
                             </WorkRight>
                         </WorkContainer>
                     )}>
