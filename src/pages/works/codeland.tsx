@@ -1,9 +1,15 @@
-import React from "react";
-import GitHubIcon from '@mui/icons-material/GitHub';
-import { WorkDescription, WorkDetail, WorkLink } from '../../components/work';
-import { SocialLink } from '@/utils/links-icons';
-import imageByIndex from "@/utils/imageByIndex";
-import Image from "next/image";
+import React from "react"
+import GitHubIcon from '@mui/icons-material/GitHub'
+import { WorkDescription, WorkDetail, WorkLink } from '../../components/work'
+import { SocialLink } from '@/utils/links-icons'
+import { codeLandImageByIndex } from "@/utils/imageByIndex"
+import Image from "next/image"
+import { Swiper, SwiperSlide} from 'swiper/react'
+import { Pagination } from 'swiper/modules'
+
+
+import 'swiper/css'
+import 'swiper/css/pagination'
 
 const SLIDE_COUNT = 5
 const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
@@ -29,7 +35,7 @@ export const CodeLandInfo : React.FC = () => {
             <WorkLink href='https://github.com/Mitch-coder'>Michelle Calder&oacute;n</WorkLink>
         </WorkDetail>
         <WorkDetail title='Learn more' color='#11b7ec'>
-        <SocialLink href='https://github.com/mgrobleto/CodeLand' icon={ <GitHubIcon /> } />
+        <SocialLink href='https://github.com/mgrobleto/CodeLand' icon={ <GitHubIcon /> }>Check repository </SocialLink>
         </WorkDetail>
     </div>
  )
@@ -37,18 +43,32 @@ export const CodeLandInfo : React.FC = () => {
 
 export const CodeLandImages: React.FC = () => {
     return (
-        <div className="grid grid-cols-2 lg:grid-cols-2 top-0 sticky">
+        <Swiper
+            slidesPerView={1}
+            spaceBetween={30}
+            autoplay={{ delay: 2000 }}
+            loop={true}
+            pagination={{
+                dynamicBullets: true,
+              }}
+            modules={[Pagination]}
+            className="mySwiper"
+        >
             {SLIDES.map((index) => (
-                <div className="m-5 xl:mx-5" key={index}>
+                <SwiperSlide key={index}>
                     <Image 
-                        className="embla__slide__img"
-                        src={imageByIndex(index)}
+                        src={codeLandImageByIndex(index)}
                         alt="Your alt text"
-                        width={400}
-                        height={200}
+                        width={300}
+                        height={100}
+                        style={{
+                            borderRadius: 10, overflow: 'hidden',
+                        }}
+                        layout="responsive"
                     />
-                </div>
+                </SwiperSlide>
             ))}
-        </div>
+            <div className="swiper-pagination"></div>
+        </Swiper>
     )
 }

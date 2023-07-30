@@ -4,12 +4,14 @@ import Link from "next/link";
 interface LinksProps {
     href: string
     icon: React.ReactElement
+    children: React.ReactNode
 }
 
-export const SocialLink : React.FC<LinksProps> = ({ href, icon}) => {
+export const SocialLink : React.FC<LinksProps> = ({ href, icon, children}) => {
     return (
-        <Link href={href} target="_blank" className="underline underline-offset-auto my-1">
+        <Link href={href} target="_blank" className="flex flex-row items-center my-2">
             {icon}
+            <span className='mx-2'> {children} </span>
         </Link>
     )
 }

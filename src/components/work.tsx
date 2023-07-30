@@ -36,9 +36,11 @@ export const WorkBackground : React.FC = () => {
 
 export const WorkHeader : React.FC =() => {
     return (
-        <h3 className="text-3xl md:text-4xl mb-10 font-bold text-center leading-tight">
-            <span className='whitespace-nowrap underline underline-offset-8 decoration-dotted'>/ projects </span>
-        </h3>
+        <section className="bg-gradient-to-t from-[#0A1227] to-black h-[50vh] lg:h-auto">
+            <h3 className="text-3xl md:text-4xl mb-10 font-bold text-center leading-tight">
+                <span className='whitespace-nowrap underline underline-offset-8 decoration-dotted'>/ projects </span>
+            </h3>
+        </section>
     )
 }
 
@@ -64,7 +66,7 @@ export const WorkRight : React.FC<WorkProps> = ( { children, progress }) => {
         <div className="flex flex-1 lg:items-center justify-center h-screen" style={{
             transform: `translateY(${translateY}px)`
         }}>
-            <div className="w-full max-w-auto py-auto lg:py-20 px-10 md:px-16">
+            <div className="w-full max-w-auto py-auto lg:py-auto px-auto md:px-16">
                 { children }
             </div>
         </div>
