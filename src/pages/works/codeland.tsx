@@ -11,6 +11,7 @@ import { Pagination } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/pagination'
 
+const COLOR = '#11b7ec'
 const SLIDE_COUNT = 5
 const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
 
@@ -18,24 +19,25 @@ export const CodeLandInfo : React.FC = () => {
  return (
     <div>
         <div>Meet</div>
-         <div className='text-4xl md:text-5xl text-[#11b7ec] font-semibold tracking-tight'>
+         <div className='text-sm md:text-5xl text-[#11b7ec] font-semibold tracking-tight'>
             <WorkLink href='https://codeland-uni.herokuapp.com/'>CodeLand Website</WorkLink>
         </div>
         <WorkDescription>
-            Created to help students in their way of learning C programming
-            language with <b className='font-bold'>Turbo C 2.0</b>.
-            We provide multiple code samples and documentation.
+            Created to help students in their way of learning <span className="font-bold">C programming language </span>
+            with <strong className='font-bold'>Turbo C 2.0</strong>.
+            It works as a collaborative page between users where you can
+            create your own account and be able to share your own projects.
         </WorkDescription>
-        <WorkDetail title='Stack' color='#11b7ec'>
-            Python | JavaScript | Flask | MongoDB | CSS | Bootstrap 
+        <WorkDetail title='Stack' color={COLOR}>
+            Python | JavaScript | Flask | MongoDB | Firebase | CSS | Bootstrap 
         </WorkDetail>
-        <WorkDetail title='Role' color='#11b7ec'> Frontend Dev </WorkDetail>
-        <WorkDetail title='Colaborators' color='#11b7ec'>
+        <WorkDetail title='Role' color={COLOR}> Frontend Dev </WorkDetail>
+        <WorkDetail title='Colaborators' color={COLOR}>
             <WorkLink href='https://github.com/MiguelHG2351'>Miguel Hern&aacute;ndez</WorkLink>
             <WorkLink href='https://github.com/Mitch-coder'>Michelle Calder&oacute;n</WorkLink>
         </WorkDetail>
-        <WorkDetail title='Learn more' color='#11b7ec'>
-        <SocialLink href='https://github.com/mgrobleto/CodeLand' icon={ <GitHubIcon /> }>Check repository </SocialLink>
+        <WorkDetail title='Learn more' color={COLOR}>
+            <SocialLink href='https://github.com/mgrobleto/CodeLand' icon={ <GitHubIcon /> }>Check repository </SocialLink>
         </WorkDetail>
     </div>
  )
@@ -56,16 +58,18 @@ export const CodeLandImages: React.FC = () => {
         >
             {SLIDES.map((index) => (
                 <SwiperSlide key={index}>
-                    <Image 
-                        src={codeLandImageByIndex(index)}
-                        alt="Your alt text"
-                        width={300}
-                        height={100}
-                        style={{
-                            borderRadius: 10, overflow: 'hidden',
-                        }}
-                        layout="responsive"
-                    />
+                    <div className="my-5 xl:my-0">
+                        <Image 
+                            src={codeLandImageByIndex(index)}
+                            alt="Your alt text"
+                            layout="responsive"
+                            width={300}
+                            height={100}
+                            style={{
+                                borderRadius: 10, overflow: 'hidden',
+                            }}
+                        />
+                    </div>
                 </SwiperSlide>
             ))}
             <div className="swiper-pagination"></div>

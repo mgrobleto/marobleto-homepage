@@ -20,14 +20,14 @@ export const InventariaTecInfo : React.FC = () => {
     return (
         <>
             <div>Meet</div>
-            <div className='text-4xl md:text-5xl text-blue-500 font-semibold tracking-tight'>
+            <div className='text-sm md:text-5xl text-blue-500 font-semibold tracking-tight'>
                 <WorkLink href='https://github.com/mgrobleto/InventariTecFrontendApp'>Invent&aacute;ria Tec Website</WorkLink>
             </div>
             <WorkDescription>
-                Basic Invoice and Product Management System using Django API.
+                Basic invoice and storage management system using Django API.
             </WorkDescription>
             <WorkDetail title='Stack' color={COLOR}>
-                Angular | Python | Django Rest Framework | Microsoft SQL Server | Angular Material 
+                Angular | Python | Django Rest Framework | Microsoft SQL Server | Angular Material | Bootstrap
             </WorkDetail>
             <WorkDetail title='Role' color={COLOR}> FullStack Dev </WorkDetail>
             <WorkDetail title='Learn more' color={COLOR}>
@@ -52,16 +52,18 @@ export const InventariaTecImages: React.FC = () => {
         >
             {SLIDES.map((index) => (
                 <SwiperSlide key={index}>
-                    <Image 
-                        src={inventariaTecImageByIndex(index)}
-                        alt="Your alt text"
-                        width={300}
-                        height={100}
-                        style={{
-                            borderRadius: 10, overflow: 'hidden',
-                        }}
-                        layout="responsive"
-                    />
+                    <div className='my-8 xl:my-0'>
+                        <Image 
+                            src={inventariaTecImageByIndex(index)}
+                            alt="Your alt text"
+                            width={300}
+                            height={100}
+                            style={{
+                                borderRadius: 10, overflow: 'hidden',
+                            }}
+                            layout="responsive"
+                        />
+                    </div>
                 </SwiperSlide>
             ))}
             <div className="swiper-pagination"></div>

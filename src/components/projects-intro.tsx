@@ -2,7 +2,6 @@
 
 import React, { useRef, useContext } from 'react';
 import Image from 'next/image';
-import s from '../styles/about.module.css'
 import { ScrollContext } from '@/utils/scroll-observer';
 
 const opacityForBlock = (sectionProgress: number, blockNo: number) => {
@@ -15,7 +14,7 @@ export const ProjectsIntro : React.FC = () => {
     const { scrollY } = useContext(ScrollContext)
     const refContainer = useRef<HTMLDivElement>(null)
 
-    const numOfPages = 3
+    const numOfPages = 2
     let progress = 0
 
     const { current : elContainer } = refContainer
@@ -28,9 +27,9 @@ export const ProjectsIntro : React.FC = () => {
     }
 
     return (
-        <section ref={refContainer} className={`min-h-screen sticky top-0 -z-10 bg-gradient-to-t from-[#0A1227] to-black flex flex-col items-center justify-center`}>
+        <section ref={refContainer} className={`h-[30vh] sticky top-0 -z-10 bg-gradient-to-t from-[#0A1227] to-black flex flex-col items-center`}>
             <div className='' style={{
-                opacity: opacityForBlock(progress, 1),
+                opacity: opacityForBlock(progress, 0),
                 transform: `translateY(${progress})`
             }}>
                 <h3 className="text-3xl md:text-4xl mb-10 font-bold text-center leading-tight">

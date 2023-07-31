@@ -32,19 +32,19 @@ const About : React.FC = () => {
     }
 
     return (
-        <section ref={refContainer} className='min-h-screen sticky top-0 -z-10 bg-gradient-to-b from-[#0A1227] to-black py-20' style={{
+        <section ref={refContainer} className='lg:min-h-screen sticky top-0 -z-0 bg-gradient-to-b from-[#0A1227] to-black py-10 xl:py-20' style={{
             transform: `translateY(${progress})`
         }}>
-            <div className='flex flex-col xl:flex-row mx-20 py-28 px-36 justify-between'>
-                <div className='about-info-container flex flex-col max-w-2xl text-justify'>
-                    <div className={`${s.aboutText} about-introduction mb-5`} style={{
+            <div className='flex flex-col-reverse items-center xl:flex-row max-w-screen mx-20 xl:py-28 xl:px-36 justify-between'>
+                <div className='about-info-container flex flex-col max-w-2xl text-justify mt-10'>
+                    <div className={`${s.aboutText} about-introduction mb-auto xl:mb-5`} style={{
                         opacity: opacityForBlock(progress, 1)
                     }}>
                         <div className='about-introduction leading-tight'>
-                            <strong className='text-2xl md:text-3xl underline underline-offset-8 decoration-dotted'>/ about me</strong>
-                            <p className='text-sm font-light md:text-xl my-5'>
+                            <strong className='text-sm xl:text-3xl underline underline-offset-8 decoration-dotted'>/ about me</strong>
+                            <p className='text-xs font-light xl:text-xl my-5'>
                                 I am currently studying a degree in <b className='font-bold'>Computer Engineer </b>
-                                at the National University of Engineering in Managua, Nicaragua.
+                                at the <strong> National University of Engineering</strong> in Managua, Nicaragua.
                                 I have full interest in visual arts and full-stack development.
                                 In my free time, i like to learn new things involved in the world
                                 of web development in a self-taught way. Also, i love taking
@@ -52,22 +52,22 @@ const About : React.FC = () => {
                             </p>
                         </div>
                     </div>
-                    <div className={`${s.aboutText} about-hobbies mb-5 inline-block after:content-['_']`} style={{
+                    <div className={`${s.aboutText} about-hobbies xl:mb-5 inline-block after:content-['_']`} style={{
                         opacity: opacityForBlock(progress, 1)
                     }}>
                         <div className='about-introduction'>
-                            <strong className='text-2xl md:text-3xl underline underline-offset-8 decoration-dotted'>/ i ♥</strong>
-                            <p className='text-sm md:text-xl my-5'>
+                            <strong className='text-sm xl:text-3xl underline underline-offset-8 decoration-dotted'>/ i ♥</strong>
+                            <p className='text-xs xl:text-xl my-5'>
                                 Photography, Art, Music, Movies.
                             </p>
                         </div>
                     </div>
-                    <div className={`${s.aboutText} about-hobbies mb-5 inline-block`} style={{
+                    <div className={`${s.aboutText} about-hobbies xl:mb-5 inline-block`} style={{
                         opacity: opacityForBlock(progress, 1)
                     }}>
                         <div className='about-introduction'>
-                            <strong className='text-2xl md:text-3xl underline underline-offset-8 decoration-dotted'>/ find me on the web</strong>
-                            <div className='social-links flex flex-col text-[#92DEEF] text-sm md:text-md my-5'>
+                            <strong className='text-sm xl:text-3xl underline underline-offset-8 decoration-dotted'>/ find me on the web</strong>
+                            <div className='social-links flex flex-col text-[#92DEEF] text-xs lg:text-md my-5'>
                                 <SocialLink href='https://github.com/mgrobleto' icon={<GitHubIcon />}> @mgrobleto </SocialLink>
                                 <SocialLink href='https://www.instagram.com/marobleto/' icon={<InstagramIcon />}> @marobleto </SocialLink>
                                 <SocialLink href='https://twitter.com/marobleto_' icon={ <TwitterIcon  /> }> @marobleto_ </SocialLink>
@@ -75,17 +75,19 @@ const About : React.FC = () => {
                         </div>
                     </div>
                 </div>
-                <div className='about-image max-w-md transition-all duration-100 ease-in-out' style={{
-                    transform: `translateX(-${progress}rem)`,
+                <div className='about-image max-w-[500px] transition-all duration-100 ease-in-out' style={{
                     opacity: opacityForBlock(progress, 1),
-                }}>
+                    }}>
                     <Image
                         src="/assets/me.jpg"
-                        layout='responsive'
                         alt="about me photo"
-                        style={{borderRadius: '25px', boxShadow: '6px 13px 23px -5px rgba(0,0,0,.46)'}}
+                        layout='responsive'
                         width={300}
-                        height={150}
+                        height={100}
+                        style={{
+                            borderRadius: 25, 
+                            boxShadow: '6px 13px 23px -5px rgba(0,0,0,.46)',
+                        }}
                     />
                 </div>
             </div>

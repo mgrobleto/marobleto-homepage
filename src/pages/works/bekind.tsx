@@ -19,12 +19,12 @@ export const BeKindInfo : React.FC = () => {
     return (
         <>
             <div>Meet</div>
-            <div className='text-4xl md:text-5xl text-purple-600 font-semibold tracking-tight'>
+            <div className='text-sm md:text-5xl text-purple-600 font-semibold tracking-tight'>
                 <WorkLink href='https://github.com/J2rg3n-B3rm2d3z/FinalProject'>Be Kind</WorkLink>
             </div>
             <WorkDescription>
-                The idea if this project is to notify user&apos;s when a ATM has money or not.
-                This works as a collabortative notification between user&apos;s changing the ATM state wheter it
+                The idea of this project is to notify user&apos;s when a ATM has money or not.
+                This works in a collabortative way where users can change the ATM state wheter it
                 has money available or not.
             </WorkDescription>
             <WorkDetail title='Stack' color='rgb(147 51 234)'>
@@ -59,16 +59,18 @@ export const BeKindImages: React.FC = () => {
         >
             {SLIDES.map((index) => (
                 <SwiperSlide key={index}>
-                    <Image 
-                        src={beKindImageByIndex(index)}
-                        alt="Your alt text"
-                        width={300}
-                        height={100}
-                        style={{
-                            borderRadius: 5, overflow: 'hidden',
-                        }}
-                        layout="responsive"
-                    />
+                    <div className="my-5 xl:my-0">
+                        <Image 
+                            src={beKindImageByIndex(index)}
+                            alt="Your alt text"
+                            width={300}
+                            height={100}
+                            style={{
+                                borderRadius: 5, overflow: 'hidden',
+                            }}
+                            layout="responsive"
+                        />
+                    </div>
                 </SwiperSlide>
             ))}
             <div className="swiper-pagination"></div>

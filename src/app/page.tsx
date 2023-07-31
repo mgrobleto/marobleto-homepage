@@ -10,7 +10,6 @@ export default function Home() {
       <ScrollObserver>
         <Intro />
         <About />
-        <ProjectsIntro />
         <Works />
       </ScrollObserver>
     </main>
