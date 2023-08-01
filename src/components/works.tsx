@@ -75,7 +75,7 @@ const Works : React.FC = () => {
                         renderContent={({ progress }) => (
                             <WorkContainer>
                                 <WorkLeft progress={progress}>
-                                <InventariaTecInfo /> 
+                                    <InventariaTecInfo /> 
                                 </WorkLeft>
                                 <WorkRight progress={progress}>
                                     <InventariaTecImages />

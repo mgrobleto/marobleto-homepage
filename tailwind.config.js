@@ -10,8 +10,10 @@ module.exports = {
       colors: {
         'theme' : '#92DEEF'
       },
+      backgroundColor: {
+        'theme' : '#92DEEF'
+      },
       backgroundImage: {
-        'gradient': 'bg-gradient-to-b from-[#0A1227] to-black',
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',

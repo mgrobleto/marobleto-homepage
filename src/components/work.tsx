@@ -15,10 +15,10 @@ interface LinkProps {
     children: React.ReactNode
 }
 
-interface WorkDetails {
-    title: string
+interface WorkDetail {
+    title?: string
     children: React.ReactNode
-    color: string
+    color?: string
 }
 
 export const WorkContainer : React.FC<WorkContent> = ({ children }) => {
@@ -29,7 +29,7 @@ export const WorkBackground : React.FC = () => {
     return (
         <div className='grid grid-cols-1 lg:grid-cols-2 w-full min-h-screen top-0 sticky'> 
             <div className="bg-gradient-to-t from-[#0A1227] to-black h-[70vh] lg:h-auto"></div>
-            <div className="bg-white h-[70vh] lg:min-h-screen"></div>
+            <div className="bg-white h-[30vh] lg:min-h-screen"></div>
         </div>
     )
 }
@@ -37,8 +37,8 @@ export const WorkBackground : React.FC = () => {
 export const WorkHeader : React.FC =() => {
     return (
         <h3 className="flex flex-col text-sm md:text-3xl my-10 font-bold text-center leading-tight">
-            <strong className='text-sm xl:text-5xl text-theme underline underline-offset-8 mb-10'>02.</strong>
-            <span className='whitespace-nowrap underline underline-offset-8 decoration-dotted'>/ projects </span>
+            <strong className='text-xl xl:text-5xl text-theme underline underline-offset-8 mb-10'>02.</strong>
+            <span className='whitespace-nowrap underline underline-offset-8 decoration-dotted'>/ Projects </span>
         </h3>
     )
 }
@@ -73,7 +73,7 @@ export const WorkRight : React.FC<WorkProps> = ( { children, progress }) => {
 }
 
 export const WorkLink : React.FC<LinkProps> = ({ href, children }) => {
-    return <Link href={href} target="_blank" className="underline underline-offset-auto my-1"> {children} </Link>
+    return <Link href={href} target="_blank" className="underline underline-offset-auto my-1 mr-5 xl:mr-0"> {children} </Link>
 }
 
 export const WorkDescription : React.FC<WorkContent> = ({ children }) => {
@@ -84,14 +84,22 @@ export const WorkDescription : React.FC<WorkContent> = ({ children }) => {
     )
 }
 
-export const WorkDetail : React.FC<WorkDetails> = ({ title, children , color}) => {
+export const WorkDetail : React.FC<WorkDetail> = ({ title, children , color}) => {
     return (
-        <div className="flex flex-col justify-between max-w-xl mb-auto lg:mb-[10px]">
+        <div className="flex flex-col justify-between max-w-lg mb-auto lg:mb-[10px]">
             <h3 className='tracking-tight text-sm xl:text-lg underline underline-offset-8 decoration-dotted my-2' style={{
                 color: color,
             }}>{title}</h3>
             
             <div className="text-xs lg:text-lg flex flex-col"> {children} </div>
+        </div>
+    )
+}
+
+export const WorkTech: React.FC<WorkDetail> = ({title, children, color}) => {
+    return (
+        <div className="w-auto h-fit bg-theme bg-opacity-60 text-white rounded-xl p-2 text-[10px] xl:text-xs hover:border-[#92DEEF] hover:shadow-lg hover:shadow-cyan-500/50 border-2">
+            {children}
         </div>
     )
 }

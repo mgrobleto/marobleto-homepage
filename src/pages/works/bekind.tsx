@@ -1,5 +1,5 @@
 import React from "react"
-import { WorkDescription, WorkLink, WorkDetail } from "@/components/work"
+import { WorkDescription, WorkLink, WorkDetail, WorkTech } from "@/components/work"
 import GitHubIcon from '@mui/icons-material/GitHub'
 import { SocialLink } from "@/utils/links-icons"
 import Image from "next/image"
@@ -11,7 +11,7 @@ import { Pagination } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/pagination'
 
-
+const COLOR = 'rgb(147 51 234)'
 const SLIDE_COUNT = 5
 const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
 
@@ -27,17 +27,24 @@ export const BeKindInfo : React.FC = () => {
                 This works in a collabortative way where users can change the ATM state wheter it
                 has money available or not.
             </WorkDescription>
-            <WorkDetail title='Stack' color='rgb(147 51 234)'>
-                Kotlin | Firebase | Android Studio | Google Maps API | Material Design
+            <WorkDetail title='Stack' color={COLOR}>
+                <div className="grid grid-cols-4 grid-flow-row gap-2 mt-2">
+                    <WorkTech> Kotlin </WorkTech>
+                    <WorkTech> Firebase </WorkTech>
+                    <WorkTech> Google Maps API </WorkTech>
+                    <WorkTech> Material Design </WorkTech>
+                </div>
             </WorkDetail>
-            <WorkDetail title='Role' color='rgb(147 51 234)'> FullStack Dev </WorkDetail>
-            <WorkDetail title='Colaborators' color='rgb(147 51 234)'>
-                <WorkLink href='https://github.com/J2rg3n-B3rm2d3z'>Jurgen B&eacute;rmudez</WorkLink>
-                <WorkLink href='https://github.com/Mitch-coder'>Michelle Calder&oacute;n</WorkLink>
-                <WorkLink href='https://github.com/ZharoonT'>Zharoon Treminio</WorkLink>
+            <WorkDetail title='Role' color={COLOR}> FullStack Dev </WorkDetail>
+            <WorkDetail title='Colaborators' color={COLOR}>
+                <div className="flex flex-row xl:flex-col">
+                    <WorkLink href='https://github.com/J2rg3n-B3rm2d3z'>Jurgen B&eacute;rmudez</WorkLink>
+                    <WorkLink href='https://github.com/Mitch-coder'>Michelle Calder&oacute;n</WorkLink>
+                    <WorkLink href='https://github.com/ZharoonT'>Zharoon Treminio</WorkLink>
+                </div>
             </WorkDetail>
-            <WorkDetail title='Learn more' color='rgb(147 51 234)'>
-                <SocialLink href='https://github.com/J2rg3n-B3rm2d3z/FinalProject' icon={ <GitHubIcon sx={{ fontSize: 30 }} /> }> </SocialLink>
+            <WorkDetail title='Learn more' color={COLOR}>
+                <SocialLink href='https://github.com/J2rg3n-B3rm2d3z/FinalProject' icon={ <GitHubIcon sx={{ fontSize: 'auto' }} /> }> </SocialLink>
             </WorkDetail>          
         </>
     )

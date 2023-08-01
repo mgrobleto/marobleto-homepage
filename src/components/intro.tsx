@@ -40,9 +40,9 @@ const Intro : React.FC = () => {
             />
             <div className="flex min-h-screen flex-col items-center justify-center p-24 backdrop-blur-lg">
                 <div className='p-12 font-bold z-10 drop-shadow-[0_5px_3px_rgba(0,0,0,0.4)] text-center flex flex-col items-center justify-center'>
-                    <h1 className="mb-6 text-2xl lg:text-6xl">¡hi, <span className='text-[#1E336C]'>gabriela</span> here!</h1>
+                    <h1 className="mb-6 text-2xl lg:text-6xl">¡Hi, <span className='text-[#1E336C]'>Gabriela</span> here!</h1>
                     <h2 className="font-light mb-2 text-sm lg:text-2xl tracking-tight">
-                        <p>(artist / developer / designer)</p>
+                        <p>(Artist / Developer / Designer)</p>
                     </h2>
                     <h3 className='font-light mb-2 text-1xl xl:text-2xl tracking-tight'>
                         <p>based in Nicaragua</p>

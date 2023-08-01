@@ -1,5 +1,5 @@
 import React from 'react'
-import { WorkDescription, WorkLink, WorkDetail } from '@/components/work'
+import { WorkDescription, WorkLink, WorkDetail, WorkTech } from '@/components/work'
 import GitHubIcon from '@mui/icons-material/GitHub'
 import { SocialLink } from '@/utils/links-icons'
 import Image from 'next/image'
@@ -27,11 +27,18 @@ export const InventariaTecInfo : React.FC = () => {
                 Basic invoice and storage management system using Django API.
             </WorkDescription>
             <WorkDetail title='Stack' color={COLOR}>
-                Angular | Python | Django Rest Framework | Microsoft SQL Server | Angular Material | Bootstrap
+                <div className="grid grid-cols-4 grid-flow-row gap-2 mt-2">
+                    <WorkTech> Angular </WorkTech>
+                    <WorkTech> Python </WorkTech>
+                    <WorkTech> Angular Material </WorkTech>
+                    <WorkTech> Bootstrap  </WorkTech>
+                    <WorkTech> Django Rest Framework </WorkTech>
+                    <WorkTech> Microsoft SQL Server </WorkTech>
+                </div>
             </WorkDetail>
             <WorkDetail title='Role' color={COLOR}> FullStack Dev </WorkDetail>
             <WorkDetail title='Learn more' color={COLOR}>
-                <SocialLink href='https://github.com/mgrobleto/InventariTecFrontendApp' icon={ <GitHubIcon  sx={{ fontSize: 30 }} /> }></SocialLink>
+                <SocialLink href='https://github.com/mgrobleto/InventariTecFrontendApp' icon={ <GitHubIcon  sx={{ fontSize: 'auto' }} /> }></SocialLink>
             </WorkDetail>
         </>
     )

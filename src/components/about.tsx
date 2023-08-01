@@ -8,6 +8,8 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import { SocialLink } from '@/utils/links-icons';
+import Link from 'next/link';
+import { GradientBackground } from './gradient-background';
 
 const opacityForBlock = (sectionProgress: number, blockNo: number) => {
     const progress = sectionProgress - blockNo
@@ -32,67 +34,69 @@ const About : React.FC = () => {
     }
 
     return (
-        <section id='about' ref={refContainer} className='min-h-screen bg-gradient-to-b from-[#0A1227] to-black py-10 xl:py-20'>
-            <div className='flex flex-col-reverse items-center xl:flex-row max-w-screen mx-20 xl:py-28 xl:px-36 justify-between'>
-                <div className='about-info-container flex flex-col max-w-2xl text-justify mt-10 mr-10'>
-                    <div className={`${s.aboutText} about-introduction mb-auto xl:mb-5`} style={{
-                        opacity: opacityForBlock(progress, 1)
-                    }}>
-                        <div className='py-10'>
-                            <strong className='text-sm xl:text-5xl text-theme underline underline-offset-8 mb-10'>01.</strong>
+        <GradientBackground>
+            <section id='about' ref={refContainer} className='min-h-screen py-10 xl:py-0'>
+                <div className='flex flex-col-reverse items-center justify-center xl:flex-row max-w-screen mx-20 xl:py-28 xl:px-36 xl:justify-between'>
+                    <div className='about-info-container flex flex-col max-w-2xl text-justify xl:mt-10 xl:mr-10'>
+                        <div className={`${s.aboutText} about-introduction mb-auto xl:mb-5`} style={{
+                            opacity: opacityForBlock(progress, 1)
+                        }}>
+                            <div className='py-10 text-center xl:text-left'>
+                                <strong className='text-xl xl:text-5xl text-theme underline underline-offset-8 mb-10'>01.</strong>
+                            </div>
+                            <div className='about-introduction leading-tight'>
+                                <strong className='text-sm xl:text-2xl underline underline-offset-8 decoration-dotted'>/ About me</strong>
+                                <p className='text-xs font-light xl:text-lg my-5'>
+                                    I am currently studying a degree in <b className='font-bold'>Computer Engineer </b>
+                                    at the <strong> National University of Engineering</strong> in Managua, Nicaragua.
+                                    I have full interest in visual arts and full-stack development.
+                                    In my free time, i like to learn new things involved in the world
+                                    of web development in a self-taught way. Also, i love taking
+                                    pictures and watching movies. 
+                                </p>
+                            </div>
                         </div>
-                        <div className='about-introduction leading-tight'>
-                            <strong className='text-sm xl:text-2xl underline underline-offset-8 decoration-dotted'>/ about me</strong>
-                            <p className='text-xs font-light xl:text-lg my-5'>
-                                I am currently studying a degree in <b className='font-bold'>Computer Engineer </b>
-                                at the <strong> National University of Engineering</strong> in Managua, Nicaragua.
-                                I have full interest in visual arts and full-stack development.
-                                In my free time, i like to learn new things involved in the world
-                                of web development in a self-taught way. Also, i love taking
-                                pictures and watching movies. 
-                            </p>
+                        <div className={`${s.aboutText} about-hobbies xl:mb-5 inline-block after:content-['_']`} style={{
+                            opacity: opacityForBlock(progress, 1)
+                        }}>
+                            <div className='about-introduction'>
+                                <strong className='text-sm xl:text-2xl underline underline-offset-8 decoration-dotted'>/ I ♥</strong>
+                                <p className='text-xs xl:text-lg my-5'>
+                                    <Link href='#photography' className='underline underline-offset-4 text-theme' >Photography</Link>{''}, Art, Music, Movies.
+                                </p>
+                            </div>
                         </div>
-                    </div>
-                    <div className={`${s.aboutText} about-hobbies xl:mb-5 inline-block after:content-['_']`} style={{
-                        opacity: opacityForBlock(progress, 1)
-                    }}>
-                        <div className='about-introduction'>
-                            <strong className='text-sm xl:text-2xl underline underline-offset-8 decoration-dotted'>/ i ♥</strong>
-                            <p className='text-xs xl:text-lg my-5'>
-                                Photography, Art, Music, Movies.
-                            </p>
-                        </div>
-                    </div>
-                    <div className={`${s.aboutText} about-hobbies xl:mb-5 inline-block`} style={{
-                        opacity: opacityForBlock(progress, 1)
-                    }}>
-                        <div className='about-introduction'>
-                            <strong className='text-sm xl:text-2xl underline underline-offset-8 decoration-dotted'>/ find me on the web</strong>
-                            <div className='max-w-auto flex flex-col text-[#92DEEF] text-xs lg:text-lg my-5'>
-                                <SocialLink href='https://github.com/mgrobleto' icon={<GitHubIcon fontSize='small' />}> @mgrobleto </SocialLink>
-                                <SocialLink href='https://www.instagram.com/marobleto/' icon={<InstagramIcon fontSize='small'/>}> @marobleto </SocialLink>
-                                <SocialLink href='https://twitter.com/marobleto_' icon={ <TwitterIcon fontSize='small'  /> }> @marobleto_ </SocialLink>
+                        <div className={`${s.aboutText} about-hobbies xl:mb-5 inline-block`} style={{
+                            opacity: opacityForBlock(progress, 1)
+                        }}>
+                            <div className='about-introduction'>
+                                <strong className='text-sm xl:text-2xl underline underline-offset-8 decoration-dotted'>/ Find me on the web</strong>
+                                <div className='max-w-auto flex flex-col text-[#92DEEF] text-xs lg:text-lg my-5'>
+                                    <SocialLink href='https://github.com/mgrobleto' icon={<GitHubIcon fontSize='small' />}> @mgrobleto </SocialLink>
+                                    <SocialLink href='https://www.instagram.com/marobleto/' icon={<InstagramIcon fontSize='small'/>}> @marobleto </SocialLink>
+                                    <SocialLink href='https://twitter.com/marobleto_' icon={ <TwitterIcon fontSize='small'  /> }> @marobleto_ </SocialLink>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <div className='about-image max-w-[500px] transition-all duration-100 ease-in-out' style={{
+                        opacity: opacityForBlock(progress, 1),
+                        }}>
+                        <Image
+                            src="/assets/me.jpg"
+                            alt="about me photo"
+                            layout='responsive'
+                            width={300}
+                            height={100}
+                            style={{
+                                borderRadius: 25, 
+                                boxShadow: '6px 13px 23px -5px rgba(0,0,0,.46)',
+                            }}
+                        />
+                    </div>
                 </div>
-                <div className='about-image max-w-[500px] transition-all duration-100 ease-in-out' style={{
-                    opacity: opacityForBlock(progress, 1),
-                    }}>
-                    <Image
-                        src="/assets/me.jpg"
-                        alt="about me photo"
-                        layout='responsive'
-                        width={300}
-                        height={100}
-                        style={{
-                            borderRadius: 25, 
-                            boxShadow: '6px 13px 23px -5px rgba(0,0,0,.46)',
-                        }}
-                    />
-                </div>
-            </div>
-        </section>
+            </section>
+        </GradientBackground>
     )
 }
 

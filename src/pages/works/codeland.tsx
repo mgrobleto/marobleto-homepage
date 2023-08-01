@@ -1,6 +1,6 @@
 import React from "react"
 import GitHubIcon from '@mui/icons-material/GitHub'
-import { WorkDescription, WorkDetail, WorkLink } from '../../components/work'
+import { WorkDescription, WorkDetail, WorkLink, WorkTech } from '../../components/work'
 import { SocialLink } from '@/utils/links-icons'
 import { codeLandImageByIndex } from "@/utils/imageByIndex"
 import Image from "next/image"
@@ -11,7 +11,7 @@ import { Pagination } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/pagination'
 
-const COLOR = '#11b7ec'
+const COLOR = '#92DEEF'
 const SLIDE_COUNT = 5
 const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
 
@@ -19,7 +19,7 @@ export const CodeLandInfo : React.FC = () => {
  return (
     <div>
         <div>Meet</div>
-         <div className='text-sm md:text-5xl text-[#11b7ec] font-semibold tracking-tight'>
+         <div className='text-sm md:text-5xl text-theme font-semibold tracking-tight'>
             <WorkLink href='https://codeland-uni.herokuapp.com/'>CodeLand Website</WorkLink>
         </div>
         <WorkDescription>
@@ -29,15 +29,25 @@ export const CodeLandInfo : React.FC = () => {
             create your own account and be able to share your own projects.
         </WorkDescription>
         <WorkDetail title='Stack' color={COLOR}>
-            Python | JavaScript | Flask | MongoDB | Firebase | CSS | Bootstrap 
+            <div className="grid grid-cols-4 grid-flow-row gap-2 mt-2">
+                <WorkTech> Python </WorkTech>
+                <WorkTech> JavaScript </WorkTech>
+                <WorkTech> Flask </WorkTech>
+                <WorkTech> MongoDB </WorkTech>
+                <WorkTech> Firebase </WorkTech>
+                <WorkTech> CSS </WorkTech>
+                <WorkTech> Bootstrap </WorkTech>
+            </div>
         </WorkDetail>
         <WorkDetail title='Role' color={COLOR}> Frontend Dev </WorkDetail>
         <WorkDetail title='Colaborators' color={COLOR}>
-            <WorkLink href='https://github.com/MiguelHG2351'>Miguel Hern&aacute;ndez</WorkLink>
-            <WorkLink href='https://github.com/Mitch-coder'>Michelle Calder&oacute;n</WorkLink>
+            <div className="flex flex-row xl:flex-col">
+                <WorkLink href='https://github.com/MiguelHG2351'>Miguel Hern&aacute;ndez</WorkLink>
+                <WorkLink href='https://github.com/Mitch-coder'>Michelle Calder&oacute;n</WorkLink>
+            </div>   
         </WorkDetail>
         <WorkDetail title='Learn more' color={COLOR}>
-            <SocialLink href='https://github.com/mgrobleto/CodeLand' icon={ <GitHubIcon sx={{ fontSize: 30 }} /> }> </SocialLink>
+            <SocialLink href='https://github.com/mgrobleto/CodeLand' icon={ <GitHubIcon sx={{ fontSize: 'auto'}} /> }> </SocialLink>
         </WorkDetail>
     </div>
  )

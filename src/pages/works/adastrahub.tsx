@@ -1,5 +1,5 @@
 import React from "react";
-import { WorkDescription, WorkLink, WorkDetail } from "@/components/work";
+import { WorkDescription, WorkLink, WorkDetail, WorkTech } from "@/components/work";
 import GitHubIcon from '@mui/icons-material/GitHub';
 import { SocialLink } from "@/utils/links-icons";
 import Image from "next/image";
@@ -11,7 +11,7 @@ import { Pagination } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/pagination'
 
-
+const COLOR = '#f287b1'
 const SLIDE_COUNT = 4
 const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
 
@@ -27,12 +27,20 @@ export const AdAstraHubInfo : React.FC = () => {
                 You can check <strong className="font-bold">Astronomy Picture of the Day</strong> powered by NASA's Astronomy Picture of the Day API 
                 in a minimalist and functional way, also providing you to select any date you would like to see Apod&apos;s picture or video.
             </WorkDescription>
-            <WorkDetail title='Stack' color='#f287b1'>
-                React | Axios | useQuery | TailwindCSS | MUI Core | Frame Motion | NASA APOD API 
+            <WorkDetail title='Stack' color={COLOR}>
+                <div className="grid grid-cols-4 grid-flow-row gap-2 mt-2">
+                    <WorkTech> React </WorkTech>
+                    <WorkTech> Axios </WorkTech>
+                    <WorkTech> useQuery </WorkTech>
+                    <WorkTech> TailwindCSS </WorkTech>
+                    <WorkTech> MUI Core </WorkTech>
+                    <WorkTech> Frame Motion  </WorkTech>
+                    <WorkTech> NASA APOD API  </WorkTech>
+                </div>
             </WorkDetail>
-            <WorkDetail title='Role' color='#f287b1'> Frontend Dev </WorkDetail>
-            <WorkDetail title='Learn more' color='#f287b1'>
-                <SocialLink href='https://github.com/mgrobleto/AdAstraHubWebsite' icon={ <GitHubIcon sx={{ fontSize: 30 }} /> }></SocialLink>
+            <WorkDetail title='Role' color={COLOR}> Frontend Dev </WorkDetail>
+            <WorkDetail title='Learn more' color={COLOR}>
+                <SocialLink href='https://github.com/mgrobleto/AdAstraHubWebsite' icon={ <GitHubIcon sx={{ fontSize: 'auto'}} /> }></SocialLink>
             </WorkDetail>
         </>
     )
