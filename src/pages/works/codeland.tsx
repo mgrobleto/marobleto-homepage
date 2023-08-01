@@ -70,6 +70,7 @@ export const CodeLandImages: React.FC = () => {
                 <SwiperSlide key={index}>
                     <div className="my-5 xl:my-0">
                         <Image 
+                            key={index}
                             src={codeLandImageByIndex(index)}
                             alt="Your alt text"
                             layout="responsive"

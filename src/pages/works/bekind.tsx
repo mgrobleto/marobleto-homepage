@@ -68,6 +68,7 @@ export const BeKindImages: React.FC = () => {
                 <SwiperSlide key={index}>
                     <div className="my-5 xl:my-0">
                         <Image 
+                            key={index}
                             src={beKindImageByIndex(index)}
                             alt="Your alt text"
                             width={300}

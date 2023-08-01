@@ -61,6 +61,7 @@ export const InventariaTecImages: React.FC = () => {
                 <SwiperSlide key={index}>
                     <div className='my-8 xl:my-0'>
                         <Image 
+                            key={index}
                             src={inventariaTecImageByIndex(index)}
                             alt="Your alt text"
                             width={300}
