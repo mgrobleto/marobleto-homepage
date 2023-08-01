@@ -23,7 +23,7 @@ const MyPhotography : React.FC = () => {
             </div>
             <Carousel className="pt-10 pb-24">
                 {SLIDES.map((index) => (
-                    <CarouselItem index={index}>
+                    <CarouselItem index={index} key={index}>
                      <div className="mx-4">
                         <Image 
                             key={index}
