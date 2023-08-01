@@ -36,7 +36,8 @@ export const WorkBackground : React.FC = () => {
 
 export const WorkHeader : React.FC =() => {
     return (
-        <h3 className="text-sm md:text-4xl my-10 font-bold text-center leading-tight">
+        <h3 className="flex flex-col text-sm md:text-3xl my-10 font-bold text-center leading-tight">
+            <strong className='text-sm xl:text-5xl text-theme underline underline-offset-8 mb-10'>02.</strong>
             <span className='whitespace-nowrap underline underline-offset-8 decoration-dotted'>/ projects </span>
         </h3>
     )
@@ -77,7 +78,7 @@ export const WorkLink : React.FC<LinkProps> = ({ href, children }) => {
 
 export const WorkDescription : React.FC<WorkContent> = ({ children }) => {
     return (
-        <div className="text-xs lg:text-lg font-light max-w-md my-2 lg:my-5 tracking-tight text-justify leading-relaxed">
+        <div className="text-xs lg:text-xl font-light max-w-md my-2 lg:my-5 tracking-tight text-justify leading-relaxed">
             {children}
         </div>
     )
@@ -86,11 +87,11 @@ export const WorkDescription : React.FC<WorkContent> = ({ children }) => {
 export const WorkDetail : React.FC<WorkDetails> = ({ title, children , color}) => {
     return (
         <div className="flex flex-col justify-between max-w-xl mb-auto lg:mb-[10px]">
-            <h3 className='tracking-tight text-sm lg:text-lg underline underline-offset-8 decoration-dotted my-2' style={{
+            <h3 className='tracking-tight text-sm xl:text-lg underline underline-offset-8 decoration-dotted my-2' style={{
                 color: color,
             }}>{title}</h3>
             
-            <div className="text-xs lg:text-1xl flex flex-col"> {children} </div>
+            <div className="text-xs lg:text-lg flex flex-col"> {children} </div>
         </div>
     )
 }

@@ -37,7 +37,7 @@ export const CodeLandInfo : React.FC = () => {
             <WorkLink href='https://github.com/Mitch-coder'>Michelle Calder&oacute;n</WorkLink>
         </WorkDetail>
         <WorkDetail title='Learn more' color={COLOR}>
-            <SocialLink href='https://github.com/mgrobleto/CodeLand' icon={ <GitHubIcon /> }>Check repository </SocialLink>
+            <SocialLink href='https://github.com/mgrobleto/CodeLand' icon={ <GitHubIcon sx={{ fontSize: 30 }} /> }> </SocialLink>
         </WorkDetail>
     </div>
  )

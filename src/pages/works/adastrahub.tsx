@@ -32,7 +32,7 @@ export const AdAstraHubInfo : React.FC = () => {
             </WorkDetail>
             <WorkDetail title='Role' color='#f287b1'> Frontend Dev </WorkDetail>
             <WorkDetail title='Learn more' color='#f287b1'>
-                <SocialLink href='https://github.com/mgrobleto/AdAstraHubWebsite' icon={ <GitHubIcon /> }>Check repository </SocialLink>
+                <SocialLink href='https://github.com/mgrobleto/AdAstraHubWebsite' icon={ <GitHubIcon sx={{ fontSize: 30 }} /> }></SocialLink>
             </WorkDetail>
         </>
     )

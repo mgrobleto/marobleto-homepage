@@ -31,7 +31,7 @@ export const InventariaTecInfo : React.FC = () => {
             </WorkDetail>
             <WorkDetail title='Role' color={COLOR}> FullStack Dev </WorkDetail>
             <WorkDetail title='Learn more' color={COLOR}>
-            <SocialLink href='https://github.com/mgrobleto/InventariTecFrontendApp' icon={ <GitHubIcon /> }> Check repository </SocialLink>
+                <SocialLink href='https://github.com/mgrobleto/InventariTecFrontendApp' icon={ <GitHubIcon  sx={{ fontSize: 30 }} /> }></SocialLink>
             </WorkDetail>
         </>
     )

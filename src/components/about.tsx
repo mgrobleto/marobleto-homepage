@@ -32,17 +32,18 @@ const About : React.FC = () => {
     }
 
     return (
-        <section ref={refContainer} className='lg:min-h-screen sticky top-0 -z-0 bg-gradient-to-b from-[#0A1227] to-black py-10 xl:py-20' style={{
-            transform: `translateY(${progress})`
-        }}>
+        <section id='about' ref={refContainer} className='min-h-screen bg-gradient-to-b from-[#0A1227] to-black py-10 xl:py-20'>
             <div className='flex flex-col-reverse items-center xl:flex-row max-w-screen mx-20 xl:py-28 xl:px-36 justify-between'>
-                <div className='about-info-container flex flex-col max-w-2xl text-justify mt-10'>
+                <div className='about-info-container flex flex-col max-w-2xl text-justify mt-10 mr-10'>
                     <div className={`${s.aboutText} about-introduction mb-auto xl:mb-5`} style={{
                         opacity: opacityForBlock(progress, 1)
                     }}>
+                        <div className='py-10'>
+                            <strong className='text-sm xl:text-5xl text-theme underline underline-offset-8 mb-10'>01.</strong>
+                        </div>
                         <div className='about-introduction leading-tight'>
-                            <strong className='text-sm xl:text-3xl underline underline-offset-8 decoration-dotted'>/ about me</strong>
-                            <p className='text-xs font-light xl:text-xl my-5'>
+                            <strong className='text-sm xl:text-2xl underline underline-offset-8 decoration-dotted'>/ about me</strong>
+                            <p className='text-xs font-light xl:text-lg my-5'>
                                 I am currently studying a degree in <b className='font-bold'>Computer Engineer </b>
                                 at the <strong> National University of Engineering</strong> in Managua, Nicaragua.
                                 I have full interest in visual arts and full-stack development.
@@ -56,8 +57,8 @@ const About : React.FC = () => {
                         opacity: opacityForBlock(progress, 1)
                     }}>
                         <div className='about-introduction'>
-                            <strong className='text-sm xl:text-3xl underline underline-offset-8 decoration-dotted'>/ i ♥</strong>
-                            <p className='text-xs xl:text-xl my-5'>
+                            <strong className='text-sm xl:text-2xl underline underline-offset-8 decoration-dotted'>/ i ♥</strong>
+                            <p className='text-xs xl:text-lg my-5'>
                                 Photography, Art, Music, Movies.
                             </p>
                         </div>
@@ -66,11 +67,11 @@ const About : React.FC = () => {
                         opacity: opacityForBlock(progress, 1)
                     }}>
                         <div className='about-introduction'>
-                            <strong className='text-sm xl:text-3xl underline underline-offset-8 decoration-dotted'>/ find me on the web</strong>
-                            <div className='social-links flex flex-col text-[#92DEEF] text-xs lg:text-md my-5'>
-                                <SocialLink href='https://github.com/mgrobleto' icon={<GitHubIcon />}> @mgrobleto </SocialLink>
-                                <SocialLink href='https://www.instagram.com/marobleto/' icon={<InstagramIcon />}> @marobleto </SocialLink>
-                                <SocialLink href='https://twitter.com/marobleto_' icon={ <TwitterIcon  /> }> @marobleto_ </SocialLink>
+                            <strong className='text-sm xl:text-2xl underline underline-offset-8 decoration-dotted'>/ find me on the web</strong>
+                            <div className='max-w-auto flex flex-col text-[#92DEEF] text-xs lg:text-lg my-5'>
+                                <SocialLink href='https://github.com/mgrobleto' icon={<GitHubIcon fontSize='small' />}> @mgrobleto </SocialLink>
+                                <SocialLink href='https://www.instagram.com/marobleto/' icon={<InstagramIcon fontSize='small'/>}> @marobleto </SocialLink>
+                                <SocialLink href='https://twitter.com/marobleto_' icon={ <TwitterIcon fontSize='small'  /> }> @marobleto_ </SocialLink>
                             </div>
                         </div>
                     </div>

@@ -37,7 +37,7 @@ export const BeKindInfo : React.FC = () => {
                 <WorkLink href='https://github.com/ZharoonT'>Zharoon Treminio</WorkLink>
             </WorkDetail>
             <WorkDetail title='Learn more' color='rgb(147 51 234)'>
-                <SocialLink href='https://github.com/J2rg3n-B3rm2d3z/FinalProject' icon={ <GitHubIcon /> }> Check repository </SocialLink>
+                <SocialLink href='https://github.com/J2rg3n-B3rm2d3z/FinalProject' icon={ <GitHubIcon sx={{ fontSize: 30 }} /> }> </SocialLink>
             </WorkDetail>          
         </>
     )
