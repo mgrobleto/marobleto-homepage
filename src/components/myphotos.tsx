@@ -26,6 +26,7 @@ const MyPhotography : React.FC = () => {
                     <CarouselItem index={index}>
                      <div className="mx-4">
                         <Image 
+                            key={index}
                             src={myphotographyImagesByIndex(index)}
                             alt="my photos"
                             width={300}
