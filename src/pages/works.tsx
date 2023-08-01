@@ -2,13 +2,12 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { CodeLandImages, CodeLandInfo } from '@/pages/works/codeland';
-import { TileBackground, TileContent, TileWrapper, Tile } from './tile';
-import { WorkBackground, WorkContainer, WorkHeader, WorkLeft, WorkRight } from './work';
-import { AdAstraHubImages, AdAstraHubInfo } from '@/pages/works/adastrahub';
-import { InventariaTecImages, InventariaTecInfo } from '@/pages/works/inventaria-tec';
-import { BeKindImages, BeKindInfo } from '@/pages/works/bekind';
-import SideBar from './sidebar';
+import { TileBackground, TileContent, TileWrapper, Tile } from '../components/tile';
+import { WorkBackground, WorkContainer, WorkHeader, WorkLeft, WorkRight } from '../components/work';
+import { CodeLandImages, CodeLandInfo } from '@/components/works/codeland-info';
+import { AdAstraHubImages, AdAstraHubInfo } from '@/components/works/adastrahub-info';
+import { InventariaTecImages, InventariaTecInfo } from '@/components/works/inventariatec-info';
+import { BeKindImages, BeKindInfo } from '@/components/works/bekind-info';
 
 const Works : React.FC = () => {
     return (

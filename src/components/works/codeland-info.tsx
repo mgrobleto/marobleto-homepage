@@ -1,6 +1,6 @@
 import React from "react"
 import GitHubIcon from '@mui/icons-material/GitHub'
-import { WorkDescription, WorkDetail, WorkLink, WorkTech } from '../../components/work'
+import { WorkDescription, WorkDetail, WorkLink, WorkTech } from '../work'
 import { SocialLink } from '@/utils/links-icons'
 import { codeLandImageByIndex } from "@/utils/imageByIndex"
 import Image from "next/image"

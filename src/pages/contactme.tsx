@@ -1,8 +1,8 @@
 import React from 'react'
 import { SocialLink } from '@/utils/links-icons'
 import EmailTwoToneIcon from '@mui/icons-material/EmailTwoTone';
-import { GradientBackground } from './gradient-background';
-import Footer from './footer';
+import { GradientBackground } from '../components/gradient-background';
+import Footer from '../components/footer';
 
 const ContactMe : React.FC = () => {
     return (

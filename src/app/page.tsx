@@ -1,9 +1,9 @@
-import Intro from "@/components/intro"
-import About from "@/components/about"
+import Intro from "@/pages/intro"
+import About from "@/pages/about"
 import ScrollObserver from "@/utils/scroll-observer"
-import Works from "@/components/works"
-import MyPhotography from "@/components/myphotos"
-import ContactMe from "@/components/contactme"
+import Works from "@/pages/works"
+import MyPhotography from "@/pages/myphotos"
+import ContactMe from "@/pages/contactme"
 import SideBar from "@/components/sidebar"
 
 export default function Home() {

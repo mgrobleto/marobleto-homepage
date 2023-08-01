@@ -9,7 +9,7 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import { SocialLink } from '@/utils/links-icons';
 import Link from 'next/link';
-import { GradientBackground } from './gradient-background';
+import { GradientBackground } from '../components/gradient-background';
 
 const opacityForBlock = (sectionProgress: number, blockNo: number) => {
     const progress = sectionProgress - blockNo

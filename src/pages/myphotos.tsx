@@ -1,10 +1,9 @@
-import { Carousel } from "./carousel"
-import CarouselItem from "./carousel-item"
-import { WorkLink } from "./work"
+import { Carousel } from "../components/carousel"
+import CarouselItem from "../components/carousel-item"
+import { WorkLink } from "../components/work"
 import React from "react"
 import { myphotographyImagesByIndex } from "@/utils/imageByIndex"
 import Image from "next/image"
-import { GradientBackground } from "./gradient-background"
 
 const COUNT = 8
 const SLIDES = Array.from(Array(COUNT).keys())
