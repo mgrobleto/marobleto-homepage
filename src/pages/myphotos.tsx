@@ -23,7 +23,7 @@ const MyPhotography : React.FC = () => {
                 </h3>
                 <WorkLink href="https://www.instagram.com/marobleto/"> Check out my instagram </WorkLink>
             </div>
-            <Carousel className="pb-24">
+            <Carousel className="mb-24">
                 {SLIDES.map((index) => (
                     <CarouselItem index={index} key={index}>
                      <div className="mx-4">
