@@ -9,8 +9,8 @@ interface LinksProps {
 
 export const SocialLink : React.FC<LinksProps> = ({ href, icon, children}) => {
     return (
-        <Link href={href} target="_blank" className="my-2">
-            <div className="flex flex-row items-center my-auto text-xs lg:text-lg">
+        <Link href={href} target="_blank" className="my-1">
+            <div className="flex flex-row items-center text-xs lg:text-lg">
                 <div>{icon}</div>
                 <div className='font-semibol mx-5'> {children} </div>
             </div>

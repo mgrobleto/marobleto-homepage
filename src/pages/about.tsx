@@ -36,12 +36,12 @@ const About : React.FC = () => {
     return (
         <GradientBackground>
             <section id='about' ref={refContainer} className='min-h-screen py-10 xl:py-0'>
-                <div className='flex flex-col-reverse items-center justify-center xl:flex-row max-w-screen mx-20 xl:py-28 xl:px-36 xl:justify-between'>
+                <div className='flex flex-col-reverse items-center justify-center xl:flex-row max-w-screen  mx-20 xl:py-28 xl:px-36 xl:justify-around'>
                     <div className='about-info-container flex flex-col max-w-2xl text-justify xl:mt-10 xl:mr-10'>
                         <div className={`${s.aboutText} about-introduction mb-auto xl:mb-5`} style={{
                             opacity: opacityForBlock(progress, 1)
                         }}>
-                            <div className='py-10 text-center xl:text-left'>
+                            <div className='py-5 xl:py-10 text-center xl:text-left'>
                                 <strong className='text-xl xl:text-5xl text-theme underline underline-offset-8 mb-10'>01.</strong>
                             </div>
                             <div className='about-introduction leading-tight'>
@@ -62,7 +62,7 @@ const About : React.FC = () => {
                             opacity: opacityForBlock(progress, 1)
                         }}>
                             <div className='about-introduction'>
-                                <strong className='text-sm xl:text-2xl underline underline-offset-8 decoration-dotted'>/ I ♥</strong>
+                                <strong className='text-sm xl:text-2xl underline underline-offset-8 decoration-dotted'>/ I &#10084;</strong>
                                 <p className='text-xs xl:text-lg my-5'>
                                     <Link href='#photography' className='underline underline-offset-4 text-theme' >Photography</Link>{''}, Art, Music, Movies.
                                 </p>
@@ -73,7 +73,7 @@ const About : React.FC = () => {
                         }}>
                             <div className='about-introduction'>
                                 <strong className='text-sm xl:text-2xl underline underline-offset-8 decoration-dotted'>/ Find me on the web</strong>
-                                <div className='max-w-auto flex flex-col text-[#92DEEF] text-xs lg:text-lg my-5'>
+                                <div className='max-w-auto flex flex-col text-[#92DEEF] my-5'>
                                     <SocialLink href='https://github.com/mgrobleto' icon={<GitHubIcon fontSize='small' />}> @mgrobleto </SocialLink>
                                     <SocialLink href='https://www.instagram.com/marobleto/' icon={<InstagramIcon fontSize='small'/>}> @marobleto </SocialLink>
                                     <SocialLink href='https://twitter.com/marobleto_' icon={ <TwitterIcon fontSize='small'  /> }> @marobleto_ </SocialLink>

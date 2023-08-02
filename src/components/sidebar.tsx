@@ -25,7 +25,6 @@ const links = [
 ]
 
 const SideBar: React.FC = () => {
-
     return (
         <div className='hidden xl:flex flex-col max-w-md h-auto fixed px-10 bottom-10 bg-transparent'>
             <div className='flex flex-col leading-6 font-2xl my-5'>

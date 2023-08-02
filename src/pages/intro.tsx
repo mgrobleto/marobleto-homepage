@@ -39,8 +39,8 @@ const Intro : React.FC = () => {
                 priority
             />
             <div className="flex min-h-screen flex-col items-center justify-center p-24 backdrop-blur-lg">
-                <div className='p-12 font-bold z-10 drop-shadow-[0_5px_3px_rgba(0,0,0,0.4)] text-center flex flex-col items-center justify-center'>
-                    <h1 className="mb-6 text-2xl lg:text-6xl">¡Hi, <span className='text-[#1E336C]'>Gabriela</span> here!</h1>
+                <div className='p-12 font-semibold z-10 drop-shadow-[0_5px_3px_rgba(0,0,0,0.5)] text-center flex flex-col items-center justify-center'>
+                    <h1 className="mb-6 text-2xl lg:text-6xl">&iexcl;Hi, <span className='text-theme font-bold'>Gabriela</span> here&#33;</h1>
                     <h2 className="font-light mb-2 text-sm lg:text-2xl tracking-tight">
                         <p>(Artist / Developer / Designer)</p>
                     </h2>
