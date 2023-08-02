@@ -1,8 +1,5 @@
-'use client'
-
 import React from 'react'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
 
 const links = [
     {
@@ -28,19 +25,17 @@ const links = [
 ]
 
 const SideBar: React.FC = () => {
-    const pathname = usePathname()
 
     return (
         <div className='hidden xl:flex flex-col max-w-md h-auto fixed px-10 bottom-10 bg-transparent'>
             <div className='flex flex-col leading-6 font-2xl my-5'>
                 {links.map((l, i) => {
-                    const isActive = pathname === l.path
                     
                     return (
                         <Link
                             key={i}
                             href={l.path}
-                            className={isActive ? 'focus:text-white' : ''}
+                            className='hover:text-theme focus:text-theme'
                             style={{
                                 marginBottom: 2
                             }}
