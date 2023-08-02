@@ -48,11 +48,13 @@ const About : React.FC = () => {
                                 <strong className='text-sm xl:text-2xl underline underline-offset-8 decoration-dotted'>/ About me</strong>
                                 <p className='text-xs font-light xl:text-lg my-5'>
                                     I am currently studying a degree in <b className='font-bold'>Computer Engineer </b>
-                                    at the <strong> National University of Engineering</strong> in Managua, Nicaragua.
-                                    I have full interest in visual arts and full-stack development.
+                                    at the <strong> National University of Engineering</strong> in <strong className='font-bold'>Managua, Nicaragua</strong>.
+                                    I have full interest in visual arts and full-stack web development.
+                                </p>
+                                <p className='text-xs font-light xl:text-lg my-5'>
                                     In my free time, i like to learn new things involved in the world
-                                    of web development in a self-taught way. Also, i love taking
-                                    pictures and watching movies. 
+                                    of web development in a self-taught way. Also, enjoying to build attractive websites to improve
+                                    user&apos;s experience. 
                                 </p>
                             </div>
                         </div>
