@@ -35,9 +35,9 @@ const About : React.FC = () => {
 
     return (
         <GradientBackground>
-            <section id='about' ref={refContainer} className='min-h-screen py-10 lg:py-0'>
-                <div className='flex flex-col-reverse items-center justify-center xl:flex-row max-w-screen mx-20 xl:px-36 xl:justify-around'>
-                    <div className='about-info-container flex flex-col max-w-2xl text-justify lg:mr-10 lg:mb-10'>
+            <section id='about' ref={refContainer} className='min-h-screen py-10 lg:py-0 flex justify-center'>
+                <div className='flex flex-col-reverse items-center justify-center xl:flex-row max-w-screen mx-20 xl:px-36 xl:justify-center'>
+                    <div className='about-info-container flex flex-col max-w-2xl text-justify lg:mr-28'>
                         <div className={`${s.aboutText} about-introduction mb-auto lg:mb-5`} style={{
                             opacity: opacityForBlock(progress, 1)
                         }}>
