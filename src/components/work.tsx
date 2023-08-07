@@ -73,7 +73,7 @@ export const WorkRight : React.FC<WorkProps> = ( { children, progress }) => {
 }
 
 export const WorkLink : React.FC<LinkProps> = ({ href, children }) => {
-    return <Link href={href} target="_blank" className="underline underline-offset-auto my-1 mr-5 lg:mr-0"> {children} </Link>
+    return <Link href={href} target="_blank" className="underline underline-offset-auto my-1 mr-5 md:mr-0"> {children} </Link>
 }
 
 export const WorkDescription : React.FC<WorkContent> = ({ children }) => {

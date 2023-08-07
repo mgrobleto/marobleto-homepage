@@ -47,7 +47,7 @@ const About : React.FC = () => {
                             <div className='about-introduction leading-tight'>
                                 <strong className='text-sm xl:text-2xl underline underline-offset-8 decoration-dotted'>/ About me</strong>
                                 <p className='text-xs font-light xl:text-lg my-5'>
-                                    I am currently studying a degree in <b className='font-bold'>Computer Engineer </b>
+                                    I am currently at my 4th year of my degree in <b className='font-bold'>Computer Engineer </b>
                                     at the <strong> National University of Engineering</strong> in <strong className='font-bold'>Managua, Nicaragua</strong>.
                                     I have full interest in visual arts and full-stack web development.
                                 </p>
