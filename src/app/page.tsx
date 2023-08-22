@@ -13,7 +13,6 @@ export default function Home() {
         <Intro />
         <About />
         <Works />
-        <MyPhotography />
         <ContactMe />
         <SideBar />
       </ScrollObserver>
