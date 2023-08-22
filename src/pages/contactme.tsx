@@ -10,7 +10,7 @@ const ContactMe : React.FC = () => {
             <div id='contact' className='min-h-screen text-white flex flex-col justify-between items-center'>
                 <div className='flex flex-col justify-center items-center font-bold p-12 h-[90vh]'>
                     <div className='py-10'>
-                        <strong className='text-xl xl:text-5xl text-theme underline underline-offset-8 mb-10'>04.</strong>
+                        <strong className='text-xl xl:text-5xl text-theme underline underline-offset-8 mb-10'>03.</strong>
                     </div>                
                     <h2 className='font-bold text-xl xl:text-4xl underline underline-offset-8 decoration-dotted'> / Get in touch</h2>
                     <div className='py-10'>
