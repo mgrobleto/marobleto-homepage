@@ -32,7 +32,7 @@ const Intro : React.FC = () => {
         >
             <Image
                 className='absolute'
-                src="/assets/zero-absolute.jpg"
+                src="/assets/me2.jpeg"
                 alt="background"
                 style={{objectFit: "cover"}}
                 fill
@@ -44,7 +44,7 @@ const Intro : React.FC = () => {
                     <h2 className="font-light mb-2 text-sm lg:text-2xl tracking-tight">
                         <p>(Developer / Designer)</p>
                     </h2>
-                    <h3 className='font-light mb-2 text-1xl xl:text-2xl tracking-tight'>
+                    <h3 className='font-light mb-2 text-lg xl:text-lg tracking-tight'>
                         <p>based in Nicaragua</p>
                     </h3>
                 </div> 
