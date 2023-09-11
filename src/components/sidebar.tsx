@@ -12,13 +12,13 @@ const links = [
         label: 'Projects',
         path: '#projects'
     },
-    // {
-    //     number: '03.',
-    //     label: 'Photography',
-    //     path: '#photography'
-    // },
     {
-        number: '03.',
+         number: '03.',
+         label: 'Photography',
+         path: '#photography'
+    },
+    {
+        number: '04.',
         label: 'Contact',
         path: '#contact'
     }
