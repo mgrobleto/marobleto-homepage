@@ -1,8 +1,8 @@
 <p align='center'>
-#¡Hi, Gabriela here!
-#(Developer / Designer)
+¡Hi, Gabriela here!
+(Developer / Designer)
 </p>
 
 <p align='center'>
-#based in Nicaragua
+based in Nicaragua
 </p>
