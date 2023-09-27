@@ -64,7 +64,7 @@ const About : React.FC = () => {
                             <div className='about-introduction'>
                                 <strong className='text-sm xl:text-2xl underline underline-offset-8 decoration-dotted'>/ I &#10084;</strong>
                                 <p className='text-xs xl:text-lg my-5'>
-                                    <Link href='#photography' className='underline underline-offset-4 text-theme' >Photography</Link>{''}, Art, Music, Movies.
+                                    <Link href='#photography' className='underline underline-offset-4 text-theme' >Photography</Link>{''}, Music, Movies, Astronomy
                                 </p>
                             </div>
                         </div>
