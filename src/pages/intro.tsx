@@ -32,7 +32,7 @@ const Intro : React.FC = () => {
         >
             <Image
                 className='absolute'
-                src="/assets/me2.jpeg"
+                src="/assets/me2.webp"
                 alt="background"
                 style={{objectFit: "cover"}}
                 fill

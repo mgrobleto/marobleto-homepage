@@ -85,7 +85,7 @@ const About : React.FC = () => {
                         opacity: opacityForBlock(progress, 1),
                         }}>
                         <Image
-                            src="/assets/me.jpg"
+                            src="/assets/meversion2.webp"
                             alt="about me photo"
                             width={300}
                             height={100}
