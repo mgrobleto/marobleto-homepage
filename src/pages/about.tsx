@@ -2,11 +2,13 @@
 
 import React, { useRef, useContext } from 'react';
 import Image from 'next/image';
+//import profilePic from '../public/'
 import s from '../styles/about.module.css'
 import { ScrollContext } from '@/utils/scroll-observer';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import TwitterIcon from '@mui/icons-material/Twitter';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import { SocialLink } from '@/utils/links-icons';
 import Link from 'next/link';
 import { GradientBackground } from '../components/gradient-background';
@@ -36,9 +38,9 @@ const About : React.FC = () => {
     return (
         <GradientBackground>
             <section id='about' ref={refContainer} className='min-h-screen py-10 lg:py-0 flex justify-center'>
-                <div className='flex flex-col-reverse items-center justify-center xl:flex-row max-w-screen mx-20 xl:px-36 xl:justify-center'>
-                    <div className='about-info-container flex flex-col max-w-2xl text-justify lg:mr-28'>
-                        <div className={`${s.aboutText} about-introduction mb-auto lg:mb-5`} style={{
+                <div className='flex flex-col-reverse items-center justify-center xl:flex-row mx-20 xl:px-36 xl:justify-center'>
+                    <div className='about-info-container flex flex-col justify-around text-justify lg:mr-28'>
+                        <div className={`${s.aboutText} about-introduction max-w-2xl mb-auto lg:mb-5`} style={{
                             opacity: opacityForBlock(progress, 1)
                         }}>
                             <div className='py-5 xl:py-10 text-center xl:text-left'>
@@ -64,20 +66,18 @@ const About : React.FC = () => {
                             <div className='about-introduction'>
                                 <strong className='text-sm xl:text-2xl underline underline-offset-8 decoration-dotted'>/ I &#10084;</strong>
                                 <p className='text-xs xl:text-lg my-5'>
-                                    <Link href='#photography' className='underline underline-offset-4 text-theme' >Photography</Link>{''}, Music, Movies, Astronomy
+                                    <Link href='https://www.instagram.com/marobleto/' target='_blank' className='underline underline-offset-4 text-theme' >Photography</Link>{''}, Music, Movies, Astronomy
                                 </p>
                             </div>
                         </div>
-                        <div className={`${s.aboutText} about-hobbies lg:mb-5 inline-block`} style={{
+                        <div className={`${s.aboutText} lg:mb-5 inline-block`} style={{
                             opacity: opacityForBlock(progress, 1)
                         }}>
-                            <div className='about-introduction'>
-                                <strong className='text-sm xl:text-2xl underline underline-offset-8 decoration-dotted'>/ Find me on the web</strong>
-                                <div className='max-w-auto flex flex-col text-[#92DEEF] my-5'>
+                           <strong className='text-sm xl:text-2xl underline underline-offset-8 decoration-dotted'>/ Find me on the web</strong>
+                            <div className='grid grid-flow-row gap-1 max-w-fit text-[#92DEEF] my-5'>
                                     <SocialLink href='https://github.com/mgrobleto' icon={<GitHubIcon fontSize='small' />}> @mgrobleto </SocialLink>
-                                    <SocialLink href='https://www.instagram.com/marobleto/' icon={<InstagramIcon fontSize='small'/>}> @marobleto </SocialLink>
                                     <SocialLink href='https://twitter.com/marobleto_' icon={ <TwitterIcon fontSize='small'  /> }> @marobleto_ </SocialLink>
-                                </div>
+                                    <SocialLink href='https://www.linkedin.com/in/marobleto/' icon={ <LinkedInIcon fontSize='small' /> }> @marobleto </SocialLink>
                             </div>
                         </div>
                     </div>
@@ -87,7 +87,6 @@ const About : React.FC = () => {
                         <Image
                             src="/assets/me.jpg"
                             alt="about me photo"
-                            layout='responsive'
                             width={300}
                             height={100}
                             style={{
