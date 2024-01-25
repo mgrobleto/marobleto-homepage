@@ -66,7 +66,7 @@ const About : React.FC = () => {
                             <div className='about-introduction'>
                                 <strong className='text-sm xl:text-2xl underline underline-offset-8 decoration-dotted'>/ I &#10084;</strong>
                                 <p className='text-xs xl:text-lg my-5'>
-                                    <Link href='https://www.instagram.com/marobleto/' target='_blank' className='underline underline-offset-4 text-theme' >Photography</Link>{''}, Music, Movies, Astronomy
+                                    Photography, Music, Movies, Astronomy
                                 </p>
                             </div>
                         </div>
