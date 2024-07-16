@@ -19,7 +19,7 @@ export const AdAstraHubInfo : React.FC = () => {
     return (
         <>
             <div>Meet</div>
-            <div className='text-sm md:text-5xl text-[#f287b1] font-semibold tracking-tight'>
+            <div className='text-sm md:text-4xl text-[#f287b1] font-semibold tracking-tight'>
                 <WorkLink href='https://mgrobleto.github.io/AdAstraHubWebsite/'>Ad Astra Hub Website</WorkLink>
             </div>
             <WorkDescription>

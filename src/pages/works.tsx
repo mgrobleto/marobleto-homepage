@@ -12,35 +12,13 @@ import { BeKindImages, BeKindInfo } from '@/components/works/bekind-info';
 const Works : React.FC = () => {
     return (
         <div id='projects'>
-            <TileWrapper numOfPages={5}>
+            <TileWrapper numOfPages={4}>
                 <TileBackground>
                     <WorkBackground />
                 </TileBackground>
                 <TileContent>
                     <Tile 
                         page={0} 
-                        renderContent={({ progress }) => (
-                            <WorkContainer>
-                                <WorkLeft progress={progress}>
-                                    <div className='flex flex-col justify-between'>
-                                        <WorkHeader />
-                                        <div className={`flex-grow-0 mx-10 py-20 md:pb-0 transition-all duration-1000`}>
-                                            <Image
-                                                src="/assets/icons/arrow-down.svg"
-                                                alt="scroll down"
-                                                width={188 / 3}
-                                                height={105 / 3}
-                                            />
-                                        </div>
-                                    </div>
-                                </WorkLeft>
-                            </WorkContainer>
-                        )}>
-                    </Tile>
-                </TileContent>
-                <TileContent>
-                    <Tile 
-                        page={1} 
                         renderContent={({ progress }) => (
                             <WorkContainer>
                                 <WorkLeft progress={progress}>
@@ -55,7 +33,7 @@ const Works : React.FC = () => {
                 </TileContent>
                 <TileContent>
                     <Tile 
-                        page={2} 
+                        page={1} 
                         renderContent={({ progress }) => (
                             <WorkContainer>
                                 <WorkLeft progress={progress}>
@@ -70,7 +48,7 @@ const Works : React.FC = () => {
                 </TileContent>
                 <TileContent>
                     <Tile 
-                        page={3} 
+                        page={2} 
                         renderContent={({ progress }) => (
                             <WorkContainer>
                                 <WorkLeft progress={progress}>
@@ -85,7 +63,7 @@ const Works : React.FC = () => {
                 </TileContent>
                 <TileContent>
                     <Tile 
-                        page={4} 
+                        page={3} 
                         renderContent={({ progress }) => (
                             <WorkContainer>
                                 <WorkLeft progress={progress}>

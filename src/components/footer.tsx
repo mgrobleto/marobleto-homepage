@@ -3,7 +3,7 @@ import React from "react";
 
 const Footer: React.FC = () => {
     return (
-        <div className="h-auto bg-transparent flex flex-col justify-center">
+        <div className="bg-transparent flex flex-col justify-center">
             <div className="flex flex-col justify-center items-center">
                 <Link href="https://github.com/mgrobleto/marobleto-homepage" target="_blank">
                     <h3 className="text-xs mb-10 text-center leading-tight hover:text-theme">

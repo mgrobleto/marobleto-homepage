@@ -19,7 +19,7 @@ export const BeKindInfo : React.FC = () => {
     return (
         <>
             <div>Meet</div>
-            <div className='text-sm md:text-5xl text-purple-600 font-semibold tracking-tight'>
+            <div className='text-sm md:text-4xl text-purple-600 font-semibold tracking-tight'>
                 <WorkLink href='https://github.com/J2rg3n-B3rm2d3z/FinalProject'>Be Kind</WorkLink>
             </div>
             <WorkDescription>
@@ -36,13 +36,13 @@ export const BeKindInfo : React.FC = () => {
                 </div>
             </WorkDetail>
             <WorkDetail title='Role' color={COLOR}> FullStack Dev </WorkDetail>
-            <WorkDetail title='Colaborators' color={COLOR}>
+            {/* <WorkDetail title='Colaborators' color={COLOR}>
                 <div className="flex flex-row xl:flex-col">
                     <WorkLink href='https://github.com/J2rg3n-B3rm2d3z'>Jurgen B&eacute;rmudez</WorkLink>
                     <WorkLink href='https://github.com/Mitch-coder'>Michelle Calder&oacute;n</WorkLink>
                     <WorkLink href='https://github.com/ZharoonT'>Zharoon Treminio</WorkLink>
                 </div>
-            </WorkDetail>
+            </WorkDetail> */}
             <WorkDetail title='Learn more' color={COLOR}>
                 <SocialLink href='https://github.com/J2rg3n-B3rm2d3z/FinalProject' icon={ <GitHubIcon sx={{ fontSize: 'auto' }} /> }> </SocialLink>
             </WorkDetail>          

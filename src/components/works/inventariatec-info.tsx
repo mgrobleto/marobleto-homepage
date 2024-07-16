@@ -20,7 +20,7 @@ export const InventariaTecInfo : React.FC = () => {
     return (
         <>
             <div>Meet</div>
-            <div className='text-sm md:text-5xl text-blue-500 font-semibold tracking-tight'>
+            <div className='text-sm md:text-4xl text-blue-500 font-semibold tracking-tight'>
                 <WorkLink href='https://github.com/mgrobleto/InventariTecFrontendApp'>Invent&aacute;ria Tec Website</WorkLink>
             </div>
             <WorkDescription>

@@ -19,7 +19,11 @@ export const CodeLandInfo : React.FC = () => {
  return (
     <div>
         <div>Meet</div>
-         <div className='text-sm md:text-5xl text-theme font-semibold tracking-tight'>
+         <div className='text-sm md:text-4xl text-theme font-semibold tracking-tight hover:text-white focus:text-theme 
+                            hover:translate-x-3 
+                            md:transform-none 
+                            transition ease-in-out delay-150
+                            duration-300'>
             <WorkLink href='https://codeland-uni.herokuapp.com/'>CodeLand Website</WorkLink>
         </div>
         <WorkDescription>
@@ -40,12 +44,12 @@ export const CodeLandInfo : React.FC = () => {
             </div>
         </WorkDetail>
         <WorkDetail title='Role' color={COLOR}> Frontend Dev </WorkDetail>
-        <WorkDetail title='Colaborators' color={COLOR}>
+        {/* <WorkDetail title='Colaborators' color={COLOR}>
             <div className="flex flex-row xl:flex-col">
                 <WorkLink href='https://github.com/MiguelHG2351'>Miguel Hern&aacute;ndez</WorkLink>
                 <WorkLink href='https://github.com/Mitch-coder'>Michelle Calder&oacute;n</WorkLink>
             </div>   
-        </WorkDetail>
+        </WorkDetail> */}
         <WorkDetail title='Learn more' color={COLOR}>
             <SocialLink href='https://github.com/mgrobleto/CodeLand' icon={ <GitHubIcon sx={{ fontSize: 'auto'}} /> }> </SocialLink>
         </WorkDetail>
