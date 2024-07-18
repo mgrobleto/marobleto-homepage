@@ -23,7 +23,8 @@ const Intro : React.FC = () => {
     }, [])
 
     return (
-        <div 
+        <section
+            id='home'
             ref={refContainer} 
             className="min-h-screen sticky top-0 -z-10"
             style={{
@@ -42,7 +43,7 @@ const Intro : React.FC = () => {
                 </div>
               
             </div>
-        </div>
+        </section>
     )
 }
 
