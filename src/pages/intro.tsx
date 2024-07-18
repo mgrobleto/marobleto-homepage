@@ -1,11 +1,10 @@
 "use client"; // enable me to use hooks
 
 import React, { useRef, useContext, useState, useCallback } from 'react';
-import SocialMedia from '@/components/social-media-links';
 import { ScrollContext } from '@/utils/scroll-observer';
 
 const Intro : React.FC = () => {
-    const [imageLoaded, setImageLoaded] = useState(false)
+    //const [imageLoaded, setImageLoaded] = useState(false)
     const refContainer = useRef<HTMLDivElement>(null)
     const { scrollY } = useContext(ScrollContext)
 
@@ -18,9 +17,9 @@ const Intro : React.FC = () => {
         progress = Math.min(1, scrollY / elContainer.clientHeight)
     }
 
-    const handleImageLoaded = useCallback(() => {
+   /*  const handleImageLoaded = useCallback(() => {
         setImageLoaded(true)
-    }, [])
+    }, []) */
 
     return (
         <section
