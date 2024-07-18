@@ -31,8 +31,8 @@ const links = [
 
 const SideBar: React.FC = () => {
     return (
-        <div className='hidden xl:flex flex-col max-w-md h-auto fixed px-10 bottom-10 bg-transparent'>
-            <div className='flex flex-col items-start justify-between leading-6 text-xs xl:text-lg my-5 mr-10'>
+        <div className='hidden xl:flex flex-col max-w-fit h-auto fixed pl-10 bottom-10 bg-transparent'>
+            <div className='flex flex-col items-start justify-between leading-6 text-xs xl:text-lg my-5'>
                 {links.map((l, i) => {
                     
                     return (

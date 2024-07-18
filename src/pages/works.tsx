@@ -3,7 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { TileBackground, TileContent, TileWrapper, Tile } from '../components/tile';
-import { WorkBackground, WorkContainer, WorkHeader, WorkLeft, WorkRight } from '../components/work';
+import { WorkBackground, WorkContainer, WorkLeft, WorkRight } from '../components/work';
 import { CodeLandImages, CodeLandInfo } from '@/components/works/codeland-info';
 import { AdAstraHubImages, AdAstraHubInfo } from '@/components/works/adastrahub-info';
 import { InventariaTecImages, InventariaTecInfo } from '@/components/works/inventariatec-info';

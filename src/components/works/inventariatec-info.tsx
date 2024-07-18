@@ -20,7 +20,11 @@ export const InventariaTecInfo : React.FC = () => {
     return (
         <>
             <div>Meet</div>
-            <div className='text-sm md:text-4xl text-blue-500 font-semibold tracking-tight'>
+            <div className='text-sm md:text-4xl text-blue-500 font-semibold tracking-tight hover:text-[#609afa] 
+                            hover:translate-x-3 
+                            md:transform-none 
+                            transition ease-in-out delay-150
+                            duration-300'>
                 <WorkLink href='https://github.com/mgrobleto/InventariTecFrontendApp'>Invent&aacute;ria Tec Website</WorkLink>
             </div>
             <WorkDescription>
@@ -37,9 +41,10 @@ export const InventariaTecInfo : React.FC = () => {
                 </div>
             </WorkDetail>
             <WorkDetail title='Role' color={COLOR}> FullStack Dev </WorkDetail>
-            <WorkDetail title='Learn more' color={COLOR}>
-                <SocialLink href='https://github.com/mgrobleto/InventariTecFrontendApp' icon={ <GitHubIcon  sx={{ fontSize: 'auto' }} /> }></SocialLink>
-            </WorkDetail>
+            <WorkDetail title='Learn more' color={COLOR}></WorkDetail>
+            <div className="max-w-fit h-auto bg-transparent">
+                <SocialLink href='https://github.com/mgrobleto/InventariTecFrontendApp' icon={ <GitHubIcon  sx={{ fontSize: 'auto' }} /> } color='#609afa'></SocialLink>
+            </div>
         </>
     )
 }

@@ -19,7 +19,11 @@ export const AdAstraHubInfo : React.FC = () => {
     return (
         <>
             <div>Meet</div>
-            <div className='text-sm md:text-4xl text-[#f287b1] font-semibold tracking-tight'>
+            <div className='text-sm md:text-4xl text-[#f287b1] font-semibold tracking-tight hover:text-[#e74d85] 
+                            hover:translate-x-3 
+                            md:transform-none 
+                            transition ease-in-out delay-150
+                            duration-300'>
                 <WorkLink href='https://mgrobleto.github.io/AdAstraHubWebsite/'>Ad Astra Hub Website</WorkLink>
             </div>
             <WorkDescription>
@@ -39,9 +43,10 @@ export const AdAstraHubInfo : React.FC = () => {
                 </div>
             </WorkDetail>
             <WorkDetail title='Role' color={COLOR}> Frontend Dev </WorkDetail>
-            <WorkDetail title='Learn more' color={COLOR}>
-                <SocialLink href='https://github.com/mgrobleto/AdAstraHubWebsite' icon={ <GitHubIcon sx={{ fontSize: 'auto'}} /> }></SocialLink>
-            </WorkDetail>
+            <WorkDetail title='Learn more' color={COLOR}></WorkDetail>
+            <div className="max-w-fit h-auto bg-transparent">
+                <SocialLink href='https://github.com/mgrobleto/AdAstraHubWebsite' icon={ <GitHubIcon sx={{ fontSize: 'auto'}} /> } color="#f287b1"></SocialLink>
+            </div>
         </>
     )
 }

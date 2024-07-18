@@ -19,7 +19,11 @@ export const BeKindInfo : React.FC = () => {
     return (
         <>
             <div>Meet</div>
-            <div className='text-sm md:text-4xl text-purple-600 font-semibold tracking-tight'>
+            <div className='text-sm md:text-4xl text-purple-600 font-semibold tracking-tight hover:text-[#c231c8] 
+                            hover:translate-x-3 
+                            md:transform-none 
+                            transition ease-in-out delay-150
+                            duration-300'>
                 <WorkLink href='https://github.com/J2rg3n-B3rm2d3z/FinalProject'>Be Kind</WorkLink>
             </div>
             <WorkDescription>
@@ -43,9 +47,10 @@ export const BeKindInfo : React.FC = () => {
                     <WorkLink href='https://github.com/ZharoonT'>Zharoon Treminio</WorkLink>
                 </div>
             </WorkDetail> */}
-            <WorkDetail title='Learn more' color={COLOR}>
-                <SocialLink href='https://github.com/J2rg3n-B3rm2d3z/FinalProject' icon={ <GitHubIcon sx={{ fontSize: 'auto' }} /> }> </SocialLink>
-            </WorkDetail>          
+            <WorkDetail title='Learn more' color={COLOR}></WorkDetail>   
+            <div className="max-w-fit h-auto bg-transparent">
+                <SocialLink href='https://github.com/J2rg3n-B3rm2d3z/FinalProject' icon={ <GitHubIcon sx={{ fontSize: 'auto' }} /> } color="#c231c8"> </SocialLink>                   
+            </div>       
         </>
     )
 }

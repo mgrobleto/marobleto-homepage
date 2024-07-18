@@ -27,7 +27,7 @@ const ContactMe : React.FC = () => {
                 <CustomTitle title='Get in touch' color='#92DEEF'/>
                 <div className='py-6'>
                     <button className='bg-[#92DEEF] bg-opacity-50 rounded-lg p-2 hover:border-[#92DEEF] hover:shadow-lg hover:shadow-cyan-500/50 border-4'>
-                        <SocialLink href='mailto:magabriela0715@gmail.com' icon={ <EmailTwoToneIcon sx={{ fontSize: 40}} />}>Say Hi &#33;</SocialLink>
+                        <SocialLink href='mailto:magabriela0715@gmail.com' icon={ <EmailTwoToneIcon sx={{ fontSize: 40}} />} color='white'>Say Hi &#33;</SocialLink>
                     </button>
                 </div> 
             </div> 

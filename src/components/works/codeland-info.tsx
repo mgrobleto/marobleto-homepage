@@ -19,7 +19,7 @@ export const CodeLandInfo : React.FC = () => {
  return (
     <div>
         <div>Meet</div>
-         <div className='text-sm md:text-4xl text-theme font-semibold tracking-tight hover:text-white focus:text-theme 
+         <div className='text-sm md:text-4xl text-theme font-semibold tracking-tight hover:text-[#aee7f3] focus:text-theme 
                             hover:translate-x-3 
                             md:transform-none 
                             transition ease-in-out delay-150
@@ -50,9 +50,10 @@ export const CodeLandInfo : React.FC = () => {
                 <WorkLink href='https://github.com/Mitch-coder'>Michelle Calder&oacute;n</WorkLink>
             </div>   
         </WorkDetail> */}
-        <WorkDetail title='Learn more' color={COLOR}>
-            <SocialLink href='https://github.com/mgrobleto/CodeLand' icon={ <GitHubIcon sx={{ fontSize: 'auto'}} /> }> </SocialLink>
-        </WorkDetail>
+        <WorkDetail title='Learn more' color={COLOR}></WorkDetail>
+        <div className="max-w-fit h-auto bg-transparent">
+            <SocialLink href='https://github.com/mgrobleto/CodeLand' icon={ <GitHubIcon sx={{ fontSize: 'auto'}} /> } color="#92DEEF"> </SocialLink>
+        </div>
     </div>
  )
 }
