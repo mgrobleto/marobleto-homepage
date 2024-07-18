@@ -60,7 +60,7 @@ const SideBar: React.FC = () => {
                         <Link
                             key={i}
                             href={l.path}
-                            className={activeSection === l.path ?  'text-theme translate-x-3 transition ease-in-out delay-150 duration-300': 'hover:text-theme focus:text-theme hover:translate-x-3 md:transform-none transition ease-in-out delay-150 duration-300'}
+                            className={activeSection === l.path ?  'text-theme translate-x-3 transition ease-in-out delay-150 duration-300': 'hover:text-theme hover:translate-x-3 md:transform-none transition ease-in-out delay-150 duration-300'}
                             style={{
                                 margin: 4
                             }}
