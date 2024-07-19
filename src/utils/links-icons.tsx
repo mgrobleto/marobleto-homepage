@@ -4,7 +4,7 @@ import React from "react";
 import Link from "next/link";
 
 interface LinksProps {
-    href: string
+    href?: string
     icon?: React.ReactElement
     children?: React.ReactNode
     color: string
@@ -12,7 +12,7 @@ interface LinksProps {
 
 export const SocialLink : React.FC<LinksProps> = ({ href, icon, color ,children}) => {
     return (
-        <Link href={href} target="_blank" className="my-1">
+        <Link href={href ? {href} : ''} target="_blank" className="my-1">
             <div className="min-w-fit min-h-fit
             flex flex-row items-center justify-start 
             text-xs xl:text-lg"
