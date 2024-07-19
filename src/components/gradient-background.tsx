@@ -32,7 +32,7 @@ export const GradientBackground : React.FC<Props> = ({children}) => {
             <style jsx>
                 {`
                     .hero {
-                        height: 100vh;
+                        height: unset;
                         width: 100%;
                         background-color: #1D0D40;
                         background-image: radial-gradient(

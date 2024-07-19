@@ -17,7 +17,7 @@ const links = [
     },
     {
         number: '03.',
-        label: 'Experience',
+        label: 'Projects',
         path: '#projects'
     },
    /*  {

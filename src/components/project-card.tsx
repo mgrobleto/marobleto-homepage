@@ -7,50 +7,63 @@ import FolderCopyTwoToneIcon from '@mui/icons-material/FolderCopyTwoTone';
 import LaunchTwoToneIcon from '@mui/icons-material/LaunchTwoTone';
 import GitHubIcon from "@mui/icons-material/GitHub";
 import { SocialLink } from "@/utils/links-icons";
-
-type ProjectTech = {
-    techName: string;
-}
+import { TechList, WorkTech } from "./work";
 
 interface ProjectContent {
     githubLink: string;
     websiteLink?: string;
     projectTitle: string;
     projectDescription: string;
-    projectTech: string[];
+    stack: string[];
     role: string;
     color?: string; 
 }
 
 
-const ProjectCard: React.FC<ProjectContent> = ({githubLink, websiteLink, projectTitle, projectDescription, projectTech, color, role}) => {
+const ProjectCard: React.FC<ProjectContent> = ({githubLink, websiteLink, projectTitle, projectDescription, stack, color, role}) => {
     //const { ScrollY } = useContext(ScrollContext);
     
     return (
-        <div className="card w-full h-full flex flex-col justify-between items-start p-6 rounded-lg bg-[#112240] max-h-[500px] hover:translate-y-8 ease-in-out transition delay-150 duration-200 hover:bg-[#233554]">
+        <div className="card group w-full h-full flex flex-col justify-between items-start p-6 rounded-lg bg-[#112240] hover:translate-y-1.5 ease-in-out transition delay-150 duration-200 hover:bg-[#233554]">
             <div className="card-header w-full">
                 <div className="card-top flex flex-row w-full justify-between items-center p-3 bg-slate-700 rounded-lg">
                     <div className="folder-icon" style={{color: '#92DEEF'}}> <FolderCopyTwoToneIcon fontSize="small"/></div>
-                    <div className="flex flex-row max-w-sm justify-between items-center">
-                        <div className="div">
+                    <div className="flex flex-row items-center">
+                        <div className="mx-3">
                             <SocialLink href={githubLink} color="#92DEEF" icon={ <GitHubIcon /> } ></SocialLink>
                         </div>
-                        <div className="div">
-                            <SocialLink href={websiteLink} color="#92DEEF" icon={ <LaunchTwoToneIcon />} ></SocialLink>
+                        <div className="group-hover:translate-y-[-6px] ease-in-out transition delay-100 duration-500">
+                            <SocialLink href={websiteLink} color="#92DEEF" icon={ <LaunchTwoToneIcon />} classname="group-hover:text-[#92DEEF]"></SocialLink>
                         </div>
                     </div>
                 </div>
                 <div className="card-title">
-                    <div className="card-title font-semibold text-theme text-xl text-justify my-4">{projectTitle}</div>
+                    <div className="card-title font-semibold text-white group-hover:text-theme text-xl text-justify my-4">{projectTitle}</div>
                 </div>
                 <div className="card-desc">
-                    <div className="card-description font-light text-sm lg:text-sm text-justify tracking-tight opacity-70 my-2">{projectDescription}</div>
+                    <div className="card-description font-light text-sm lg:text-sm text-justify tracking-tight opacity-70 mb-2">{projectDescription}</div>
                     {/* <div className="project-role font-light text-sm lg:text-sm tracking-tight opacity-70 my-2">{role}</div> */}
                 </div>
             </div>
-            <div className="card-footer">
-                <div className="card-tech font-light text-sm lg:text-sm text-justify opacity-75 my-2 -tracking-normal">{projectTech.map(tech => tech + ' ')}</div>
+            <div className="flex flex-wrap items-start">
+                {stack.map(tech => {
+                    return (
+                        <div className="mr-1.5 mb-2">
+                            <div className="flex items-center rounded-full bg-theme/10 px-3 py-1 text-xs font-medium leading-5 text-theme">
+                                {tech}
+                            </div>
+                        </div>
+                    )
+                })}
             </div>
+
+            {/* <div className="card-footer grid grid-cols-4 gap-4 items-center">
+                {stack.map((tech) => {
+                    return (
+                        <TechList tech={tech}/>
+                    )
+                })}
+            </div> */}
         </div>
     )
 }
