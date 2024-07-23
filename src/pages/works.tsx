@@ -11,9 +11,23 @@ import { BeKindImages, BeKindInfo } from '@/components/works/bekind-info';
 import ProjectCard from '@/components/project-card';
 import { GradientBackground } from '@/components/gradient-background';
 import { CustomTitle } from '@/components/title';
+import FadeInSection from '@/components/fade-in';
 
-const projects = [
-    {
+type Project = {
+    title: string;
+    description: string;
+    stack: string[];
+    githubLink: string;
+    websiteLink: string;
+    role: string;
+}
+
+type Projects = {
+    [key : string] : Project
+}
+
+const projects: Projects = {
+    project1: {
         title: 'CodeLand',
         description: `Created to help students in their way of learning C programming language with Turbo C 2.0.
             It works as a collaborative page between users where you can
@@ -23,7 +37,8 @@ const projects = [
         websiteLink: 'https://codeland-uni.herokuapp.com/',
         role: 'Fullstack Dev'
     },
-    {
+
+    project2:{
         title: 'MiPyme Saas',
         description: `Basic invoice and storage management Saas system for MiPymes in Nicaragua.`,
         stack: ['Angular','Angular Material', 'Bootstrap', 'Django Rest Framework'],
@@ -31,7 +46,8 @@ const projects = [
         websiteLink: '',
         role: 'Frontend Dev'
     },
-    {
+
+    project3:{
         title: 'Ad Astra Hub',
         description: `Ad Astra Hub Website is a friendly space to explore and learn about the cosmos. 
                 You can check Astronomy Picture of the Day powered by NASA's Astronomy Picture of the Day API 
@@ -41,7 +57,8 @@ const projects = [
         websiteLink: 'https://mgrobleto.github.io/AdAstraHubWebsite/',
         role: 'Frontend Dev'
     },
-    {
+
+    project4:{
         title: 'Be Kind',
         description: `The idea of this project is to notify user's when a ATM has money or not. This works in a collabortative way where users can change the ATM state wheter it has money available or not.`,
         stack: ['Kotlin', 'Firebase', 'Google Maps API', 'Material Design'],
@@ -49,7 +66,8 @@ const projects = [
         websiteLink: '',
         role: 'Fullstack Dev'
     },
-    {
+
+    project5:{
         title: 'To-do App',
         description: 'A simple To-Do/Task Manager',
         stack: ['React Native', 'Expo', 'Reanimated', 'Native Base', 'Moti'],
@@ -57,27 +75,30 @@ const projects = [
         websiteLink: '',
         role: 'Frontend Dev'
     }
-]
+}
 
 const Works : React.FC = () => {
     return (
         <GradientBackground>
             <div id='projects' className='max-w-full min-h-screen p-20 flex flex-col justify-around items-center'>
                 <CustomTitle title='Projects' color='#92DEEF'/>
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 relative max-w-[1000px]">
-                    {projects.map((project, index) => {
-                        return (
-                            <ProjectCard
-                                key={index}
-                                projectTitle={project.title}
-                                projectDescription={project.description}
-                                stack={project.stack}
-                                githubLink={project.githubLink}
-                                websiteLink={project.websiteLink}
-                                role={project.role}
-                            ></ProjectCard>
-                        )
-                    })}
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 relative max-w-[1000px] my-4">
+                    {Object.keys(projects).map((key, i) => (
+                        //const project = projects[key];
+                        <FadeInSection 
+                                key={key} 
+                                delay={`${i + 1}00ms`}
+                            >
+                                <ProjectCard
+                                    projectTitle={projects[key].title}
+                                    projectDescription={projects[key].description}
+                                    stack={projects[key].stack}
+                                    githubLink={projects[key].githubLink}
+                                    websiteLink={projects[key].websiteLink}
+                                ></ProjectCard>
+                        </FadeInSection>
+                    )
+                    )}
                 </div>
             </div>
         </GradientBackground>
