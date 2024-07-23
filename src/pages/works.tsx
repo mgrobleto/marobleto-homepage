@@ -60,7 +60,7 @@ const projects: Projects = {
 
     project4:{
         title: 'Be Kind',
-        description: `The idea of this project is to notify user's when a ATM has money or not. This works in a collabortative way where users can change the ATM state wheter it has money available or not.`,
+        description: `The idea of this project is to notify user's when a ATM has money or not. This works in a collabortative way where users can change the ATM state whether it has money available or not.`,
         stack: ['Kotlin', 'Firebase', 'Google Maps API', 'Material Design'],
         githubLink: 'https://github.com/J2rg3n-B3rm2d3z/FinalProject',
         websiteLink: '',
@@ -69,7 +69,7 @@ const projects: Projects = {
 
     project5:{
         title: 'To-do App',
-        description: 'A simple To-Do/Task Manager',
+        description: 'A simple To-Do/Task Manager App with interactive animations',
         stack: ['React Native', 'Expo', 'Reanimated', 'Native Base', 'Moti'],
         githubLink: 'https://github.com/mgrobleto/todo-app',
         websiteLink: '',
