@@ -5,8 +5,7 @@ interface FadeInProps {
     delay: string
 }
 
-import React, { useContext, useEffect, useRef, useState } from "react";
-import { ScrollContext } from '@/utils/scroll-observer'
+import React, { useEffect, useRef, useState } from "react";
 import s from '@/styles/fade-in.module.css'
 
 
