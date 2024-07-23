@@ -10,12 +10,12 @@ const SocialMedia : React.FC = () => {
         <div className="fixed xl:flex flex-col max-w-md h-auto px-10 bottom-10 bg-transparent right-2">
             <div className="flex flex-col justify-between items-end my-5">
                 <AnimatedSocialLink 
-                    href="https://drive.google.com/file/d/18skvdwnflwRcPdTh4ot4LH5AWAAhdctm/view?usp=sharing" 
+                    href="https://drive.google.com/file/d/1nCmxHIxhaUA_WEcuwypkw-ecXXMjjqNM/view?usp=sharing" 
                     icon={<ContactPageIcon fontSize="small" />}
                     classname="hover:text-[#92DEEF]"
                     color="#92DEEF"
                 >
-                    My R&eacute;sum&eacute;
+                    Full R&eacute;sum&eacute;
                 </AnimatedSocialLink>
                 <AnimatedSocialLink 
                     href='https://github.com/mgrobleto' 

@@ -38,7 +38,7 @@ const Intro : React.FC = () => {
                             <h1 className="mb-6 text-4xl lg:text-6xl font-bold">It&apos;s </h1>
                             <h1 className="mb-6 text-5xl lg:text-7xl font-bold"> <span className='text-theme font-bold'>Gabriela Robleto</span> </h1>
                             <h2 className="mb-2 font-light text-sm lg:text-2xl tracking-tight opacity-75">
-                                <p>(Junior Web Developer &amp; Designer)</p>
+                                <p>(Mid Web Developer &amp; Designer)</p>
                             </h2>
                         </div> 
                     </FadeInSection>

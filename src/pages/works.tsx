@@ -74,6 +74,15 @@ const projects: Projects = {
         githubLink: 'https://github.com/mgrobleto/todo-app',
         websiteLink: '',
         role: 'Frontend Dev'
+    },
+
+    project6: {
+        title: 'marobleto-homepage',
+        description: 'My homepage & Portfolio',
+        stack: ['Next.js', 'TailwindCSS', 'MUI Icon Material'],
+        githubLink: 'https://github.com/mgrobleto/marobleto-homepage',
+        websiteLink: 'https://marobleto-portfolio.vercel.app/',
+        role: 'Frontend Dev'
     }
 }
 
