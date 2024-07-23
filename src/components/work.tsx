@@ -21,6 +21,10 @@ interface WorkDetail {
     color?: string
 }
 
+type TechDetail = {
+    tech: string;
+}
+
 export const WorkContainer : React.FC<WorkContent> = ({ children }) => {
     return <div className='grid grid-cols-1 lg:grid-cols-2 items-center justify-around min-h-screen lg:mx-20'> { children } </div>
 }
@@ -100,6 +104,14 @@ export const WorkTech: React.FC<WorkDetail> = ({title, children, color}) => {
     return (
         <div className="min-w-fit h-fit bg-theme bg-opacity-60 text-white rounded-xl p-2 text-[10px] xl:text-xs hover:border-[#92DEEF] hover:shadow-lg hover:shadow-cyan-500/50 border-2">
             {children}
+        </div>
+    )
+}
+
+export const TechList: React.FC<TechDetail> = ({ tech }) => {
+    return (
+        <div className="w-full h-fit bg-[#92DEEF] bg-opacity-50 p-2 rounded-lg text-[10px] xl:text-xs">
+            {tech}
         </div>
     )
 }

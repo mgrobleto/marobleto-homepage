@@ -20,5 +20,12 @@ module.exports = {
       }, */
     },
   },
+  /* variants: {
+    extend: {
+      opacity: ['responsive', 'hover', 'focus', 'group-hover'],
+      transform: ['responsive', 'hover', 'focus'],
+      translate: ['responsive', 'hover', 'focus'],
+    },
+  }, */
   plugins: [],
 }
