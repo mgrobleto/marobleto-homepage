@@ -77,6 +77,18 @@ const photographyProjects: Projects = {
     }
 }
 
+const getRandomImages = (projects: Projects) => {
+    const keys = Object.keys(projects);
+    const randomImages = [];
+
+    while (keys.length) {
+        const randomIndex = Math.floor(Math.random() * keys.length)
+        randomImages.push(keys.slice(randomIndex, 1)[0]);
+    }
+
+    return randomImages;
+}
+
 const getRandomSpan = () : SpanClass => {
     const randomColSpan = Math.floor(Math.random() * 2) + 1;
     const randomRowSpan = Math.floor(Math.random() * 2) + 1;
@@ -90,12 +102,16 @@ const getRandomSpan = () : SpanClass => {
 
 const Photography : React.FC = () => {
     const [spanClasses, setSpanClasses] = useState<SpanClass[]>([])
+    //const [randomizedKeys, setRandomizedKeys] = useState<string[]>([]);
+
+    const shuffledKeys = Object.keys(photographyProjects).sort(() => Math.random() - 0.5) 
 
     useEffect(() => {
+        /* const randomKeys = getRandomImages(photographyProjects)
+        setRandomizedKeys(randomKeys) */
+
         const generatedSpanClasses = Object.keys(photographyProjects).map(() => getRandomSpan());
-
         setSpanClasses(generatedSpanClasses)
-
     }, [photographyProjects]);    
     
     return (
@@ -111,12 +127,12 @@ const Photography : React.FC = () => {
             </div>
             <div className="body w-full min-h-screen flex flex-col items-center my-10">
                 <div className="about-desc px-10 max-w-3xl text-justify">
-                    <p className='text-xs font-light xl:text-lg text-black opacity-60'>
+                    <p className='text-md font-light xl:text-lg text-black opacity-60'>
                        01 de noviembre del 2023
                     </p>
                 </div>
                 <div className="photo-grid grid grid-cols-2 lg:grid-cols-3 gap-6 relative max-w-max mx-20 my-10">
-                    {Object.keys(photographyProjects).map((key, index) => (
+                    {shuffledKeys.map((key, index) => (
                         <FadeInSection
                             key={index}
                             delay={`${index + 1}00mw`}

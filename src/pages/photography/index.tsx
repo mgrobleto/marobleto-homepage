@@ -80,12 +80,12 @@ const MyPhotography : React.FC = () => {
             <div className="body w-full min-h-screen flex flex-col items-center">
                 <CustomTitle title="About my work" color="#4f4f4f"/>
                 <div className="about-desc px-10 max-w-3xl text-justify">
-                    <p className='text-xs font-light xl:text-lg text-[#4f4f4f] opacity-60'>
+                    <p className='text-md font-light xl:text-lg text-[#4f4f4f] opacity-60'>
                         My passion lies in capturing day-to-day moments from people, my country and hometown. Trying to reflect
                         the beauty that exist in the most simplest things around us. 
                     </p>
                 </div>
-                <div className="photo-grid grid grid-cols-1 lg:grid-cols-3 gap-10 relative max-w-max my-10">
+                <div className="photo-grid grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-max mx-28 my-10">
                     {Object.keys(photographyProjects).map((key, index) => (
                         <FadeInSection
                             key={index}

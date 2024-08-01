@@ -28,19 +28,20 @@ export const PhotoTitleCard : React.FC<PhotoTitleCard> = ({imageLink, title, lin
     }
 
     return (
-        <div className="card group min-w-[350px] h-[500px] flex flex-col justify-between rounded-lg shadow-2xl hover:translate-y-1.5 ease-in-out transition delay-150 duration-200 hover:cursor-pointer" 
+        <div className="card group relative overflow-hidden flex flex-col justify-between rounded-lg shadow-2xl hover:translate-y-1.5 ease-in-out transition delay-150 duration-200 hover:cursor-pointer" 
             onClick={() => handleOnClick(link)}
         >
-            <div className={`img relative w-full h-[100%]`}>
-                <Image 
+            <div className={`img w-full full`}>
+                <img src={imageLink} alt="photography" className="rounded-lg w-full h-full object-cover" />
+                {/* <Image 
                     src={imageLink}
                     layout="fill"
                     objectFit="cover"
                     alt="photography"
                     className="rounded-t-lg"
-                />
+                /> */}
             </div>
-            <div className="title font-light text-[#4f4f4f] text-center text-xl group-hover:underline flex items-center justify-center p-2">
+            <div className="title font-light text-[#4f4f4f] underline underline-offset-4 text-center text-xl flex items-center justify-center p-2">
                 {title}
             </div>
         </div>

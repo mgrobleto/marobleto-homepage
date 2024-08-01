@@ -69,6 +69,7 @@ const getRandomSpan = () : SpanClass => {
 
 const LeonPhotography : React.FC = () => {
     const [spanClasses, setSpanClasses] = useState<SpanClass[]>([])
+    const shuffledKeys = Object.keys(photographyProjects).sort(() => Math.random() - 0.5) 
 
     useEffect(() => {
         const generatedSpanClasses = Object.keys(photographyProjects).map(() => getRandomSpan());
@@ -90,12 +91,12 @@ const LeonPhotography : React.FC = () => {
             </div>
             <div className="body w-full min-h-screen flex flex-col items-center my-10">
                 <div className="about-desc px-10 max-w-3xl text-justify">
-                    <p className='text-xs font-light xl:text-lg text-black opacity-60'>
+                    <p className='text-md font-light xl:text-lg text-black opacity-60'>
                        People around the center of the city
                     </p>
                 </div>
                 <div className="photo-grid grid grid-cols-2 lg:grid-cols-3 gap-6 relative max-w-max mx-20 my-10">
-                    {Object.keys(photographyProjects).map((key, index) => (
+                    {shuffledKeys.map((key, index) => (
                         <FadeInSection
                             key={index}
                             delay={`${index + 1}00mw`}
