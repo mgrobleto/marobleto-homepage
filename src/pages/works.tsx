@@ -90,7 +90,7 @@ const Works : React.FC = () => {
     return (
         <GradientBackground>
             <div id='projects' className='max-w-full min-h-screen p-20 flex flex-col justify-around items-center'>
-                <CustomTitle title='Projects' color='#92DEEF'/>
+                <CustomTitle title='Projects' color='#92DEEF'classname='underline underline-offset-8'/>
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 relative max-w-[1000px] my-4">
                     {Object.keys(projects).map((key, i) => (
                         //const project = projects[key];

@@ -4,6 +4,7 @@ import ContactPageIcon from '@mui/icons-material/ContactPage';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import XIcon from '@mui/icons-material/X';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import { Instagram } from "@mui/icons-material";
 
 const SocialMedia : React.FC = () => {
     return (
@@ -32,6 +33,14 @@ const SocialMedia : React.FC = () => {
                     classname="hover:text-[#92DEEF]"
                 > 
                     Ujum
+                </AnimatedSocialLink>
+                <AnimatedSocialLink
+                    href="https://www.instagram.com/marobleto/"
+                    icon={<Instagram fontSize="small"/>}
+                    color="#92DEEF"
+                    classname="hover:text-[#92DEEF]"
+                >
+                    Check out my profile
                 </AnimatedSocialLink>
                 <AnimatedSocialLink 
                     href='https://www.linkedin.com/in/marobleto' 

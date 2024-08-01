@@ -48,7 +48,7 @@ const About : React.FC = () => {
                             <div className={`${s.aboutText} about-introduction max-w-2xl mb-auto lg:mb-5`} style={{
                                 opacity: opacityForBlock(progress, 1)
                             }}>
-                                <CustomTitle title="About me" color='#92DEEF'/>
+                                <CustomTitle title="About me" color='#92DEEF' classname='underline underline-offset-8'/>
                                 <div className='about-introduction leading-tight'>
                                     <p className='text-xs font-light xl:text-lg'>
                                         Junior designer and front-end developer based in Nicaragua. I found myself

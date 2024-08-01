@@ -4,6 +4,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import Link from 'next/link'
 import { ScrollContext } from '@/utils/scroll-observer'
 
+
 const links = [
     {
         number: '01.',
@@ -20,11 +21,11 @@ const links = [
         label: 'Projects',
         path: '#projects'
     },
-   /*  {
-         number: '03.',
-         label: 'Photography',
-         path: '#photography'
-    }, */
+    {
+        number: '04.',
+        label: 'Photography',
+        path: '/photography'
+    },
     {
         number: '04.',
         label: 'Contact',
