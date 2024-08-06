@@ -89,7 +89,7 @@ const MyPhotography : React.FC = () => {
                     {Object.keys(photographyProjects).map((key, index) => (
                         <FadeInSection
                             key={index}
-                            delay={`${index + 1}00mw`}
+                            delay={`${index + 1}00ms`}
                         >
                             <PhotoTitleCard
                                 title={photographyProjects[key].title}

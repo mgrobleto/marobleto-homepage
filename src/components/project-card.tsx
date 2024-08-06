@@ -32,9 +32,12 @@ const ProjectCard: React.FC<ProjectContent> = ({githubLink, websiteLink, project
                         <div className="mx-3">
                             <SocialLink href={githubLink} color="#92DEEF" icon={ <GitHubIcon /> } ></SocialLink>
                         </div>
-                        <div className="group-hover:translate-y-[-6px] ease-in-out transition delay-100 duration-500">
-                            <SocialLink href={websiteLink} color="#92DEEF" icon={ <LaunchTwoToneIcon />}></SocialLink>
-                        </div>
+                        {websiteLink ? (
+                                <div className="group-hover:translate-y-[-6px] ease-in-out transition delay-100 duration-500">
+                                <SocialLink href={websiteLink} color="#92DEEF" icon={ <LaunchTwoToneIcon />}></SocialLink>
+                                </div>
+                            ) : null
+                        }
                     </div>
                 </div>
                 <div className="card-title">
