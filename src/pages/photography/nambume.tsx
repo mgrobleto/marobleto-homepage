@@ -9,10 +9,10 @@ import { PhotoCard } from "@/components/photography-card";
 
 import { EB_Garamond } from 'next/font/google';
 
-import image1 from '../../../public/assets/photography/nambume/1.jpg'
-import image2 from '../../../public/assets/photography/nambume/2.jpg'
-import image3 from '../../../public/assets/photography/nambume/3.jpg'
-import image4 from '../../../public/assets/photography/nambume/4.jpg'
+import image1 from '../../../public/assets/photography/nambume/1.webp'
+import image2 from '../../../public/assets/photography/nambume/2.webp'
+import image3 from '../../../public/assets/photography/nambume/3.webp'
+import image4 from '../../../public/assets/photography/nambume/4.webp'
 
 const font = EB_Garamond({ subsets: ['latin'] })
 

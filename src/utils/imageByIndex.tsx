@@ -24,14 +24,14 @@ import bekind4 from '../../public/assets/works/beKind/changeState.png'
 import bekind5 from '../../public/assets/works/beKind/updatedState.png'
 
 // photography images
-import photo1 from '../../public/assets/photography/1.jpg'
-import photo2 from '../../public/assets/photography/2.jpg'
-import photo3 from '../../public/assets/photography/3.jpg'
-import photo4 from '../../public/assets/photography/4.jpg'
-import photo5 from '../../public/assets/photography/5.jpg'
-import photo6 from '../../public/assets/photography/6.jpg'
-import photo7 from '../../public/assets/photography/7.jpg'
-import photo8 from '../../public/assets/photography/8.jpg'
+import photo1 from '../../public/assets/photography/1.webp'
+import photo2 from '../../public/assets/photography/2.webp'
+import photo3 from '../../public/assets/photography/3.webp'
+import photo4 from '../../public/assets/photography/4.webp'
+import photo5 from '../../public/assets/photography/5.webp'
+import photo6 from '../../public/assets/photography/6.webp'
+import photo7 from '../../public/assets/photography/7.webp'
+import photo8 from '../../public/assets/photography/8.webp'
 
 import { StaticImageData } from 'next/image'
 

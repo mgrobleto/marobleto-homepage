@@ -7,12 +7,12 @@ import { CustomTitle } from "@/components/title"
 import FadeInSection from "@/components/fade-in";
 import { PhotoCard } from "@/components/photography-card";
 
-import image1 from '../../../public/assets/photography/leonPeople/1.jpg'
-import image2 from '../../../public/assets/photography/leonPeople/2.jpg'
-import image3 from '../../../public/assets/photography/leonPeople/3.jpg'
-import image4 from '../../../public/assets/photography/leonPeople/4.jpg'
-import image5 from '../../../public/assets/photography/leonPeople/5.jpg'
-import image6 from '../../../public/assets/photography/leonPeople/6.jpg'
+import image1 from '../../../public/assets/photography/leonPeople/1.webp'
+import image2 from '../../../public/assets/photography/leonPeople/2.webp'
+import image3 from '../../../public/assets/photography/leonPeople/3.webp'
+import image4 from '../../../public/assets/photography/leonPeople/4.webp'
+import image5 from '../../../public/assets/photography/leonPeople/5.webp'
+import image6 from '../../../public/assets/photography/leonPeople/6.webp'
 
 
 const font = EB_Garamond({ subsets: ['latin'] })

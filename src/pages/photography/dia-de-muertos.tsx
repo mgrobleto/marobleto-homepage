@@ -7,16 +7,16 @@ import { CustomTitle } from "@/components/title"
 import FadeInSection from "@/components/fade-in";
 import { PhotoCard } from "@/components/photography-card";
 
-import image1 from '../../../public/assets/photography/diaDeMuertosMasatepe/1.jpg'
-import image2 from '../../../public/assets/photography/diaDeMuertosMasatepe/2.jpg'
-import image3 from '../../../public/assets/photography/diaDeMuertosMasatepe/3.jpg'
-import image4 from '../../../public/assets/photography/diaDeMuertosMasatepe/4.jpg'
-import image5 from '../../../public/assets/photography/diaDeMuertosMasatepe/5.jpg'
-import image6 from '../../../public/assets/photography/diaDeMuertosMasatepe/6.jpg'
-import image7 from '../../../public/assets/photography/diaDeMuertosMasatepe/7.jpg'
-import image8 from '../../../public/assets/photography/diaDeMuertosMasatepe/8.jpg'
-import image9 from '../../../public/assets/photography/diaDeMuertosMasatepe/9.jpg'
-import image10 from '../../../public/assets/photography/diaDeMuertosMasatepe/10.jpg'
+import image1 from '../../../public/assets/photography/diaDeMuertosMasatepe/1.webp'
+import image2 from '../../../public/assets/photography/diaDeMuertosMasatepe/2.webp'
+import image3 from '../../../public/assets/photography/diaDeMuertosMasatepe/3.webp'
+import image4 from '../../../public/assets/photography/diaDeMuertosMasatepe/4.webp'
+import image5 from '../../../public/assets/photography/diaDeMuertosMasatepe/5.webp'
+import image6 from '../../../public/assets/photography/diaDeMuertosMasatepe/6.webp'
+import image7 from '../../../public/assets/photography/diaDeMuertosMasatepe/7.webp'
+import image8 from '../../../public/assets/photography/diaDeMuertosMasatepe/8.webp'
+import image9 from '../../../public/assets/photography/diaDeMuertosMasatepe/9.webp'
+import image10 from '../../../public/assets/photography/diaDeMuertosMasatepe/10.webp'
 
 
 

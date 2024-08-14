@@ -9,8 +9,8 @@ import { PhotoCard } from "@/components/photography-card";
 
 import { EB_Garamond } from 'next/font/google';
 
-import image1 from '../../../public/assets/photography/catarina/1.jpg'
-import image2 from '../../../public/assets/photography/catarina/2.jpg'
+import image1 from '../../../public/assets/photography/catarina/1.webp'
+import image2 from '../../../public/assets/photography/catarina/2.webp'
 
 
 const font = EB_Garamond({ subsets: ['latin'] })

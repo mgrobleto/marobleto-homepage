@@ -7,14 +7,14 @@ import { CustomTitle } from "@/components/title"
 import FadeInSection from "@/components/fade-in";
 import { PhotoCard } from "@/components/photography-card";
 
-import image1 from '../../../public/assets/photography/calles/1.jpg'
-import image2 from '../../../public/assets/photography/calles/2.jpg'
-import image3 from '../../../public/assets/photography/calles/3.jpg'
-import image4 from '../../../public/assets/photography/calles/4.jpg'
-import image5 from '../../../public/assets/photography/calles/5.jpg'
-import image6 from '../../../public/assets/photography/calles/6.jpg'
-import image7 from '../../../public/assets/photography/calles/7.jpg'
-import image8 from '../../../public/assets/photography/calles/8.jpg'
+import image1 from '../../../public/assets/photography/calles/1.webp'
+import image2 from '../../../public/assets/photography/calles/2.webp'
+import image3 from '../../../public/assets/photography/calles/3.webp'
+import image4 from '../../../public/assets/photography/calles/4.webp'
+import image5 from '../../../public/assets/photography/calles/5.webp'
+import image6 from '../../../public/assets/photography/calles/6.webp'
+import image7 from '../../../public/assets/photography/calles/7.webp'
+import image8 from '../../../public/assets/photography/calles/8.webp'
 
 
 const font = EB_Garamond({ subsets: ['latin'] })

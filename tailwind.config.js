@@ -16,7 +16,7 @@ module.exports = {
         'theme' : '#92DEEF'
       },*/
       backgroundImage: {
-        'photographyBackground': "url('../../public/assets/photography/backgroundImage/image.jpg')" 
+        'photographyBackground': "url('../../public/assets/photography/backgroundImage/image.webp')" 
       }, 
     },
   },
