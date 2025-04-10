@@ -61,13 +61,13 @@ const SideBar: React.FC = () => {
                         <Link
                             key={i}
                             href={l.path}
-                            className={activeSection === l.path ?  'text-theme translate-x-3 transition ease-in-out delay-150 duration-300': 'hover:text-theme hover:translate-x-3 md:transform-none transition ease-in-out delay-150 duration-300'}
+                            className={activeSection === l.path ?  'text-[#0D1A2B] translate-x-3 transition ease-in-out delay-150 duration-300': 'text-[#95B3E4] hover:text-[#0D1A2B] hover:translate-x-3 md:transform-none transition ease-in-out delay-150 duration-300'}
                             style={{
                                 margin: 4
                             }}
                         >
                             <div className='flex flex-row justify-start items-center'>
-                                <div className='underline underline-offset-4 text-theme'> {l.number} </div>
+                                <div className='underline underline-offset-4 text-[#0D1A2B]'> {l.number} </div>
                                 <div className='ml-3 text-base'> {l.label} </div>
                             </div>
                         </Link>

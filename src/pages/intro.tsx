@@ -31,16 +31,17 @@ const Intro : React.FC = () => {
                 transform: `translateY(-${progress * 20}vh)`
             }}
         >
-            <div className="max-w-full flex flex-col min-h-screen p-24 bg-[#090D26] justify-around items-center">
+            <div className="max-w-full flex flex-col min-h-screen p-24 bg-[#F0EBE5] justify-around items-center">
                 <div className="flex-col items-center  max-w-[1000px]">
                     <FadeInSection delay='1'>
-                        <div className='p-9 z-10 drop-shadow-[0_5px_3px_rgba(0,0,0,0.5)] text-center flex flex-col items-center justify-center text-[#FCF3E3]'>
+                        <div className=""></div>
+                        {/* <div className='p-9 z-10 drop-shadow-[0_5px_3px_rgba(0,0,0,0.5)] text-center flex flex-col items-center justify-center text-[#FCF3E3]'>
                             <h1 className="mb-6 text-4xl lg:text-6xl font-bold">It&apos;s </h1>
                             <h1 className="mb-6 text-5xl lg:text-7xl font-bold"> <span className='text-theme font-bold'>Gabriela Robleto</span> </h1>
                             <h2 className="mb-2 font-light text-sm lg:text-2xl tracking-tight opacity-75">
                                 <p>(Mid Web Developer &amp; Designer)</p>
                             </h2>
-                        </div> 
+                        </div>  */}
                     </FadeInSection>
                 </div>
               

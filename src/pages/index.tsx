@@ -11,8 +11,8 @@ export default function Home() {
       <ScrollObserver>
         <Intro />
         <About />
-        <Works />
-        <ContactMe />
+        {/* <Works />
+        <ContactMe /> */}
         <SideBar />
       </ScrollObserver>
     </main>
