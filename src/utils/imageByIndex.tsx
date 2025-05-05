@@ -23,15 +23,10 @@ import bekind3 from '../../public/assets/works/beKind/selectAtm.png'
 import bekind4 from '../../public/assets/works/beKind/changeState.png'
 import bekind5 from '../../public/assets/works/beKind/updatedState.png'
 
-// photography images
-import photo1 from '../../public/assets/photography/1.webp'
-import photo2 from '../../public/assets/photography/2.webp'
-import photo3 from '../../public/assets/photography/3.webp'
-import photo4 from '../../public/assets/photography/4.webp'
-import photo5 from '../../public/assets/photography/5.webp'
-import photo6 from '../../public/assets/photography/6.webp'
-import photo7 from '../../public/assets/photography/7.webp'
-import photo8 from '../../public/assets/photography/8.webp'
+import todo1 from '../../public/assets/works/todo/1.png'
+import todo2 from '../../public/assets/works/todo/2.png'
+import todo3 from '../../public/assets/works/todo/3.png'
+
 
 import { StaticImageData } from 'next/image'
 
@@ -64,15 +59,10 @@ const bekindImages: StaticImageData[] = [
     bekind5 
 ]
 
-const myphotographyImages: StaticImageData[] = [
-    photo1,
-    photo2,
-    photo3,
-    photo4,
-    photo5,
-    photo6,
-    photo7,
-    photo8
+const todoImages: StaticImageData[] = [
+    todo1,
+    todo2,
+    todo3
 ]
 
 export const codeLandImageByIndex = (index: number): StaticImageData => codeLandImages[index % codeLandImages.length]
@@ -83,4 +73,4 @@ export const inventariaTecImageByIndex = (index: number): StaticImageData => inv
 
 export const beKindImageByIndex = (index: number): StaticImageData => bekindImages [ index % bekindImages.length ]
 
-export const myphotographyImagesByIndex = (index: number): StaticImageData => myphotographyImages[ index % myphotographyImages.length]
+export const todoImageByIndex = (index: number): StaticImageData => todoImages [ index % todoImages.length]

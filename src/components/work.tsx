@@ -26,14 +26,14 @@ type TechDetail = {
 }
 
 export const WorkContainer : React.FC<WorkContent> = ({ children }) => {
-    return <div className='grid grid-cols-1 lg:grid-cols-2 items-center justify-around min-h-screen lg:mx-20'> { children } </div>
+    return <div className='grid grid-cols-1 lg:grid-cols-2 items-center justify-around min-h-screen lg:mx-20 lg:p-10'> { children } </div>
 }
 
 export const WorkBackground : React.FC = () => {
     return (
         <div className='grid grid-cols-1 lg:grid-cols-2 w-full min-h-screen top-0 sticky justify-center items-center'> 
-            <div className="bg-[#1D0D40] h-[70vh] lg:min-h-screen flex justify-center items-center"></div>
-            <div className="bg-[#1D0D40] h-[30vh] lg:min-h-screen flex justify-center items-center"></div>
+            <div className="bg-[#132336] h-[70vh] lg:min-h-screen flex justify-center items-center"></div>
+            <div className="bg-[#E2E5E6] h-[30vh] lg:min-h-screen flex justify-center items-center"></div>
         </div>
     )
 }
@@ -55,7 +55,7 @@ export const WorkLeft : React.FC<WorkProps> = ( { children, progress }) => {
         <div className="flex flex-col text-1xl lg:text-3xl h-[70vh] lg:min-h-screen lg:min-w-[300px]" style={{
             transform: `translateY(${translateY}px)`,
         }}>
-            <div className="leading-10 max-w-auto mx-28 my-5 lg:my-10 h-[90vh] lg:min-h-screen">
+            <div className="leading-10 max-w-auto mx-28 my-5 lg:my-10 h-[90vh] lg:min-h-min">
                 { children }
             </div>
         </div>
@@ -69,7 +69,7 @@ export const WorkRight : React.FC<WorkProps> = ( { children, progress }) => {
         <div className="flex flex-1 h-auto lg:min-h-screen" style={{
             transform: `translateY(${translateY}px)`
         }}>
-            <div className="w-full max-w-auto lg:my-36 px-5 md:px-10 lg:min-h-min">
+            <div className="w-full max-w-auto xl:my-36 lg:my-10 px-5 md:mx-10 lg:min-h-min">
                 { children }
             </div>
         </div>

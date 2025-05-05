@@ -21,8 +21,7 @@ const ContactMe : React.FC = () => {
     const refContainer = useRef<HTMLDivElement>(null)
     
     return (
-        <GradientBackground>
-            <section id='contact' ref={refContainer} className='min-h-screen py-10 lg:py-0 text-white flex flex-col justify-around'>
+        <section id='contact' ref={refContainer} className='min-h-screen bg-[#132336] py-10 lg:py-0 text-white flex flex-col justify-around'>
             <FadeInSection delay='1'>
                 <div className='flex flex-col justify-center items-center font-bold h-[80vh]'>  
                 {/* <h2 className='font-bold text-xl xl:text-4xl underline underline-offset-8 decoration-dotted'> / Get in touch</h2> */}
@@ -38,8 +37,7 @@ const ContactMe : React.FC = () => {
                 </div> 
                 <Footer />
             </FadeInSection>  
-            </section>
-        </GradientBackground>
+        </section>
     )
 }
 

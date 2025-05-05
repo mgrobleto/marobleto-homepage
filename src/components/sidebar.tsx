@@ -2,8 +2,7 @@
 
 import React, { useContext, useEffect, useState } from 'react'
 import Link from 'next/link'
-import { ScrollContext } from '@/utils/scroll-observer'
-
+import { useSectionObserver } from '@/utils/useSectionObserver';
 
 const links = [
     {
@@ -18,57 +17,61 @@ const links = [
     },
     {
         number: '03.',
-        label: 'Projects',
-        path: '#projects'
+        label: 'Main Projects',
+        path: '#mainprojects'
     },
     {
         number: '04.',
+        label: 'Other Projects',
+        path: '#projects'
+    },
+    {
+        number: '05.',
         label: 'Photography',
         path: '/photography'
     },
     {
-        number: '04.',
+        number: '06.',
         label: 'Contact',
         path: '#contact'
     }
 ]
 
 const SideBar: React.FC = () => {
-    const { scrollY } = useContext(ScrollContext)
-    const [activeSection, setActiveSection] = useState<string>('');
+    const {activeSection} = useSectionObserver(['home-observer-proxy', 'about', 'mainprojects', 'projects', 'contact'])
 
-    useEffect(() => {
-        const sections = links.map(link => document.getElementById(link.path.replace('#', '')))
-        let currentSection = '';
-
-        sections.forEach((section, index) => {
-            if(section) {
-                const rect = section.getBoundingClientRect();
-                if(rect.top + window.scrollY <= scrollY + window.innerHeight / 2) {
-                    currentSection = links[index].path
-                }
-            }
-        });
-        setActiveSection(currentSection);
-    }, [scrollY, links])
+    const isHome = activeSection === 'home';
+    console.log('Active section (Sidebar):', activeSection);
 
     return (
         <div className='hidden xl:flex flex-col max-w-fit h-auto fixed pl-10 bottom-10 bg-transparent'>
             <div className='flex flex-col items-start justify-between leading-6 text-xs xl:text-lg my-5'>
                 {links.map((l, i) => {
                     
+                    const isActive = l.path.startsWith('#')
+                        ? `#${activeSection}` === l.path
+                        : false
+
+                    const textColor = isHome ? '#132336' : '#E2E5E6';
+                    const numberColor = isHome ? '#132336' : '#E2E5E6'; 
+                    
                     return (
                         <Link
                             key={i}
                             href={l.path}
-                            className={activeSection === l.path ?  'text-[#0D1A2B] translate-x-3 transition ease-in-out delay-150 duration-300': 'text-[#95B3E4] hover:text-[#0D1A2B] hover:translate-x-3 md:transform-none transition ease-in-out delay-150 duration-300'}
-                            style={{
-                                margin: 4
-                            }}
+                            className={`group transition-transform ease-in-out delay-150 duration-300 ${
+                                isActive
+                                ? 'translate-x-3'
+                                : 'hover:translate-x-3 md:transform-none'
+                            }`}
                         >
                             <div className='flex flex-row justify-start items-center'>
-                                <div className='underline underline-offset-4 text-[#0D1A2B]'> {l.number} </div>
-                                <div className='ml-3 text-base'> {l.label} </div>
+                                <div className='underline underline-offset-4' style={{
+                                    color: numberColor
+                                }}> {l.number} </div>
+                                <div className='ml-3 text-base group-hover:text-[#E2E5E6]' style={{
+                                    color: textColor
+                                }}> {l.label} </div>
                             </div>
                         </Link>
                     )

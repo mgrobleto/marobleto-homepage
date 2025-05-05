@@ -4,6 +4,7 @@ import ScrollObserver from "@/utils/scroll-observer"
 import Works from "@/pages/works"
 import ContactMe from "@/pages/contactme"
 import SideBar from "@/components/sidebar"
+import MainProjects from "./main-projects"
 
 export default function Home() {
   return (
@@ -11,8 +12,9 @@ export default function Home() {
       <ScrollObserver>
         <Intro />
         <About />
-        {/* <Works />
-        <ContactMe /> */}
+        <MainProjects />
+        <Works />
+        <ContactMe />
         <SideBar />
       </ScrollObserver>
     </main>

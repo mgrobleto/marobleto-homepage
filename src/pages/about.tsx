@@ -9,7 +9,7 @@ interface AboutProps {
     mousePosition: MousePosition;
 } */
 
-import React, { useRef, useContext } from 'react';
+import React, { useRef, useContext, useMemo } from 'react';
 import s from '../styles/about.module.css'
 import { ScrollContext } from '@/utils/scroll-observer';
 import { CustomTitle, CustomSecondTitle} from '@/components/title';
@@ -28,20 +28,25 @@ const About : React.FC = () => {
     const refContainer = useRef<HTMLDivElement>(null)
 
     const numOfPages = 3
-    let progress = 0
+    
+    const progress = useMemo(() => {
+        const elContainer = refContainer.current
 
-    const { current : elContainer } = refContainer
-    if(elContainer) {
-        const {  clientHeight, offsetTop } = elContainer
-        const screenH = window.innerHeight
-        const halfH = screenH / 2
-        const percentY = Math.min(clientHeight + halfH, Math.max(-screenH , scrollY - offsetTop) + halfH) / clientHeight
-        progress = Math.min(numOfPages - 0.5, Math.max(0.5, percentY * numOfPages))
-    }
+        if (!elContainer) return 0;
+
+        const {clientHeight, offsetTop} = elContainer;
+        const screenH = window.innerHeight;
+        const halfH = screenH / 2;
+        const percetY = Math.min(
+            clientHeight + halfH,
+            Math.max(-screenH, scrollY - offsetTop) + halfH
+        ) / clientHeight
+
+        return Math.min(numOfPages - 0.5, Math.max(0.5, percetY * numOfPages));
+    }, [scrollY])
 
     return (
-        <GradientBackground>
-            <section id='about' ref={refContainer} className='min-h-screen max-w-full py-10 lg:p-0 flex items-center'>
+        <section id='about' ref={refContainer} className='min-h-screen bg-[#132336] max-w-full py-10 lg:p-auto flex items-center'>
                 <FadeInSection delay='1'>
                 <div className='flex flex-col-reverse items-center justify-center xl:flex-row mx-20 xl:px-36 xl:justify-center'>
                     <div className='about-info-container flex flex-col justify-around text-justify lg:mr-28'>
@@ -50,10 +55,17 @@ const About : React.FC = () => {
                             }}>
                                 <CustomTitle title="About me" color='#92DEEF' classname='underline underline-offset-8'/>
                                 <div className='about-introduction leading-tight'>
-                                    <p className='text-xs font-light xl:text-lg'>
-                                        Mid level designer and front-end developer based in Nicaragua. I found myself
-                                        in places and projects where I can explode my creativity and critical thinking.
-                                        With a passion for creating captivating digital experience, I bring a unique blend of creativity and technical skills to every project I undertake.
+                                    <p className='text-xs font-extralight xl:text-lg mb-4'>
+                                        I&apos;m a Mid-Level Designer and Front-End Developer based in Nicaragua, passionate about crafting captivating digital experiences. 
+                                        I thrive in projects and environments where I can unleash my creativity, apply critical thinking, and turn ideas into elegant, functional interfaces.
+                                    </p>
+                                    <p className='text-xs font-extralight xl:text-lg mb-4'>
+                                        As a freelance developer and designer, I enjoy building self-initiated and client-oriented projects that solve real problems and push the limits of what I can create.
+                                        I bring a unique blend of aesthetic sensitivity and technical skill, bridging the gap between design and code.
+                                    </p>
+                                    <p className='text-xs xl:text-lg font-extralight'>
+                                    Beyond tech, I&apos;m a science enthusiast and actively engage in science communication, especially in the fields of astronomy and biology. 
+                                    I believe in the power of sharing knowledge to inspire curiosity and build community, and I regularly participate in outreach initiatives to make science more accessible.
                                     </p>
                                 </div>
                             </div>
@@ -86,7 +98,6 @@ const About : React.FC = () => {
                     </div>
                 </FadeInSection>
             </section>
-        </GradientBackground>
     )
 }
 

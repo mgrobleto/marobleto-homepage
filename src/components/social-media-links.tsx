@@ -11,7 +11,7 @@ const SocialMedia : React.FC = () => {
         <div className="fixed xl:flex flex-col max-w-md h-auto px-10 bottom-10 bg-transparent right-2">
             <div className="flex flex-col justify-between items-end my-5">
                 <AnimatedSocialLink 
-                    href="" 
+                    href="https://drive.google.com/file/d/1SjpFJccK2wC97yKRdUwGLb0B1Qr4I5z0/view?usp=sharing" 
                     icon={<ContactPageIcon fontSize="small" />}
                     classname="hover:text-[#92DEEF]"
                     color="#92DEEF"
@@ -25,14 +25,6 @@ const SocialMedia : React.FC = () => {
                     classname="hover:text-[#92DEEF]"
                 > 
                     My GitHub Profile 
-                </AnimatedSocialLink>
-                <AnimatedSocialLink 
-                    href='https://twitter.com/marobleto_' 
-                    icon={ <XIcon fontSize='small'  /> } 
-                    color="#92DEEF"
-                    classname="hover:text-[#92DEEF]"
-                > 
-                    Ujum
                 </AnimatedSocialLink>
                 <AnimatedSocialLink
                     href="https://www.instagram.com/marobleto/"

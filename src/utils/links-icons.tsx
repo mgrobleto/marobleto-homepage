@@ -36,7 +36,7 @@ export const AnimatedSocialLink: React.FC<LinksProps> = ({href, icon, color, chi
         <Link href={href} target="_blank" className={`group my-2`}>
             <div className={`group min-w-fit min-h-fit flex items-center justify-start text-xs xl:text-md`}
             style={{
-                color: isActive ? "black" : 'white'
+                color: isActive ? "black" : '#5D7895'
             }}
             >
                 <div style={{
