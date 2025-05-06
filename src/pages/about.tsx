@@ -55,17 +55,13 @@ const About : React.FC = () => {
                             }}>
                                 <CustomTitle title="About me" color='#92DEEF' classname='underline underline-offset-8'/>
                                 <div className='about-introduction leading-tight'>
-                                    <p className='text-xs font-extralight xl:text-lg mb-4'>
-                                        I&apos;m a Mid-Level Designer and Front-End Developer based in Nicaragua, passionate about crafting captivating digital experiences. 
-                                        I thrive in projects and environments where I can unleash my creativity, apply critical thinking, and turn ideas into elegant, functional interfaces.
+                                    <p className='text-xs font-extralight lg:text-lg mb-4'>
+                                    I&apos;m a Mid-Level Designer and Front-End Developer from Nicaragua, working as a freelancer on creative and technical projects that blend design and development. 
+                                    I thrive in environments where I can apply both my critical thinking and creativity, building digital experiences that are intuitive, functional, and visually engaging.
                                     </p>
-                                    <p className='text-xs font-extralight xl:text-lg mb-4'>
-                                        As a freelance developer and designer, I enjoy building self-initiated and client-oriented projects that solve real problems and push the limits of what I can create.
-                                        I bring a unique blend of aesthetic sensitivity and technical skill, bridging the gap between design and code.
-                                    </p>
-                                    <p className='text-xs xl:text-lg font-extralight'>
-                                    Beyond tech, I&apos;m a science enthusiast and actively engage in science communication, especially in the fields of astronomy and biology. 
-                                    I believe in the power of sharing knowledge to inspire curiosity and build community, and I regularly participate in outreach initiatives to make science more accessible.
+                                    <p className='text-xs font-extralight lg:text-lg mb-4'>
+                                    I&apos;m also a passionate science enthusiast and communicator, especially in the areas of astronomy and biology. 
+                                    Through outreach and personal projects, I aim to make science more accessible and inspiring, combining my love for science and knowledge-sharing in everything I do.
                                     </p>
                                 </div>
                             </div>

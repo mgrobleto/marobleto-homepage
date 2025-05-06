@@ -26,3 +26,8 @@ body {
     )
     rgb(var(--background-start-rgb */
 } 
+
+#fractal-tree canvas {
+  max-width: 100%;
+  height: auto;
+}
