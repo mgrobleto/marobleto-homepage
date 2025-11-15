@@ -56,7 +56,7 @@ const About : React.FC = () => {
                                 <CustomTitle title="About me" color='#92DEEF' classname='underline underline-offset-8'/>
                                 <div className='about-introduction leading-tight'>
                                     <p className='text-xs font-extralight lg:text-lg mb-4'>
-                                    I&apos;m a Front-End Developer from Nicaragua. I thrive in environments where I can apply both my critical thinking and creativity, building digital experiences that are intuitive, functional, and visually engaging.
+                                    I&apos;m a Front-End developer from Nicaragua. I thrive in environments where I can apply both my critical thinking and creativity, building digital experiences that are intuitive, functional, and visually engaging.
                                     </p>
                                     <p className='text-xs font-extralight lg:text-lg mb-4'>
                                     I&apos;m also a passionate science enthusiast and communicator, especially in the areas of astronomy and photography. 
