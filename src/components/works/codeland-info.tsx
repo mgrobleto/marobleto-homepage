@@ -24,7 +24,7 @@ export const CodeLandInfo : React.FC = () => {
                             md:transform-none 
                             transition ease-in-out delay-150
                             duration-300'>
-            <WorkLink href='https://codeland-uni.herokuapp.com/'>CodeLand Website</WorkLink>
+            <WorkLink href='https://codeland.onrender.com/'>CodeLand Website</WorkLink>
         </div>
         <WorkDescription>
             Created to help students in their way of learning <span className="font-bold">C programming language </span>

@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 0,0,0;
+  --background-end-rgb: 10, 18, 39;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0,0,0;
+    --background-end-rgb: 10, 18, 39;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background-color: white;
+  /* background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb */
+} 
+
+#fractal-tree {
+  width: 100%;
+  height: fit-content;
+}
+
+#fractal-tree canvas {
+  width: 100%;
+  height: auto;
+}

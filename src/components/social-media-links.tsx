@@ -4,13 +4,14 @@ import ContactPageIcon from '@mui/icons-material/ContactPage';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import XIcon from '@mui/icons-material/X';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import { Instagram } from "@mui/icons-material";
 
 const SocialMedia : React.FC = () => {
     return (
         <div className="fixed xl:flex flex-col max-w-md h-auto px-10 bottom-10 bg-transparent right-2">
             <div className="flex flex-col justify-between items-end my-5">
                 <AnimatedSocialLink 
-                    href="https://drive.google.com/file/d/1nCmxHIxhaUA_WEcuwypkw-ecXXMjjqNM/view?usp=sharing" 
+                    href="https://drive.google.com/file/d/1ScxtCe8317mtrbtOcrKmaGu5MRqRc41Z/view?usp=drive_link" 
                     icon={<ContactPageIcon fontSize="small" />}
                     classname="hover:text-[#92DEEF]"
                     color="#92DEEF"
@@ -25,13 +26,13 @@ const SocialMedia : React.FC = () => {
                 > 
                     My GitHub Profile 
                 </AnimatedSocialLink>
-                <AnimatedSocialLink 
-                    href='https://twitter.com/marobleto_' 
-                    icon={ <XIcon fontSize='small'  /> } 
+                <AnimatedSocialLink
+                    href="https://www.instagram.com/marobleto/"
+                    icon={<Instagram fontSize="small"/>}
                     color="#92DEEF"
                     classname="hover:text-[#92DEEF]"
-                > 
-                    Ujum
+                >
+                    Check out my profile
                 </AnimatedSocialLink>
                 <AnimatedSocialLink 
                     href='https://www.linkedin.com/in/marobleto' 

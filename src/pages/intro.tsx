@@ -3,6 +3,8 @@
 import React, { useRef, useContext, useState, useCallback } from 'react';
 import { ScrollContext } from '@/utils/scroll-observer';
 import FadeInSection from '@/components/fade-in';
+import { TypewriterText } from '@/components/typewriter-text';
+import FractalTree from '@/components/fractal-tree';
 
 const Intro : React.FC = () => {
     //const [imageLoaded, setImageLoaded] = useState(false)
@@ -31,19 +33,27 @@ const Intro : React.FC = () => {
                 transform: `translateY(-${progress * 20}vh)`
             }}
         >
-            <div className="max-w-full flex flex-col min-h-screen p-24 bg-[#090D26] justify-around items-center">
-                <div className="flex-col items-center  max-w-[1000px]">
-                    <FadeInSection delay='1'>
-                        <div className='p-9 z-10 drop-shadow-[0_5px_3px_rgba(0,0,0,0.5)] text-center flex flex-col items-center justify-center text-[#FCF3E3]'>
-                            <h1 className="mb-6 text-4xl lg:text-6xl font-bold">It&apos;s </h1>
-                            <h1 className="mb-6 text-5xl lg:text-7xl font-bold"> <span className='text-theme font-bold'>Gabriela Robleto</span> </h1>
-                            <h2 className="mb-2 font-light text-sm lg:text-2xl tracking-tight opacity-75">
-                                <p>(Mid Web Developer &amp; Designer)</p>
-                            </h2>
-                        </div> 
-                    </FadeInSection>
+            <div id='home-observer-proxy' className='w-full absolute top-0 h-[1px]'>
+                <div className="max-w-full flex flex-col min-h-screen bg-[#E2E5E6] justify-around items-center">
+                    <div className="flex-col items-center w-full">
+                        <div className="w-full flex justify-center py-8 mx-auto" id='fractal-tree'>
+                            <FractalTree />
+                        </div>
+                        <FadeInSection delay='1'>
+                            <div className="text-3xl font-semibold text-[#14324D] flex justify-center">
+                                <TypewriterText texts={['¡Hey!', 'Gabriela here' ,`I'm a developer`, 'Welcome to my portfolio']} />
+                            </div>
+                            {/* <div className='p-9 z-10 drop-shadow-[0_5px_3px_rgba(0,0,0,0.5)] text-center flex flex-col items-center justify-center text-[#FCF3E3]'>
+                                <h1 className="mb-6 text-4xl lg:text-6xl font-bold">It&apos;s </h1>
+                                <h1 className="mb-6 text-5xl lg:text-7xl font-bold"> <span className='text-theme font-bold'>Gabriela Robleto</span> </h1>
+                                <h2 className="mb-2 font-light text-sm lg:text-2xl tracking-tight opacity-75">
+                                    <p>(Mid Web Developer &amp; Designer)</p>
+                                </h2>
+                            </div>  */}
+                        </FadeInSection>
+                    </div>
+                
                 </div>
-              
             </div>
         </section>
     )

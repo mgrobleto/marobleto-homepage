@@ -9,7 +9,7 @@ interface AboutProps {
     mousePosition: MousePosition;
 } */
 
-import React, { useRef, useContext } from 'react';
+import React, { useRef, useContext, useMemo } from 'react';
 import s from '../styles/about.module.css'
 import { ScrollContext } from '@/utils/scroll-observer';
 import { CustomTitle, CustomSecondTitle} from '@/components/title';
@@ -28,32 +28,39 @@ const About : React.FC = () => {
     const refContainer = useRef<HTMLDivElement>(null)
 
     const numOfPages = 3
-    let progress = 0
+    
+    const progress = useMemo(() => {
+        const elContainer = refContainer.current
 
-    const { current : elContainer } = refContainer
-    if(elContainer) {
-        const {  clientHeight, offsetTop } = elContainer
-        const screenH = window.innerHeight
-        const halfH = screenH / 2
-        const percentY = Math.min(clientHeight + halfH, Math.max(-screenH , scrollY - offsetTop) + halfH) / clientHeight
-        progress = Math.min(numOfPages - 0.5, Math.max(0.5, percentY * numOfPages))
-    }
+        if (!elContainer) return 0;
+
+        const {clientHeight, offsetTop} = elContainer;
+        const screenH = window.innerHeight;
+        const halfH = screenH / 2;
+        const percetY = Math.min(
+            clientHeight + halfH,
+            Math.max(-screenH, scrollY - offsetTop) + halfH
+        ) / clientHeight
+
+        return Math.min(numOfPages - 0.5, Math.max(0.5, percetY * numOfPages));
+    }, [scrollY])
 
     return (
-        <GradientBackground>
-            <section id='about' ref={refContainer} className='min-h-screen max-w-full py-10 lg:p-0 flex items-center'>
+        <section id='about' ref={refContainer} className='min-h-screen bg-[#132336] max-w-full py-10 lg:p-auto flex items-center'>
                 <FadeInSection delay='1'>
                 <div className='flex flex-col-reverse items-center justify-center xl:flex-row mx-20 xl:px-36 xl:justify-center'>
                     <div className='about-info-container flex flex-col justify-around text-justify lg:mr-28'>
                             <div className={`${s.aboutText} about-introduction max-w-2xl mb-auto lg:mb-5`} style={{
                                 opacity: opacityForBlock(progress, 1)
                             }}>
-                                <CustomTitle title="About me" color='#92DEEF'/>
+                                <CustomTitle title="About me" color='#92DEEF' classname='underline underline-offset-8'/>
                                 <div className='about-introduction leading-tight'>
-                                    <p className='text-xs font-light xl:text-lg'>
-                                        Junior designer and front-end developer based in Nicaragua. I found myself
-                                        in places and projects where I can explode my creativity and critical thinking.
-                                        With a passion for creating captivating digital experience, I bring a unique blend of creativity and technical skills to every project I undertake.
+                                    <p className='text-xs font-extralight lg:text-lg mb-4'>
+                                    I&apos;m a Front-End developer from Nicaragua. I thrive in environments where I can apply both my critical thinking and creativity, building digital experiences that are intuitive, functional, and visually engaging.
+                                    </p>
+                                    <p className='text-xs font-extralight lg:text-lg mb-4'>
+                                    I&apos;m also a passionate science enthusiast and communicator, especially in the areas of astronomy and photography. 
+                                    Through outreach and personal projects, I aim to make science more accessible and inspiring, combining my love for science and knowledge-sharing in everything I do.
                                     </p>
                                 </div>
                             </div>
@@ -73,7 +80,7 @@ const About : React.FC = () => {
                             opacity: opacityForBlock(progress, 1),
                             }}>
                             <Image
-                                src="/assets/me_2023.jpeg"
+                                src="/assets/me_2023.webp"
                                 alt="about me photo"
                                 width={500}
                                 height={500}
@@ -86,7 +93,6 @@ const About : React.FC = () => {
                     </div>
                 </FadeInSection>
             </section>
-        </GradientBackground>
     )
 }
 

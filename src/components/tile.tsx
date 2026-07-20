@@ -19,7 +19,7 @@ interface TileProps {
 
 interface Props {
     page: number
-    children: React.ReactNode // i added this and it worked, so idk what happened jj
+    children?: React.ReactNode // i added this and it worked, so idk what happened jj
     renderContent: ( props : { progress: number}) => any
 }
  

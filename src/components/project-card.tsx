@@ -32,9 +32,12 @@ const ProjectCard: React.FC<ProjectContent> = ({githubLink, websiteLink, project
                         <div className="mx-3">
                             <SocialLink href={githubLink} color="#92DEEF" icon={ <GitHubIcon /> } ></SocialLink>
                         </div>
-                        <div className="group-hover:translate-y-[-6px] ease-in-out transition delay-100 duration-500">
-                            <SocialLink href={websiteLink} color="#92DEEF" icon={ <LaunchTwoToneIcon />}></SocialLink>
-                        </div>
+                        {websiteLink ? (
+                                <div className="group-hover:translate-y-[-6px] ease-in-out transition delay-100 duration-500">
+                                <SocialLink href={websiteLink} color="#92DEEF" icon={ <LaunchTwoToneIcon />}></SocialLink>
+                                </div>
+                            ) : null
+                        }
                     </div>
                 </div>
                 <div className="card-title">
@@ -45,7 +48,7 @@ const ProjectCard: React.FC<ProjectContent> = ({githubLink, websiteLink, project
                     {/* <div className="project-role font-light text-sm lg:text-sm tracking-tight opacity-70 my-2">{role}</div> */}
                 </div>
             </div>
-            <div className="flex flex-wrap items-start">
+            <div className="flex flex-wrap items-start my-2">
                 {stack.map((tech, i) => {
                     return (
                         <div key={i} className="mr-1.5 mb-2">
