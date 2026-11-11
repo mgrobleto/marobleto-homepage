@@ -1,22 +1,35 @@
-import Intro from "@/pages/intro"
-import About from "@/pages/about"
-import ScrollObserver from "@/utils/scroll-observer"
-import Works from "@/pages/works"
-import ContactMe from "@/pages/contactme"
-import SideBar from "@/components/sidebar"
-import MainProjects from "./main-projects"
+import Head from "next/head"
+import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google"
+
+import StarField from "@/components/home/star-field"
+import { Nav, Hero, About, Experience, Research, Community, Projects, Photography, Skills, Contact, Footer } from "@/components/home/sections"
+
+const display = Space_Grotesk({ subsets: ["latin"], weight: ["500", "600", "700"], variable: "--font-display" })
+const body = Inter({ subsets: ["latin"], variable: "--font-body" })
+const mono = JetBrains_Mono({ subsets: ["latin"], weight: ["400", "500"], variable: "--font-mono" })
 
 export default function Home() {
   return (
-    <main>
-      <ScrollObserver>
-        <Intro />
+    <div className={`home-root ${display.variable} ${body.variable} ${mono.variable}`}>
+      <Head>
+        <title>Maro Robleto · Frontend Developer &amp; Astronomy</title>
+        <meta name="description" content="María Gabriela Robleto: frontend developer in Nicaragua working with React, TypeScript and AWS, with research in exoplanet microlensing." />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
+      <StarField />
+      <Nav />
+      <main id="top">
+        <Hero />
         <About />
-        <MainProjects />
-        <Works />
-        <ContactMe />
-        <SideBar />
-      </ScrollObserver>
-    </main>
+        <Experience />
+        <Research />
+        <Community />
+        <Projects />
+        <Photography />
+        <Skills />
+        <Contact />
+      </main>
+      <Footer />
+    </div>
   )
 }
