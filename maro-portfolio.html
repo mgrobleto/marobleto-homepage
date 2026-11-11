@@ -1,0 +1,889 @@
+<title>Maro Robleto Portfolio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one column of sections on a star field; hero splits intro text | low-poly island. Night-sky first, paper-cream light theme. */
+:root {
+  --bg:#0e1322; --surface:#161d32; --line:#28304a; --fg:#ece6dc; --muted:#9ba3b9;
+  --gold:#f6d36b; --orange:#ec9a48; --red:#e0574f; --star:#fff6c9; --chipbg:#1d2540;
+  --on-gold:#1a1405; --film:#141414;
+  --display:"Space Grotesk", "Segoe UI", system-ui, sans-serif;
+  --body:"Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono:"JetBrains Mono", ui-monospace, Consolas, monospace;
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) {
+  --bg:#f4f0e8; --surface:#fffdf8; --line:#ddd5c6; --fg:#24212b; --muted:#6a6472;
+  --gold:#9a6f0c; --orange:#b35a1f; --red:#b8322b; --star:#5b6690; --chipbg:#ece5d8; --on-gold:#fffdf8; --film:#2b2622;
+  color-scheme: light; } }
+:root[data-theme="light"] {
+  --bg:#f4f0e8; --surface:#fffdf8; --line:#ddd5c6; --fg:#24212b; --muted:#6a6472;
+  --gold:#9a6f0c; --orange:#b35a1f; --red:#b8322b; --star:#5b6690; --chipbg:#ece5d8; --on-gold:#fffdf8; --film:#2b2622;
+  color-scheme: light; }
+
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { background:var(--bg); color:var(--fg); font-family:var(--body); font-size:16px; line-height:1.6; }
+#sky { position:fixed; inset:0; width:100%; height:100%; z-index:0; pointer-events:none; }
+a { color:var(--gold); text-underline-offset:3px; }
+a:focus-visible, button:focus-visible, input:focus-visible { outline:2px solid var(--gold); outline-offset:3px; }
+h1,h2,h3 { font-family:var(--display); text-wrap:balance; margin:0; letter-spacing:-0.015em; }
+p { margin:0; }
+
+.wrap { position:relative; z-index:1; max-width:1120px; margin:0 auto;
+  padding-left:max(16px, env(safe-area-inset-left, 0px)); padding-right:max(16px, env(safe-area-inset-right, 0px)); }
+
+/* nav */
+body::before { content:""; position:fixed; inset:0 0 auto; height:env(safe-area-inset-top, 0px); z-index:10; background:var(--bg); }
+header.nav { position:sticky; top:env(safe-area-inset-top, 0px); z-index:5;
+  background:color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line); }
+.nav .wrap { display:flex; align-items:center; gap:16px; padding-block:12px; }
+.brand { font-family:var(--display); font-weight:700; color:var(--fg); text-decoration:none; white-space:nowrap; }
+.brand span { color:var(--gold); }
+.navlinks { display:flex; gap:4px; overflow-x:auto; flex:1; min-width:0; scrollbar-width:none; }
+.navlinks a { color:var(--muted); text-decoration:none; font-size:14px; padding:6px 10px; border-radius:6px; white-space:nowrap; }
+.navlinks a:hover { color:var(--fg); background:var(--chipbg); }
+.iconbtn { background:none; border:1px solid var(--line); color:var(--fg); border-radius:8px; width:36px; height:36px;
+  display:grid; place-items:center; cursor:pointer; flex:none; }
+
+/* hero */
+.hero { display:grid; grid-template-columns:1fr 1.05fr; gap:32px; align-items:center; padding-block:48px 24px; }
+.hero > * { min-width:0; }
+.eyebrow { font-family:var(--mono); font-size:13px; color:var(--orange); letter-spacing:0.04em; }
+.hero h1 { font-size:clamp(40px, 6vw, 68px); line-height:1.02; margin:12px 0 18px; }
+.hero h1 em { font-style:normal; color:var(--gold); }
+.lede { color:var(--muted); font-size:18px; max-width:46ch; }
+.cta { display:flex; flex-wrap:wrap; gap:10px; margin-top:26px; }
+.btn { font:600 15px var(--body); padding:11px 18px; border-radius:999px; text-decoration:none; border:1px solid var(--line); color:var(--fg); background:none; cursor:pointer; }
+.btn.primary { background:var(--gold); color:var(--on-gold); border-color:var(--gold); }
+.btn:hover { border-color:var(--gold); }
+.status { margin-top:22px; font-size:14px; color:var(--muted); display:flex; align-items:center; gap:8px; }
+.dot { width:8px; height:8px; border-radius:50%; background:#5fb36b; box-shadow:0 0 0 4px color-mix(in srgb, #5fb36b 25%, transparent); }
+
+.island { position:relative; }
+#scene3d { width:100%; max-width:100%; aspect-ratio:4/3; position:relative; cursor:grab; touch-action:pan-y; }
+#scene3d:active { cursor:grabbing; }
+#scene3d canvas { display:block; width:100% !important; height:100% !important; }
+#loading { position:absolute; inset:0; display:grid; place-items:center; color:var(--muted); font-size:14px; font-family:var(--mono); }
+.explore { display:flex; flex-wrap:wrap; gap:6px; justify-content:center; align-items:center; margin-top:4px; }
+.explore .label { font-family:var(--mono); font-size:12px; color:var(--muted); margin-right:4px; }
+.chip { font:500 13px var(--body); background:var(--chipbg); color:var(--fg); border:1px solid transparent;
+  border-radius:999px; padding:5px 11px; cursor:pointer; }
+.chip:hover { border-color:var(--line); }
+.chip[aria-pressed="true"] { border-color:var(--gold); color:var(--gold); }
+
+/* sections */
+section.block { padding-block:64px; border-top:1px solid var(--line); }
+.sechead { display:flex; align-items:baseline; gap:14px; margin-bottom:28px; flex-wrap:wrap; }
+.sechead h2 { font-size:clamp(28px, 3.6vw, 38px); }
+.sechead .tag { font-family:var(--mono); font-size:12px; color:var(--orange); }
+.sechead p { color:var(--muted); flex-basis:100%; max-width:62ch; }
+
+.about { display:grid; grid-template-columns:1.3fr 1fr; gap:40px; }
+.about > * { min-width:0; }
+.about p + p { margin-top:14px; }
+.about .text { max-width:62ch; }
+.facts { display:grid; margin:0; border-top:1px solid var(--line); align-self:start; }
+.facts div { display:flex; justify-content:space-between; gap:16px; padding:11px 0; border-bottom:1px solid var(--line); font-size:15px; }
+.facts dt { color:var(--muted); }
+.facts dd { margin:0; text-align:right; }
+
+/* timeline */
+.timeline { list-style:none; margin:0; padding:0; display:grid; }
+.timeline li { display:grid; grid-template-columns:170px 1fr; gap:24px; padding:22px 0; border-top:1px solid var(--line); }
+.timeline li:first-child { border-top:0; padding-top:0; }
+.timeline li > * { min-width:0; }
+.when { font-family:var(--mono); font-size:13px; color:var(--muted); padding-top:4px; font-variant-numeric:tabular-nums; }
+.kind { display:inline-block; font-family:var(--mono); font-size:11px; letter-spacing:0.06em; text-transform:uppercase; color:var(--orange); margin-bottom:6px; }
+.timeline h3 { font-size:20px; }
+.org { color:var(--muted); font-size:15px; margin:2px 0 10px; }
+.timeline ul { margin:0; padding-left:18px; display:grid; gap:4px; max-width:70ch; }
+.stack { display:flex; flex-wrap:wrap; gap:6px; margin-top:12px; }
+.stack span { font-family:var(--mono); font-size:12px; color:var(--muted); background:var(--chipbg); padding:3px 8px; border-radius:4px; }
+
+/* research */
+.research { display:grid; grid-template-columns:1fr 1.25fr; gap:40px; align-items:start; }
+.research > * { min-width:0; }
+.research .text p + p { margin-top:14px; }
+.research ul { padding-left:18px; margin:14px 0 0; display:grid; gap:4px; }
+.lab { border:1px solid var(--line); background:var(--surface); border-radius:12px; padding:18px; }
+.lab h3 { font-size:16px; font-family:var(--mono); font-weight:500; }
+.lab .hint { color:var(--muted); font-size:13px; margin-top:4px; }
+#curve { width:100%; height:auto; display:block; margin-top:10px; }
+.controls { display:grid; grid-template-columns:repeat(3, 1fr); gap:14px; margin-top:12px; }
+.controls label { display:grid; gap:4px; font-size:13px; color:var(--muted); }
+.controls output { font-family:var(--mono); color:var(--fg); font-variant-numeric:tabular-nums; }
+.controls input[type=range] { width:100%; accent-color:var(--gold); }
+.readout { margin-top:12px; font-family:var(--mono); font-size:12px; color:var(--muted); display:flex; flex-wrap:wrap; gap:6px 18px; }
+.readout b { color:var(--gold); font-weight:500; }
+
+/* community */
+.cgrid { display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:16px; }
+.ccard { border:1px solid var(--line); border-radius:12px; padding:20px; display:flex; flex-direction:column; gap:8px; background:var(--surface); }
+.ccard h3 { font-size:19px; }
+.ccard .role { font-family:var(--mono); font-size:12px; color:var(--orange); }
+.ccard p { color:var(--muted); font-size:15px; }
+.ccard a { font-size:14px; margin-top:auto; }
+
+/* projects */
+.pgrid { display:grid; grid-template-columns:repeat(3, 1fr); gap:16px; }
+.pcard { border:1px solid var(--line); border-radius:12px; overflow:hidden; display:flex; flex-direction:column; background:var(--surface); }
+.pcard .cover { height:120px; position:relative; border-bottom:1px solid var(--line); }
+.pcard .body { padding:18px; display:flex; flex-direction:column; gap:8px; flex:1; }
+.pcard h3 { font-size:20px; }
+.pcard p { color:var(--muted); font-size:15px; }
+.pcard .stack { margin-top:auto; padding-top:8px; }
+.links { display:flex; gap:16px; font-size:14px; font-weight:600; padding-top:4px; }
+.links a { text-decoration:none; }
+.links a:hover { text-decoration:underline; }
+.cover.apod { background:radial-gradient(circle at 75% 35%, #f6d36b 0 10px, transparent 11px),
+  radial-gradient(circle at 20% 70%, rgba(236,154,72,.6) 0 26px, transparent 27px), linear-gradient(160deg, #1b2450, #3a2a5c); }
+.cover.inv { background:repeating-linear-gradient(0deg, transparent 0 19px, color-mix(in srgb, var(--fg) 14%, transparent) 19px 20px),
+  linear-gradient(90deg, color-mix(in srgb, var(--orange) 30%, var(--surface)) 0 28%, var(--surface) 28%); }
+.cover.code { background:var(--chipbg); font-family:var(--mono); font-size:13px; color:var(--muted); padding:16px; line-height:1.5; white-space:pre; overflow:hidden; }
+.cover.code b { color:var(--gold); font-weight:500; }
+.others { margin-top:28px; }
+.others h3 { font-size:13px; font-family:var(--mono); font-weight:500; color:var(--muted); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:8px; }
+.olist { list-style:none; margin:0; padding:0; border-top:1px solid var(--line); }
+.olist li { display:flex; flex-wrap:wrap; justify-content:space-between; gap:6px 16px; padding:12px 0; border-bottom:1px solid var(--line); }
+.olist li > span { min-width:0; }
+.olist .desc { color:var(--muted); font-size:14px; }
+
+/* photography */
+.photo { display:grid; grid-template-columns:1fr 1.3fr; gap:40px; align-items:center; }
+.photo > * { min-width:0; }
+.photo .text p + p { margin-top:14px; }
+.photo .text .btn { display:inline-block; margin-top:22px; }
+.filmstrip { background:var(--film); border-radius:6px; padding:18px 12px; position:relative; display:grid; grid-template-columns:repeat(3, 1fr); gap:10px; }
+.filmstrip::before, .filmstrip::after { content:""; position:absolute; left:10px; right:10px; height:8px;
+  background:repeating-linear-gradient(90deg, #e9e2d3 0 9px, transparent 9px 20px); opacity:.85; border-radius:1px; }
+.filmstrip::before { top:5px; } .filmstrip::after { bottom:5px; }
+.frame { aspect-ratio:3/2; border-radius:2px; }
+.frame:nth-child(1) { background:linear-gradient(180deg, #e8b273 0 45%, #5b7a52 45% 70%, #3c4a33 70%); }
+.frame:nth-child(2) { background:radial-gradient(circle at 60% 40%, #f2d9a5 0 18%, transparent 19%), linear-gradient(180deg, #8fa6c4, #d8c9a8); }
+.frame:nth-child(3) { background:linear-gradient(135deg, #a0442f 0 35%, #e6d2b0 35% 60%, #6e5a3c 60%); }
+.filmcap { display:flex; justify-content:space-between; font-family:var(--mono); font-size:11px; color:#e9b44c; grid-column:1/-1; letter-spacing:.08em; }
+
+/* certs + skills */
+.two { display:grid; grid-template-columns:1fr 1fr; gap:40px; }
+.two > * { min-width:0; }
+.certs { list-style:none; margin:0; padding:0; border-top:1px solid var(--line); }
+.certs li { display:flex; justify-content:space-between; gap:16px; padding:14px 0; border-bottom:1px solid var(--line); }
+.certs .who { color:var(--muted); font-size:14px; }
+.certs .who a { font-size:14px; }
+.certs .yr { font-family:var(--mono); color:var(--gold); font-size:14px; font-variant-numeric:tabular-nums; }
+.skills { display:grid; gap:16px; align-content:start; }
+.skills h3 { font-size:13px; font-family:var(--mono); font-weight:500; color:var(--muted); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:6px; }
+.subhead { font-size:22px; margin-bottom:16px; }
+
+/* contact */
+.contact h2 { font-size:clamp(32px, 5vw, 52px); max-width:18ch; }
+.contact .row { display:flex; flex-wrap:wrap; gap:10px; margin-top:24px; align-items:center; }
+.email { font-family:var(--mono); font-size:15px; background:var(--chipbg); padding:10px 14px; border-radius:8px; user-select:all; overflow-wrap:anywhere; }
+footer { padding-block:28px 40px; color:var(--muted); font-size:13px; font-family:var(--mono); border-top:1px solid var(--line); }
+
+@media (max-width: 860px) {
+  .hero, .about, .research, .two, .photo { grid-template-columns:1fr; }
+  .pgrid { grid-template-columns:1fr; }
+  .hero { padding-block:28px 8px; }
+  .timeline li { grid-template-columns:1fr; gap:6px; }
+  .controls { grid-template-columns:1fr; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior:auto; } }
+</style>
+
+<canvas id="sky" aria-hidden="true"></canvas>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">maro<span>.</span>robleto</a>
+    <nav class="navlinks" aria-label="Sections">
+      <a href="#about">About</a><a href="#experience">Experience</a><a href="#research">Research</a>
+      <a href="#community">Community</a><a href="#projects">Projects</a><a href="#photography">Photography</a><a href="#contact">Contact</a>
+    </nav>
+    <button class="iconbtn" id="theme" type="button" aria-label="Switch light or dark theme">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap hero">
+    <div>
+      <div class="eyebrow">Masatepe, Masaya · Nicaragua · 11.9° N</div>
+      <h1>Hi, I'm Maro. I build interfaces and study the <em>night sky</em>.</h1>
+      <p class="lede">Frontend developer working in React, TypeScript and AWS. I also model gravitational microlensing events in Python, mentor students in an international astrophysics program and take part in Nicaragua's astronomy community.</p>
+      <div class="cta">
+        <a class="btn primary" href="#projects">See my work</a>
+        <a class="btn" href="https://drive.google.com/file/d/1ScxtCe8317mtrbtOcrKmaGu5MRqRc41Z/view?usp=drive_link" target="_blank" rel="noopener">Résumé</a>
+        <a class="btn" href="#contact">Get in touch</a>
+      </div>
+      <div class="status"><span class="dot"></span>Open to frontend roles · Nov 2026</div>
+    </div>
+    <div class="island">
+      <div id="scene3d"><div id="loading">Building the island…</div></div>
+      <div class="explore" role="group" aria-label="Explore the island">
+        <span class="label">explore →</span>
+        <button class="chip" type="button" data-az="-0.53" aria-pressed="false">Code</button>
+        <button class="chip" type="button" data-az="1.5" aria-pressed="false">Telescope</button>
+        <button class="chip" type="button" data-az="-1.57" aria-pressed="false">Painting</button>
+        <button class="chip" type="button" data-az="-1.19" aria-pressed="false">Books &amp; film</button>
+        <button class="chip" type="button" data-az="2.92" aria-pressed="false">Sudoku</button>
+        <button class="chip" type="button" data-az="0.9" aria-pressed="false">The cat</button>
+      </div>
+    </div>
+  </div>
+
+  <section class="block" id="about">
+    <div class="wrap about">
+      <div class="text">
+        <div class="sechead"><h2>About</h2></div>
+        <p>I'm a frontend developer from Masatepe, Nicaragua, with a degree in Computer Engineering from the Universidad Nacional de Ingeniería. I like work that needs both careful engineering and a good eye: reusable components, clear interfaces and fast pages.</p>
+        <p>I'm also a science enthusiast and communicator. Through research, mentoring and Nicaragua's amateur astronomy and planetary science networks, I try to make astronomy easier to reach for students in Central America and the Caribbean.</p>
+        <p>Away from the keyboard: painting, film photography, books, sudoku and an orange cat who supervises everything.</p>
+      </div>
+      <dl class="facts">
+        <div><dt>Based in</dt><dd>Masatepe, Masaya, Nicaragua</dd></div>
+        <div><dt>Focus</dt><dd>Frontend · React · AWS</dd></div>
+        <div><dt>Science</dt><dd>Exoplanet microlensing</dd></div>
+        <div><dt>Degree</dt><dd>B.Sc. Computer Engineering, UNI 2024</dd></div>
+        <div><dt>Languages</dt><dd>Spanish · English</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="block" id="experience">
+    <div class="wrap">
+      <div class="sechead"><h2>Experience</h2><span class="tag">work · research · leadership</span></div>
+      <ol class="timeline">
+        <li>
+          <div class="when">Jul 2026 – Nov 2026</div>
+          <div>
+            <span class="kind">Leadership</span>
+            <h3>Student Mentor</h3>
+            <div class="org">Central American–Caribbean Bridge in Astrophysics · Remote</div>
+            <ul>
+              <li>Mentored an undergraduate research student through a four-month international internship.</li>
+              <li>Gave weekly technical and professional guidance, and reviewed the final symposium talk and research report.</li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <div class="when">Jul 2025 – Oct 2026</div>
+          <div>
+            <span class="kind">Work</span>
+            <h3>Frontend Developer</h3>
+            <div class="org">Sistemática Internacional Inc. · Managua</div>
+            <ul>
+              <li>Built and maintained web applications with React, Vite, Fuse React, Material UI and Tailwind CSS.</li>
+              <li>Created reusable, responsive UI components shared across products.</li>
+              <li>Connected frontends to AWS AppSync, DynamoDB and S3.</li>
+              <li>Debugged production issues, improved performance and took part in code reviews in an Agile team.</li>
+            </ul>
+            <div class="stack"><span>React</span><span>TypeScript</span><span>Vite</span><span>Fuse React</span><span>MUI</span><span>Tailwind</span><span>AppSync</span><span>DynamoDB</span><span>S3</span></div>
+          </div>
+        </li>
+        <li>
+          <div class="when">Fall 2025</div>
+          <div>
+            <span class="kind">Research</span>
+            <h3>Research Intern</h3>
+            <div class="org">Central American–Caribbean Bridge in Astrophysics · Remote</div>
+            <ul>
+              <li>Studied gravitational microlensing events to find conditions that favor detecting habitable exoplanets. <a href="#research">Read more ↓</a></li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <div class="when">2020 – 2024</div>
+          <div>
+            <span class="kind">Education</span>
+            <h3>B.Sc. Computer Engineering</h3>
+            <div class="org">Universidad Nacional de Ingeniería · Managua</div>
+            <ul><li>Thesis: an inventory and billing SaaS for small businesses (Angular, Django REST Framework, SQL Server).</li></ul>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="block" id="research">
+    <div class="wrap">
+      <div class="sechead"><h2>Astronomy research</h2><span class="tag">gravitational microlensing</span></div>
+      <div class="research">
+        <div class="text">
+          <p>When a star passes in front of a more distant one, its gravity bends and magnifies the background light. A planet around the lens star can add a short spike to that brightening, sometimes only hours long.</p>
+          <p>In my research internship I looked for the combinations of parameters that make planets in the habitable zone easier to detect this way.</p>
+          <ul>
+            <li>Modeled light curves in Python with MulensModel.</li>
+            <li>Varied mass ratio <i>q</i>, projected separation <i>s</i> and Einstein crossing time <i>t<sub>E</sub></i>.</li>
+            <li>Processed synthetic and observed datasets and mapped detectability across parameter space.</li>
+            <li>Presented results at international research meetings.</li>
+          </ul>
+        </div>
+        <div class="lab">
+          <h3>Try it: a microlensing light curve</h3>
+          <p class="hint">Move the sliders to change the event. Points are simulated observations.</p>
+          <svg id="curve" viewBox="0 0 600 300" role="img" aria-label="Magnification over time for a microlensing event"></svg>
+          <div class="controls">
+            <label for="u0">Impact parameter u₀ <output id="u0v">0.20</output><input id="u0" type="range" min="0.05" max="1" step="0.01" value="0.2"></label>
+            <label for="tE">Einstein time t<sub>E</sub> <output id="tEv">20 d</output><input id="tE" type="range" min="5" max="60" step="1" value="20"></label>
+            <label for="q">Planet mass ratio q <output id="qv">1.0e-3</output><input id="q" type="range" min="-5" max="-2" step="0.1" value="-3"></label>
+          </div>
+          <div class="readout"><span>peak A = <b id="apeak">–</b></span><span>planet signal ≈ <b id="pdur">–</b></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="community">
+    <div class="wrap">
+      <div class="sechead"><h2>Community &amp; outreach</h2><span class="tag">mentoring · astronomy in Nicaragua</span>
+        <p>Groups where I give my time to students, amateur astronomers and science communication.</p></div>
+      <div class="cgrid">
+        <article class="ccard">
+          <span class="role">Member</span>
+          <h3>Asociación de Astronomía Aficionada Los Cadejos</h3>
+          <p>An amateur astronomy association in Nicaragua that brings people together to observe and learn about the sky.</p>
+        </article>
+        <article class="ccard">
+          <span class="role">Member</span>
+          <h3>Red Nicaragüense de Ciencias Planetarias y Exploración Espacial</h3>
+          <p>A Nicaraguan network for planetary science and space exploration.</p>
+        </article>
+        <article class="ccard">
+          <span class="role">Student Mentor · 2026</span>
+          <h3>CAC Bridge in Astrophysics</h3>
+          <p>A remote program that connects students from Central America and the Caribbean with astrophysics research. I was first an intern, then a mentor.</p>
+        </article>
+        <article class="ccard">
+          <span class="role">Creator · outreach</span>
+          <h3>Ad Astra Hub</h3>
+          <p>A friendly site for exploring NASA's Astronomy Picture of the Day by date, built so anyone can enjoy space imagery.</p>
+          <a href="https://mgrobleto.github.io/AdAstraHubWebsite/" target="_blank" rel="noopener">Visit Ad Astra Hub →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="projects">
+    <div class="wrap">
+      <div class="sechead"><h2>Projects</h2><span class="tag">selected work</span></div>
+      <div class="pgrid">
+        <article class="pcard">
+          <div class="cover apod" aria-hidden="true"></div>
+          <div class="body">
+            <h3>Ad Astra Hub</h3>
+            <p>Browse NASA's Astronomy Picture of the Day for any date, with images and videos in a clean, minimal layout.</p>
+            <div class="stack"><span>React</span><span>React Query</span><span>Tailwind</span><span>MUI</span><span>Framer Motion</span><span>NASA API</span></div>
+            <div class="links"><a href="https://mgrobleto.github.io/AdAstraHubWebsite/" target="_blank" rel="noopener">Live site ↗</a><a href="https://github.com/mgrobleto/AdAstraHubWebsite" target="_blank" rel="noopener">Code ↗</a></div>
+          </div>
+        </article>
+        <article class="pcard">
+          <div class="cover inv" aria-hidden="true"></div>
+          <div class="body">
+            <h3>Inventária Tec</h3>
+            <p>My thesis: a SaaS platform for inventory, billing and customers for small businesses, with authentication and reports.</p>
+            <div class="stack"><span>Angular</span><span>Django REST</span><span>SQL Server</span><span>Angular Material</span></div>
+            <div class="links"><a href="https://github.com/mgrobleto/InventariTecFrontendApp" target="_blank" rel="noopener">Code ↗</a></div>
+          </div>
+        </article>
+        <article class="pcard">
+          <div class="cover code" aria-hidden="true"><b>#include</b> &lt;stdio.h&gt;
+<b>int</b> main() {
+  printf("Hola, CodeLand");
+}</div>
+          <div class="body">
+            <h3>CodeLand</h3>
+            <p>A community site that helps students learn C with Turbo C 2.0, where they can create accounts and share projects.</p>
+            <div class="stack"><span>Python</span><span>Flask</span><span>Firebase</span><span>Bootstrap</span></div>
+            <div class="links"><a href="https://codeland.onrender.com/" target="_blank" rel="noopener">Live site ↗</a><a href="https://github.com/mgrobleto/CodeLand" target="_blank" rel="noopener">Code ↗</a></div>
+          </div>
+        </article>
+      </div>
+      <div class="others">
+        <h3>Other projects</h3>
+        <ul class="olist">
+          <li><span><a href="https://github.com/J2rg3n-B3rm2d3z/FinalProject" target="_blank" rel="noopener">Be Kind ↗</a> <span class="desc">· Kotlin app where users report which ATMs have cash</span></span><span class="desc">Kotlin · Firebase · Google Maps</span></li>
+          <li><span><a href="https://github.com/mgrobleto/todo-app" target="_blank" rel="noopener">To Do App ↗</a> <span class="desc">· mobile to-do list</span></span><span class="desc">React Native · Expo · Moti</span></li>
+          <li><span><a href="https://github.com/mgrobleto/Ad-Astra-Hub-Login-with-React-and-Firebase" target="_blank" rel="noopener">Ad Astra Hub Login ↗</a> <span class="desc">· sign-in flow</span></span><span class="desc">React · Firebase</span></li>
+          <li><span><a href="https://vintage-outdoor-sample.vercel.app/" target="_blank" rel="noopener">Vintage Outdoor ↗</a> <span class="desc">· sample site · <a href="https://github.com/mgrobleto/vintage-outdoor-sample" target="_blank" rel="noopener">code</a></span></span><span class="desc">Frontend</span></li>
+        </ul>
+        <p class="desc" style="margin-top:14px"><a href="https://github.com/mgrobleto" target="_blank" rel="noopener">All code on GitHub →</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="photography">
+    <div class="wrap photo">
+      <div class="text">
+        <div class="sechead"><h2>Photography</h2><span class="tag">35mm · analog</span></div>
+        <p>I shoot analog film. I like capturing everyday moments of people, my country and my hometown, and finding beauty in the simplest things around us.</p>
+        <a class="btn primary" href="https://marobleto-portfolio.vercel.app/photography" target="_blank" rel="noopener">See the gallery ↗</a>
+      </div>
+      <div class="filmstrip" aria-hidden="true">
+        <div class="frame"></div><div class="frame"></div><div class="frame"></div>
+        <div class="filmcap"><span>PORTRA 400</span><span>▸ 12</span><span>13</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="skills">
+    <div class="wrap two">
+      <div>
+        <h2 class="subhead">Certifications</h2>
+        <ul class="certs">
+          <li><div>AWS Certified Cloud Practitioner<div class="who">Amazon Web Services · <a href="https://www.credly.com/badges/5cdacfc1-bf3f-4c90-a993-a1d0cce81911/linked_in_profile" target="_blank" rel="noopener">Verify ↗</a></div></div><span class="yr">2025</span></li>
+          <li><div>JSA – Certified Associate JavaScript Programmer<div class="who">JS Institute · <a href="https://www.credly.com/badges/760769e0-b911-4139-a4f3-3e0863238145/public_url" target="_blank" rel="noopener">Verify ↗</a></div></div><span class="yr">2026</span></li>
+          <li><div>CS50x: Introduction to Computer Science<div class="who">Harvard University</div></div><span class="yr">2021</span></li>
+        </ul>
+      </div>
+      <div class="skills">
+        <h2 class="subhead">Skills</h2>
+        <div><h3>Languages</h3><div class="stack"><span>JavaScript</span><span>TypeScript</span><span>Python</span><span>C</span><span>SQL</span><span>HTML/CSS</span></div></div>
+        <div><h3>Frontend</h3><div class="stack"><span>React</span><span>Next.js</span><span>Angular</span><span>Vite</span><span>MUI</span><span>Tailwind</span><span>Bootstrap</span></div></div>
+        <div><h3>Cloud</h3><div class="stack"><span>AWS AppSync</span><span>DynamoDB</span><span>S3</span></div></div>
+        <div><h3>Science &amp; tools</h3><div class="stack"><span>MulensModel</span><span>Git</span><span>Figma</span><span>Postman</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="contact">
+    <div class="wrap contact">
+      <h2>Let's build something, or talk about exoplanets.</h2>
+      <div class="row">
+        <span class="email" id="mail">magabriela0715@gmail.com</span>
+        <button class="btn" type="button" id="copy">Copy email</button>
+        <a class="btn" href="https://www.linkedin.com/in/marobleto" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="https://github.com/mgrobleto" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://www.instagram.com/marobleto/" target="_blank" rel="noopener">Instagram</a>
+        <a class="btn" href="https://drive.google.com/file/d/1ScxtCe8317mtrbtOcrKmaGu5MRqRc41Z/view?usp=drive_link" target="_blank" rel="noopener">Résumé</a>
+      </div>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap">© 2026 María Gabriela Robleto · Masatepe, Nicaragua · built with Three.js under a lot of starlight</div></footer>
+
+<script>
+/* theme toggle + copy */
+(function(){
+  const root = document.documentElement;
+  try { const t = localStorage.getItem('theme'); if (t) root.dataset.theme = t; } catch(e){}
+  document.getElementById('theme').onclick = () => {
+    const dark = root.dataset.theme ? root.dataset.theme === 'dark' : !matchMedia('(prefers-color-scheme: light)').matches;
+    root.dataset.theme = dark ? 'light' : 'dark';
+    try { localStorage.setItem('theme', root.dataset.theme); } catch(e){}
+  };
+  document.getElementById('copy').onclick = async (e) => {
+    const t = document.getElementById('mail').textContent;
+    try { await navigator.clipboard.writeText(t); e.target.textContent = 'Copied'; }
+    catch(err) { const r = document.createRange(); r.selectNodeContents(document.getElementById('mail'));
+      const s = getSelection(); s.removeAllRanges(); s.addRange(r); e.target.textContent = 'Selected, press Ctrl+C'; }
+    setTimeout(() => e.target.textContent = 'Copy email', 2500);
+  };
+})();
+
+/* star field */
+(function(){
+  const c = document.getElementById('sky'), x = c.getContext('2d');
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let stars = [], col = '#fff';
+  function size(){
+    const d = Math.min(devicePixelRatio, 2); c.width = innerWidth*d; c.height = innerHeight*d; x.setTransform(d,0,0,d,0,0);
+    const n = Math.round(innerWidth*innerHeight/7000);
+    stars = Array.from({length:n}, () => ({ x:Math.random()*innerWidth, y:Math.random()*innerHeight,
+      r:Math.random()*1.1+0.3, p:Math.random()*6.28, s:0.4+Math.random()*1.2 }));
+  }
+  function readCol(){ col = getComputedStyle(document.documentElement).getPropertyValue('--star').trim() || '#fff'; if (still) draw(0); }
+  function draw(t){
+    x.clearRect(0,0,innerWidth,innerHeight); x.fillStyle = col;
+    for (const s of stars){ x.globalAlpha = 0.25 + 0.45*(0.5+0.5*Math.sin(s.p + t*0.0006*s.s));
+      x.beginPath(); x.arc(s.x, s.y, s.r, 0, 6.28); x.fill(); }
+    if (!still) requestAnimationFrame(draw);
+  }
+  addEventListener('resize', () => { size(); if (still) draw(0); });
+  new MutationObserver(readCol).observe(document.documentElement, {attributes:true, attributeFilter:['data-theme']});
+  matchMedia('(prefers-color-scheme: light)').addEventListener('change', readCol);
+  size(); col = getComputedStyle(document.documentElement).getPropertyValue('--star').trim() || '#fff'; requestAnimationFrame(draw);
+})();
+
+/* microlensing light curve (Paczyński single lens + simplified planetary bump) */
+(function(){
+  const svg = document.getElementById('curve'), NS = 'http://www.w3.org/2000/svg';
+  const W=600, H=300, L=52, R=14, T=14, B=40, T0 = 60;
+  const $ = id => document.getElementById(id);
+  const A = u => (u*u+2)/(u*Math.sqrt(u*u+4));
+  let seed = 7; const rnd = () => (seed = (seed*16807) % 2147483647) / 2147483647;
+  const obsT = Array.from({length:70}, (_,i) => -T0 + (i+rnd()*0.8)*(2*T0/70));
+  const noise = obsT.map(() => (rnd()+rnd()+rnd()-1.5)*0.6);
+  function el(n, a, txt){ const e = document.createElementNS(NS, n); for (const k in a) e.setAttribute(k, a[k]); if (txt!=null) e.textContent = txt; svg.appendChild(e); return e; }
+  function render(){
+    const u0 = +$('u0').value, tE = +$('tE').value, q = Math.pow(10, +$('q').value);
+    const tp = 0.45*tE, sig = Math.max(0.15, tE*Math.sqrt(q)*1.2), hfac = Math.min(1, 18*Math.sqrt(q));
+    const f = t => { const u = Math.sqrt(u0*u0 + (t/tE)**2), a = A(u);
+      return a + A(Math.sqrt(u0*u0 + (tp/tE)**2))*hfac*Math.exp(-((t-tp)**2)/(2*sig*sig)); };
+    let ymax = 0; const N = 500, pts = [];
+    for (let i=0;i<=N;i++){ const t = -T0 + 2*T0*i/N; const y = f(t); pts.push([t,y]); ymax = Math.max(ymax, y); }
+    const step = ymax > 12 ? 5 : ymax > 6 ? 2 : 1; const top = Math.ceil((ymax*1.08)/step)*step;
+    const sx = t => L + (t+T0)/(2*T0)*(W-L-R), sy = y => H-B - (y-1)/(top-1)*(H-T-B);
+    svg.textContent = '';
+    for (let y = 1; y <= top; y += step) {
+      el('line', {x1:L, x2:W-R, y1:sy(y), y2:sy(y), stroke:'var(--line)', 'stroke-width':1});
+      el('text', {x:L-8, y:sy(y)+4, 'text-anchor':'end', fill:'var(--muted)', 'font-size':11, 'font-family':'JetBrains Mono, monospace'}, y);
+    }
+    for (let t = -60; t <= 60; t += 20)
+      el('text', {x:sx(t), y:H-B+18, 'text-anchor':'middle', fill:'var(--muted)', 'font-size':11, 'font-family':'JetBrains Mono, monospace'}, t);
+    el('text', {x:(L+W-R)/2, y:H-4, 'text-anchor':'middle', fill:'var(--muted)', 'font-size':11, 'font-family':'Inter, sans-serif'}, 'days from peak');
+    el('text', {x:14, y:(T+H-B)/2, 'text-anchor':'middle', fill:'var(--muted)', 'font-size':11, 'font-family':'Inter, sans-serif', transform:`rotate(-90 14 ${(T+H-B)/2})`}, 'magnification A');
+    obsT.forEach((t,i) => { const y = Math.max(1, f(t) + noise[i]*0.06*f(t));
+      el('circle', {cx:sx(t), cy:sy(y), r:2.6, fill:'var(--muted)', 'fill-opacity':0.6}); });
+    el('path', {d:'M'+pts.map(p => sx(p[0]).toFixed(1)+' '+sy(p[1]).toFixed(1)).join('L'), fill:'none', stroke:'var(--gold)', 'stroke-width':2.2, 'stroke-linejoin':'round'});
+    el('circle', {cx:sx(tp), cy:sy(f(tp)), r:4, fill:'var(--orange)'});
+    el('text', {x:sx(tp)+8, y:Math.max(T+12, sy(f(tp))-6), fill:'var(--orange)', 'font-size':11, 'font-family':'Inter, sans-serif'}, 'planet');
+    $('u0v').textContent = u0.toFixed(2); $('tEv').textContent = tE + ' d'; $('qv').textContent = q.toExponential(1);
+    $('apeak').textContent = A(u0).toFixed(1) + '×';
+    const hrs = sig*2.355*24; $('pdur').textContent = hrs < 48 ? Math.round(hrs) + ' hours' : (hrs/24).toFixed(1) + ' days';
+  }
+  ['u0','tE','q'].forEach(id => $(id).addEventListener('input', render));
+  render();
+})();
+</script>
+
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+} }
+</script>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+/* ---------- Palette ---------- */
+const C = {
+  skin:'#d9a07f', blush:'#e98478', lips:'#8a2c32', eye:'#2b1a14',
+  hair:'#241b1a', tie:'#a8323a', olive:'#7c7a2c',
+  leather:'#2a221f', top:'#7f8a2c', pants:'#e6dcc6', shoes:'#18171a', sole:'#3a3533', strap:'#8a5a3a',
+  camBody:'#1e1e22', camSilver:'#c9ccd2', camLens:'#55596a', camGlass:'#3b6ea5', camBrown:'#5a3a28',
+  cat:'#ec9a48', catDark:'#c96b2c', catCream:'#f7dcb4', catPink:'#e58b8b',
+  tele:'#eef0f4', teleDark:'#30343c', teleLens:'#4f7fb8',
+  wood:'#9a6235', woodDark:'#7a4a26', night:'#24306a', moon:'#f6d36b', star:'#fff3b8', hill:'#4f8a5b',
+  paintR:'#e04f4f', paintY:'#f2c84b', paintB:'#4a78d6', paintG:'#5fb36b',
+  grass:'#86c16f', grass2:'#6fae5d', dirt:'#8a5f3e', rock:'#9a948c',
+  pages:'#f3ead7', paper:'#fbf8f1', ink:'#2a2a35', pencil:'#f2c23a', eraser:'#e88a9a', film:'#f2b632'
+};
+
+/* ---------- Helpers ---------- */
+const mats = new Map();
+function mat(color, o = {}){
+  const k = color + JSON.stringify(o);
+  if(!mats.has(k)) mats.set(k, new THREE.MeshStandardMaterial({ color, flatShading:true, roughness:0.85, metalness:0, ...o }));
+  return mats.get(k);
+}
+const box  = (w,h,d) => new THREE.BoxGeometry(w,h,d);
+const cyl  = (rt,rb,h,s=6,open=false,ts=0,tl=Math.PI*2) => new THREE.CylinderGeometry(rt,rb,h,s,1,open,ts,tl);
+const ico  = (r,d=0) => new THREE.IcosahedronGeometry(r,d);
+const cone = (r,h,s=5) => new THREE.ConeGeometry(r,h,s);
+const oct  = (r) => new THREE.OctahedronGeometry(r);
+function add(parent, geo, color, p=[0,0,0], r=[0,0,0], s=[1,1,1], o){
+  const m = new THREE.Mesh(geo, mat(color,o));
+  m.position.set(...p); m.rotation.set(...r); m.scale.set(...s);
+  m.castShadow = m.receiveShadow = true; parent.add(m); return m;
+}
+function beam(parent, a, b, r, color, seg=6){
+  const A = new THREE.Vector3(...a), B = new THREE.Vector3(...b);
+  const dir = B.clone().sub(A), len = dir.length();
+  const m = add(parent, cyl(r,r,len,seg), color);
+  m.position.copy(A).add(B).multiplyScalar(0.5);
+  m.quaternion.setFromUnitVectors(new THREE.Vector3(0,1,0), dir.normalize());
+  return m;
+}
+const rc = new THREE.Raycaster();
+function frontZ(mesh, x, y){
+  mesh.updateWorldMatrix(true,false);
+  rc.set(new THREE.Vector3(x,y,60), new THREE.Vector3(0,0,-1));
+  const hit = rc.intersectObject(mesh,false)[0];
+  return hit ? hit.point.z : 0;
+}
+function hash(a,b,c=0){ let h=(a*374761393+b*668265263+c*1274126177)|0; h=(h^(h>>>13))*1274126177; return ((h^(h>>>16))>>>0)/4294967295; }
+
+const world = new THREE.Group();
+
+/* ---------- Island ---------- */
+add(world, cyl(17.5,17,1,9), C.grass, [0,-0.5,1], [0,0,0], [1,1,0.62]);
+add(world, cyl(17,8,6,9), C.dirt, [0,-4,1], [0,0,0], [1,1,0.62]);
+for(const [x,z,s] of [[-15.5,-3,1.1],[14.8,4,0.9],[-6,-7,0.8],[8,-6.5,1.2],[16,-1,0.7]])
+  add(world, ico(s,0), C.rock, [x,0.3*s,z], [hash(x,z),hash(z,x),0]);
+for(let i=0;i<22;i++){
+  const a=hash(i,1)*Math.PI*2, r=11+hash(i,2)*5;
+  add(world, cone(0.35,0.9+hash(i,3)*0.6,4), i%2?C.grass2:C.grass, [Math.cos(a)*r,0.5,1+Math.sin(a)*r*0.58]);
+}
+
+/* ---------- Maro ---------- */
+const girl = new THREE.Group();
+for(const sx of [-1,1]){
+  add(girl, box(2.4,0.45,3.7), C.sole, [sx*1.7,0.23,0.7]);
+  add(girl, box(2.2,1.1,3.4), C.shoes, [sx*1.7,0.95,0.6]);
+  add(girl, cyl(1.0,1.85,4.6,6), C.pants, [sx*1.7,3.8,0]);
+}
+add(girl, box(4.8,1.4,2.6), C.pants, [0,6.1,0]);
+const leather = { roughness:0.45, metalness:0.1 };
+add(girl, cyl(3.0,3.9,6.5,7), C.leather, [0,9.6,0], [0,0,0], [1,1,0.65], leather);
+add(girl, box(2.3,3.6,0.3), C.top, [0,10.9,2.0]);
+for(const sx of [-1,1]){
+  add(girl, box(1.7,1.1,0.6), C.leather, [sx*1.3,12.6,1.5], [0,0,sx*0.45], [1,1,1], leather);
+  add(girl, cyl(1.0,1.5,6.2,6), C.leather, [sx*4.3,9.2,0], [0,0,sx*0.18], [1,1,1], leather);
+  add(girl, ico(0.75,0), C.skin, [sx*4.9,5.6,0]);
+}
+const cam1 = new THREE.Group(); cam1.position.set(0.2,9,2.75); girl.add(cam1);
+add(cam1, box(3.2,1.7,1.1), C.camBody);
+add(cam1, box(3.2,0.5,1.1), C.camSilver, [0,1.1,0], [0,0,0], [1,1,1], {metalness:0.5, roughness:0.4});
+add(cam1, box(1,0.7,0.9), C.camSilver, [-0.4,1.6,0], [0,0,0], [1,1,1], {metalness:0.5, roughness:0.4});
+add(cam1, cyl(0.7,0.8,1.0,8), C.camLens, [0.3,0,0.95], [Math.PI/2,0,0]);
+add(cam1, cyl(0.5,0.5,0.1,8), C.camGlass, [0.3,0,1.48], [Math.PI/2,0,0], [1,1,1], {roughness:0.2, metalness:0.3});
+beam(girl, [-1.2,10.2,2.6], [-1.8,12.6,1.6], 0.14, C.strap);
+beam(girl, [ 1.6,10.2,2.6], [ 1.9,12.6,1.6], 0.14, C.strap);
+add(girl, cyl(1.3,1.35,1.7,7), C.top, [0,13.1,0]);
+const head = add(girl, ico(4.2,1), C.skin, [0,16.6,0.3]);
+add(girl, ico(4.6,1), C.hair, [0,17.0,-1.5]);
+add(girl, cyl(4.7,5.3,5.2,9,true,0.9,Math.PI*2-1.8), C.hair, [0,14.4,-0.4], [0,0,0], [1,1,1], {side:THREE.DoubleSide});
+add(girl, new THREE.SphereGeometry(4.7,12,7,0,Math.PI*2,0,1.55), C.hair, [0,16.6,0.2], [-0.55,0,0]);
+function strand(top, tip, w){
+  const A = new THREE.Vector3(...top), B = new THREE.Vector3(...tip);
+  const d = B.clone().sub(A), len = d.length();
+  const m = add(girl, cone(w,len,3), C.hair, [0,0,0], [0,0,0], [1,1,0.45]);
+  m.position.copy(A).add(B).multiplyScalar(0.5);
+  m.quaternion.setFromUnitVectors(new THREE.Vector3(0,1,0), d.normalize());
+}
+const onFace = (x,y,out) => [x, y, frontZ(head,x,y)+out];
+for(const [tx,ty,bx,by,w] of [[-0.6,20.3,-3.6,17.6,1.8],[0.8,20.3,-2.0,17.3,1.9],[2.0,20.1,-0.4,17.5,1.6],[2.9,19.8,1.1,18.1,1.2]])
+  strand(onFace(tx,ty,0.55), onFace(bx,by,0.6), w);
+for(const sx of [-1,1]) strand(onFace(sx*3.4,19.0,0.5), [sx*3.8,12.6,frontZ(head,sx*3.4,15)+0.4], 1.0);
+const hc = new THREE.Vector3(0,16.6,0.3);
+for(const sx of [-1,1]){
+  const bun = new THREE.Vector3(sx*3.0,21.2,-0.6);
+  add(girl, ico(1.9,1), C.hair, [bun.x,bun.y,bun.z]);
+  const dir = bun.clone().sub(hc).normalize();
+  const tie = add(girl, new THREE.TorusGeometry(1.7,0.42,5,10), C.tie);
+  tie.position.copy(hc).add(dir.clone().multiplyScalar(4.75));
+  tie.quaternion.setFromUnitVectors(new THREE.Vector3(0,0,1), dir);
+}
+girl.updateMatrixWorld(true);
+for(const sx of [-1,1]){
+  const ex = sx*1.5, ey = 16.0;
+  add(girl, box(0.55,0.95,0.6), C.eye, [ex, ey, frontZ(head,ex,ey)]);
+  add(girl, cyl(0.65,0.65,0.25,6), C.blush, [sx*2.4,14.8, frontZ(head,sx*2.4,14.8)], [Math.PI/2,0,0]);
+  add(girl, new THREE.TorusGeometry(1.2,0.27,5,10), C.olive, [ex, ey, frontZ(head,ex,ey)+0.8], [0,0,0], [1,1,1], {roughness:0.4});
+  beam(girl, [sx*2.65,16.3,frontZ(head,ex,ey)+0.7], [sx*4.0,16.5,0.6], 0.16, C.olive);
+}
+add(girl, box(0.9,0.25,0.3), C.olive, [0,16.35,frontZ(head,0,16.3)+0.8]);
+add(girl, box(1.3,0.45,0.5), C.lips, [0,13.9,frontZ(head,0,13.9)]);
+girl.position.set(0,0,-0.5);
+world.add(girl);
+
+/* ---------- Telescope ---------- */
+const TP = [10,11.2,0];
+for(const f of [[7,0,-3],[13,0,-3],[10,0,4]]) beam(world, TP, f, 0.22, C.teleDark, 4);
+add(world, box(1.6,1.4,1.6), C.teleDark, [10,11.6,0]);
+beam(world, [10,12,0], [10.5,14,0], 0.4, C.teleDark);
+beam(world, [6.6,10.6,0], [14.6,18.6,0], 1.0, C.tele, 8);
+beam(world, [14.2,18.2,0], [15.3,19.3,0], 1.15, C.teleDark, 8);
+beam(world, [7.6,11.6,0], [8.1,12.1,0], 1.08, C.teleDark, 8);
+beam(world, [15.3,19.3,0], [15.35,19.35,0], 0.95, C.teleLens, 8);
+beam(world, [6.5,10.5,0], [5.7,11.5,0], 0.35, C.teleDark);
+beam(world, [9.3,13.9,1.2], [11.6,16.2,1.2], 0.32, C.teleDark);
+
+/* ---------- Easel ---------- */
+add(world, box(0.5,15,0.5), C.wood, [-14.2,7.4,1], [0,0,-0.13]);
+add(world, box(0.5,15,0.5), C.wood, [-9.8,7.4,1],  [0,0, 0.13]);
+add(world, box(0.5,14,0.5), C.woodDark, [-12,7,-1.6], [-0.28,0,0]);
+add(world, box(8.2,0.5,1.4), C.wood, [-12,6,1.6]);
+add(world, box(7.6,7.6,0.4), C.night, [-12,10.4,1.3]);
+add(world, box(7.6,1.6,0.1), C.hill,  [-12,7.4,1.55]);
+add(world, box(4.2,1.4,0.1), C.hill,  [-13.4,8.2,1.56], [0,0,0.25]);
+add(world, cyl(1.1,1.1,0.12,8), C.moon, [-10,12.4,1.55], [Math.PI/2,0,0]);
+for(const [x,y] of [[-14.3,13],[-12.6,11.4],[-13.4,13.8],[-11.4,13.2],[-14.5,11.2]]) add(world, oct(0.25), C.star, [x,y,1.6]);
+add(world, box(8.2,0.5,0.6), C.wood, [-12,14.4,1.3]);
+[C.paintR,C.paintY,C.paintB].forEach((c,i)=> add(world, cyl(0.4,0.4,0.8,6), c, [-14.4+i*1.5,6.65,1.9]));
+add(world, cyl(1.7,1.7,0.25,7), C.wood, [-15.6,0.15,4.2], [0,0,0], [1,1,0.75]);
+[C.paintR,C.paintY,C.paintB,C.paintG].forEach((c,i)=> add(world, ico(0.3,0), c, [-16.4+i*0.55,0.4,3.8+(i%2)*0.6]));
+beam(world, [-14.6,0.35,5.2], [-12.8,0.35,6.6], 0.12, C.woodDark, 4);
+
+/* ---------- Books + second camera ---------- */
+const stack = new THREE.Group(); stack.position.set(-11.5,0,5.6); world.add(stack);
+let sy = 0;
+for(const [c,w,h,d,ry] of [['#7b2d26',4,1,3.2,0.05],['#6b7a3a',3.6,0.9,3,-0.12],['#2f4a6b',3.8,1.1,2.8,0.15],['#d19a2c',3.4,0.8,3,-0.05],['#5a3b2a',3.6,1,2.7,0.1]]){
+  const b = new THREE.Group(); b.position.y = sy + h/2; b.rotation.y = ry; stack.add(b);
+  add(b, box(w,h,d), c); add(b, box(w-0.5,h-0.25,d-0.25), C.pages, [0.3,0,0]);
+  sy += h;
+}
+const cam2 = new THREE.Group(); cam2.position.set(0,sy+0.65,0.2); cam2.rotation.y = 0.35; stack.add(cam2);
+add(cam2, box(2.6,1.3,1.1), C.camBrown);
+add(cam2, box(2.6,0.45,1.1), C.camSilver, [0,0.85,0], [0,0,0], [1,1,1], {metalness:0.5, roughness:0.4});
+add(cam2, box(0.6,0.4,0.6), C.camSilver, [0.7,1.25,0]);
+add(cam2, cyl(0.55,0.6,0.7,8), C.camLens, [0,0,0.85], [Math.PI/2,0,0]);
+add(cam2, cyl(0.42,0.42,0.1,8), C.camGlass, [0,0,1.22], [Math.PI/2,0,0]);
+add(world, cyl(0.45,0.45,1.1,8), C.film, [-8.6,0.55,7.6]);
+add(world, cyl(0.47,0.47,0.15,8), C.camBody, [-8.6,1.15,7.6]);
+add(world, cyl(0.45,0.45,1.1,8), C.film, [-8.0,0.45,9.1], [0,0.6,Math.PI/2]);
+
+/* ---------- Open book ---------- */
+const openBook = new THREE.Group(); openBook.position.set(11,0,7.2); openBook.rotation.y = -0.3; world.add(openBook);
+add(openBook, box(4.6,0.15,3.1), '#5a3b2a', [0,0.08,0]);
+for(const sx of [-1,1]){
+  add(openBook, box(2.1,0.3,2.8), C.pages, [sx*1.1,0.3,0], [0,0,sx*0.1]);
+  for(let i=0;i<4;i++) add(openBook, box(1.4,0.05,0.12), '#b9b09c', [sx*1.1,0.57,-0.9+i*0.55], [0,0,sx*0.1]);
+}
+
+/* ---------- Laptop: code + astronomy data ---------- */
+function screenTexture(){
+  const cv = document.createElement('canvas'); cv.width = 512; cv.height = 320;
+  const g = cv.getContext('2d');
+  g.fillStyle = '#1e2230'; g.fillRect(0,0,512,320);
+  g.fillStyle = '#2a2f40'; g.fillRect(0,0,512,26);
+  ['#e06c75','#e5c07b','#98c379'].forEach((c,i)=>{ g.fillStyle=c; g.beginPath(); g.arc(16+i*18,13,5,0,7); g.fill(); });
+  g.font = '15px monospace';
+  const code = [
+    [['import ','#c678dd'],['numpy ','#e5c07b'],['as ','#c678dd'],['np','#e5c07b']],
+    [['from ','#c678dd'],['astropy.io ','#e5c07b'],['import ','#c678dd'],['fits','#e5c07b']],
+    [['','#fff']],
+    [['data ','#e06c75'],['= fits.','#abb2bf'],['open','#61afef'],['(','#abb2bf'],['"m31.fits"','#98c379'],[')','#abb2bf']],
+    [['flux ','#e06c75'],['= data[','#abb2bf'],['1','#d19a66'],['].data','#abb2bf']],
+    [['t, f ','#e06c75'],['= ','#abb2bf'],['lightcurve','#61afef'],['(flux)','#abb2bf']],
+    [['plt.','#abb2bf'],['plot','#61afef'],['(t, f)','#abb2bf']],
+    [['# ✦ transit detected','#7f8796']],
+  ];
+  code.forEach((ln,i)=>{ let x=14; ln.forEach(([t,c])=>{ g.fillStyle=c; g.fillText(t,x,56+i*24); x+=g.measureText(t).width; }); });
+  const X0=300,Y0=280,W=196,H=120;
+  g.strokeStyle='#7f8796'; g.lineWidth=2; g.beginPath(); g.moveTo(X0,Y0-H); g.lineTo(X0,Y0); g.lineTo(X0+W,Y0); g.stroke();
+  g.strokeStyle='#f6d36b'; g.lineWidth=2.5; g.beginPath();
+  for(let i=0;i<=60;i++){ const t=i/60, dip = Math.abs(t-0.55)<0.1 ? 38 : 0;
+    const yy = Y0-80 + dip + Math.sin(i*1.7)*4; i?g.lineTo(X0+t*W,yy):g.moveTo(X0+t*W,yy); }
+  g.stroke();
+  g.fillStyle='#fff3b8'; for(let i=0;i<14;i++) g.fillRect(310+hash(i,1)*180, 172+hash(i,2)*30, 2, 2);
+  const tex = new THREE.CanvasTexture(cv); tex.colorSpace = THREE.SRGBColorSpace; return tex;
+}
+const laptop = new THREE.Group(); laptop.position.set(-3.2,0,6.4); laptop.rotation.y = 0.08; world.add(laptop);
+const alu = { roughness:0.35, metalness:0.4 };
+add(laptop, box(7,0.4,4.6), '#b8bcc4', [0,0.2,0], [0,0,0], [1,1,1], alu);
+add(laptop, box(6.2,0.06,2.2), '#3a3d45', [0,0.42,-0.8]);
+add(laptop, box(2.2,0.05,1.3), '#d4d7de', [0,0.42,1.3]);
+const lid = new THREE.Group(); lid.position.set(0,0.4,-2.3); lid.rotation.x = -0.18; laptop.add(lid);
+add(lid, box(7,4.6,0.3), '#b8bcc4', [0,2.3,0], [0,0,0], [1,1,1], alu);
+const scr = new THREE.Mesh(new THREE.PlaneGeometry(6.4,4.0), new THREE.MeshBasicMaterial({ map: screenTexture() }));
+scr.position.set(0,2.35,0.16); lid.add(scr);
+
+/* ---------- Sudoku ---------- */
+const sud = new THREE.Group(); sud.position.set(1.5,0.1,-5.6); sud.rotation.y = 0.12; sud.scale.set(0.75,1,0.75); world.add(sud);
+add(sud, box(8,0.15,8), C.paper);
+for(let i=0;i<=9;i++){
+  const t = i%3===0 ? 0.14 : 0.05, p = -4+i*8/9;
+  add(sud, box(8,0.04,t), C.ink, [0,0.1,p]); add(sud, box(t,0.04,8), C.ink, [p,0.1,0]);
+}
+for(let i=0;i<9;i++) for(let j=0;j<9;j++){
+  const h = hash(i,j,7); if(h < 0.68) continue;
+  add(sud, box(0.28,0.05,0.48), h>0.84?C.ink:'#8a8a98', [-4+(i+0.5)*8/9, 0.11, -4+(j+0.5)*8/9]);
+}
+beam(sud, [-2.5,0.3,2.6], [1.5,0.3,0.4], 0.2, C.pencil, 6);
+beam(sud, [-2.5,0.3,2.6], [-2.9,0.3,2.82], 0.21, C.eraser, 6);
+
+/* ---------- Orange cat ---------- */
+const cat = new THREE.Group();
+add(cat, cyl(1.4,2.1,3.6,7), C.cat, [0,1.8,-0.3]);
+for(const yy of [1.0,2.0,3.0]){ const r = 2.1-(yy/3.6)*0.7+0.07; add(cat, cyl(r,r+0.04,0.32,7), C.catDark, [0,yy,-0.3]); }
+add(cat, ico(1.25,0), C.catCream, [0,2.1,1.2], [0,0,0], [1,1.3,0.6]);
+for(const sx of [-1,1]) add(cat, ico(0.5,0), C.catCream, [sx*0.7,0.4,1.5]);
+const chead = add(cat, ico(1.9,1), C.cat, [0,5.0,0.4], [0,0,0], [1.1,0.95,1]);
+for(const sx of [-1,1]){
+  add(cat, cone(0.7,1.3,4), C.cat, [sx*1.1,6.7,0.3], [0,0,-sx*0.25]);
+  add(cat, cone(0.4,0.8,4), C.catPink, [sx*1.1,6.6,0.62], [0,0,-sx*0.25]);
+}
+for(const x of [-0.5,0,0.5]) add(cat, box(0.22,0.2,1.4), C.catDark, [x,6.75,-0.1]);
+cat.updateMatrixWorld(true);
+for(const sx of [-1,1]) add(cat, box(0.35,0.62,0.4), C.eye, [sx*0.75,5.35,frontZ(chead,sx*0.75,5.35)]);
+add(cat, ico(0.8,0), C.catCream, [0,4.4,frontZ(chead,0,4.4)-0.1], [0,0,0], [1.2,0.7,0.6]);
+add(cat, ico(0.24,0), C.catPink, [0,4.75,frontZ(chead,0,4.75)+0.25]);
+const tail = [[1.6,0.4,-1.2],[2.4,0.4,0.2],[2.3,0.4,1.6],[1.4,0.5,2.5]];
+for(let i=0;i<tail.length-1;i++) beam(cat, tail[i], tail[i+1], 0.42, i%2?C.catDark:C.cat);
+cat.position.set(5.6,0,5.4); cat.rotation.y = -0.35;
+world.add(cat);
+
+/* ---------- Floating stars ---------- */
+const stars = [];
+for(const [x,yy,z] of [[-6,24,-3],[8,26,2],[-12,21,-5],[13,24,-6],[0,27,-2]])
+  stars.push(add(world, oct(0.6), C.star, [x,yy,z], [0,0,0], [1,1,1], {emissive:'#f6d36b', emissiveIntensity:0.6}));
+const starBaseY = stars.map(s => s.position.y);
+
+/* ---------- Scene, lights, camera ---------- */
+const host = document.getElementById('scene3d');
+const small = matchMedia('(max-width: 600px)').matches;
+const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const scene = new THREE.Scene(); scene.add(world);
+scene.add(new THREE.HemisphereLight(0xffffff, 0xb59a7a, 1.5));
+const sun = new THREE.DirectionalLight(0xfff1dc, 2.4);
+sun.position.set(18,40,26); sun.castShadow = !small;
+sun.shadow.mapSize.set(2048,2048);
+Object.assign(sun.shadow.camera,{left:-30,right:30,top:30,bottom:-30,near:1,far:120});
+sun.shadow.bias = -0.0005; sun.shadow.normalBias = 0.05; scene.add(sun);
+
+let renderer;
+try { renderer = new THREE.WebGLRenderer({ antialias:true, alpha:true }); }
+catch(e){ document.getElementById('loading').textContent = 'This browser cannot show the 3D island.'; throw e; }
+renderer.setPixelRatio(small ? 1 : Math.min(devicePixelRatio,2));
+renderer.shadowMap.enabled = !small; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+host.appendChild(renderer.domElement);
+document.getElementById('loading').remove();
+
+const target = new THREE.Vector3(0,9.5,1);
+const camera = new THREE.OrthographicCamera(-1,1,1,-1,0.1,500);
+const start = new THREE.Vector3(60*Math.sin(0.2*Math.PI), 28, 60*Math.cos(0.2*Math.PI));
+camera.position.copy(start).add(new THREE.Vector3(0,0,target.z)); camera.lookAt(target);
+function resize(){
+  const w = host.clientWidth, h = host.clientHeight, half = 21, a = w/h;
+  camera.left=-half*a; camera.right=half*a; camera.top=half; camera.bottom=-half;
+  camera.updateProjectionMatrix(); renderer.setSize(w,h,false);
+}
+new ResizeObserver(resize).observe(host); resize();
+
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.target.copy(target); controls.autoRotate = !still; controls.autoRotateSpeed = 1.2;
+controls.enablePan = false; controls.enableDamping = true; controls.enableZoom = false;
+controls.maxPolarAngle = Math.PI*0.48;
+
+/* chips: turn the island to face an object */
+let tween = null, resumeTimer, frame = still ? 999 : 0;
+const chips = document.querySelectorAll('.chip');
+chips.forEach(btn => btn.addEventListener('click', () => {
+  chips.forEach(b => b.setAttribute('aria-pressed', b === btn));
+  frame = 999; controls.autoRotate = false; clearTimeout(resumeTimer);
+  const off = camera.position.clone().sub(target);
+  const from = Math.atan2(off.x, off.z), to = +btn.dataset.az;
+  const d = ((to - from + Math.PI) % (2*Math.PI) + 2*Math.PI) % (2*Math.PI) - Math.PI;
+  tween = { from, d, k:0, r:Math.hypot(off.x, off.z), y:off.y };
+  resumeTimer = setTimeout(() => { controls.autoRotate = !still; chips.forEach(b => b.setAttribute('aria-pressed', 'false')); }, 9000);
+}));
+
+const easeOutCirc = t => Math.sqrt(1 - Math.pow(t-1, 4));
+const clock = new THREE.Clock();
+renderer.setAnimationLoop(() => {
+  const t = clock.getElapsedTime();
+  if (!still) stars.forEach((s,i) => { s.rotation.y = t*0.8 + i; s.position.y = starBaseY[i] + Math.sin(t*1.5+i)*0.4; });
+  if (frame <= 100) {
+    const rot = -easeOutCirc(frame/120) * Math.PI * 6;
+    camera.position.set(target.x + start.x*Math.cos(rot) + start.z*Math.sin(rot), start.y, target.z + start.z*Math.cos(rot) - start.x*Math.sin(rot));
+    camera.lookAt(target); frame++;
+  } else if (tween) {
+    tween.k = Math.min(1, tween.k + (still ? 1 : 1/50));
+    const e = tween.k < .5 ? 2*tween.k*tween.k : 1 - Math.pow(-2*tween.k+2, 2)/2;
+    const a = tween.from + tween.d*e;
+    camera.position.set(target.x + tween.r*Math.sin(a), target.y + tween.y, target.z + tween.r*Math.cos(a));
+    camera.lookAt(target);
+    if (tween.k >= 1) { tween = null; controls.update(); }
+  } else controls.update();
+  renderer.render(scene, camera);
+});
+</script>
