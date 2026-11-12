@@ -9,8 +9,9 @@ const SPOTS = [
   { label: "Telescope", az: 1.5 },
   { label: "Painting", az: -1.57 },
   { label: "Books & film", az: -1.19 },
+  { label: "Guitar", az: -1.26 },
   { label: "Sudoku", az: 2.92 },
-  { label: "The cat", az: 0.9 },
+  { label: "Melo", az: 0.9 },
 ]
 
 type Tween = { from: number; d: number; k: number; r: number; y: number }
