@@ -100,7 +100,7 @@ export default function LowPolyIsland() {
 
     const easeOutCirc = (t: number) => Math.sqrt(1 - Math.pow(t - 1, 4))
     const clock = new THREE.Clock()
-    renderer.setAnimationLoop(() => {
+    const loop = () => {
       const t = clock.getElapsedTime()
       if (!still) stars.forEach((s, i) => { s.rotation.y = t * 0.8 + i; s.position.y = starBaseY[i] + Math.sin(t * 1.5 + i) * 0.4 })
       if (frame <= 100) {
@@ -120,10 +120,21 @@ export default function LowPolyIsland() {
         if (tween.k >= 1) { tween = null; controls.update() }
       } else controls.update()
       renderer.render(scene, camera)
-    })
+    }
+
+    // Only render while the island is on screen. Intro, tween and auto-rotate state live in closures, so they resume where they stopped.
+    let visible = true
+    const io = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting === visible) return
+      visible = entry.isIntersecting
+      renderer.setAnimationLoop(visible ? loop : null)
+    }, { rootMargin: "100px" })
+    io.observe(host)
+    renderer.setAnimationLoop(loop)
 
     return () => {
       clearTimeout(resumeTimer)
+      io.disconnect()
       renderer.setAnimationLoop(null)
       ro.disconnect()
       controls.dispose()
